@@ -611,7 +611,9 @@ namespace H130C_Tester
         public static void SetK8_9(bool sw) { SubIo.SendData1768("W,P09," + (sw ? "1" : "0")); }
         public static void SetRl1(bool sw) { SubIo.SendData1768("W,P10," + (sw ? "1" : "0")); }
         public static void SetRl2(bool sw) { SubIo.SendData1768("W,P11," + (sw ? "1" : "0")); }
-        public static void SetLight(bool sw) { SubIo.SendData1768("W,P13," + (sw ? "1" : "0")); }
+        public static void SetLight1(bool sw) { SubIo.SendData1768("W,P13," + (sw ? "1" : "0")); }
+        public static void SetLight2(bool sw) { SubIo.SendData1768("W,P28," + (sw ? "1" : "0")); }
+        public static void SetLight3(bool sw) { SubIo.SendData1768("W,P29," + (sw ? "1" : "0")); }
 
         public static void StampOn() { SubIo.SendData1768("STAMP"); }
 

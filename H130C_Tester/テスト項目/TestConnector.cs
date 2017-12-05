@@ -113,73 +113,87 @@ namespace H130C_Tester
 
             try
             {
-                State.SetCamPropForCn();
-                Sleep(500);
-                //画像検査なので照明点灯
-                General.SetLight(true);
-                Sleep(1000);
-
-                //cam1の画像を取得する処理
-                General.cam.FlagTestPic = true;
-                while (General.cam.FlagTestPic) ;
-                src = General.cam.imageForTest.Clone();
-
-                int x = 0, y = 0, w = 0, h = 0;
-                int marjin = State.CnProp.Margin;
+                int x = 0, y = 0, w = 0, h = 0, m = 0;
 
                 ListCnSpecs2.ForEach(l =>
                 {
                     switch (l.name)
                     {
                         case NAME2.CN220:
-                            x = State.CnProp.X_Cn220;
-                            y = State.CnProp.Y_Cn220;
-                            w = State.CnProp.W_Cn220;
-                            h = State.CnProp.H_Cn220;
+                            x = State.CamPropCn220.X;
+                            y = State.CamPropCn220.Y;
+                            w = State.CamPropCn220.W;
+                            h = State.CamPropCn220.H;
+                            m = State.CamPropCn220.Margin;
                             tmp = Cv.LoadImage(Constants.filePath_TemplateCn220);
+                            State.SetCamPropForCn(State.CN_NAME.CN220);
+                            SetLight(NAME2.CN220);
                             break;
                         case NAME2.CN223:
-                            x = State.CnProp.X_Cn223;
-                            y = State.CnProp.Y_Cn223;
-                            w = State.CnProp.W_Cn223;
-                            h = State.CnProp.H_Cn223;
+                            x = State.CamPropCn223.X;
+                            y = State.CamPropCn223.Y;
+                            w = State.CamPropCn223.W;
+                            h = State.CamPropCn223.H;
+                            m = State.CamPropCn223.Margin;
                             tmp = Cv.LoadImage(Constants.filePath_TemplateCn223);
+                            State.SetCamPropForCn(State.CN_NAME.CN223);
+                            SetLight(NAME2.CN223);
                             break;
                         case NAME2.CN224:
-                            x = State.CnProp.X_Cn224;
-                            y = State.CnProp.Y_Cn224;
-                            w = State.CnProp.W_Cn224;
-                            h = State.CnProp.H_Cn224;
+                            x = State.CamPropCn224.X;
+                            y = State.CamPropCn224.Y;
+                            w = State.CamPropCn224.W;
+                            h = State.CamPropCn224.H;
+                            m = State.CamPropCn224.Margin;
                             tmp = Cv.LoadImage(Constants.filePath_TemplateCn224);
+                            State.SetCamPropForCn(State.CN_NAME.CN224);
+                            SetLight(NAME2.CN224);
                             break;
                         case NAME2.CN225:
-                            x = State.CnProp.X_Cn225;
-                            y = State.CnProp.Y_Cn225;
-                            w = State.CnProp.W_Cn225;
-                            h = State.CnProp.H_Cn225;
+                            x = State.CamPropCn225.X;
+                            y = State.CamPropCn225.Y;
+                            w = State.CamPropCn225.W;
+                            h = State.CamPropCn225.H;
+                            m = State.CamPropCn225.Margin;
                             tmp = Cv.LoadImage(Constants.filePath_TemplateCn225);
+                            State.SetCamPropForCn(State.CN_NAME.CN225);
+                            SetLight(NAME2.CN225);
                             break;
                         case NAME2.CN226:
-                            x = State.CnProp.X_Cn226;
-                            y = State.CnProp.Y_Cn226;
-                            w = State.CnProp.W_Cn226;
-                            h = State.CnProp.H_Cn226;
+                            x = State.CamPropCn226.X;
+                            y = State.CamPropCn226.Y;
+                            w = State.CamPropCn226.W;
+                            h = State.CamPropCn226.H;
+                            m = State.CamPropCn226.Margin;
                             tmp = Cv.LoadImage(Constants.filePath_TemplateCn226);
+                            State.SetCamPropForCn(State.CN_NAME.CN226);
+                            SetLight(NAME2.CN226);
                             break;
                         case NAME2.JP1:
-                            x = State.CnProp.X_Jp1;
-                            y = State.CnProp.Y_Jp1;
-                            w = State.CnProp.W_Jp1;
-                            h = State.CnProp.H_Jp1;
+                            x = State.CamPropJp1.X;
+                            y = State.CamPropJp1.Y;
+                            w = State.CamPropJp1.W;
+                            h = State.CamPropJp1.H;
+                            m = State.CamPropJp1.Margin;
                             tmp = Cv.LoadImage(Constants.filePath_TemplateJp1);
+                            State.SetCamPropForCn(State.CN_NAME.JP1);
+                            SetLight(NAME2.JP1);
                             break;
+
                     }
 
+                    Sleep(600);
+                    //画像検査なので照明点灯
+
+                    //cam1の画像を取得する処理
+                    General.cam.FlagTestPic = true;
+                    while (General.cam.FlagTestPic) ;
+                    src = General.cam.imageForTest.Clone();
                     //
-                    x -= marjin;
-                    y -= marjin;
-                    w += 2 * marjin;
-                    h += 2 * marjin;
+                    x -= m;
+                    y -= m;
+                    w += 2 * m;
+                    h += 2 * m;
 
                     var _livePic = General.trimming(src, x, y, w, h);
 
@@ -238,11 +252,52 @@ namespace H130C_Tester
             finally
             {
                 General.cam.ResetFlag();//これ忘れると無限ループにハマる
-                General.SetLight(false);
+                General.SetLight1(false);
+                General.SetLight2(false);
+                General.SetLight3(false);
                 src.Dispose();
                 tmp.Dispose();
 
             }
         }
+
+        private static void SetLight(NAME2 name)
+        {
+            switch (name)
+            {
+                case NAME2.CN220:
+                    General.SetLight1(State.CamPropCn220.Light1On);
+                    General.SetLight2(State.CamPropCn220.Light2On);
+                    General.SetLight3(State.CamPropCn220.Light3On);
+                    break;
+                case NAME2.CN223:
+                    General.SetLight1(State.CamPropCn223.Light1On);
+                    General.SetLight2(State.CamPropCn223.Light2On);
+                    General.SetLight3(State.CamPropCn223.Light3On);
+                    break;
+                case NAME2.CN224:
+                    General.SetLight1(State.CamPropCn224.Light1On);
+                    General.SetLight2(State.CamPropCn224.Light2On);
+                    General.SetLight3(State.CamPropCn224.Light3On);
+                    break;
+                case NAME2.CN225:
+                    General.SetLight1(State.CamPropCn225.Light1On);
+                    General.SetLight2(State.CamPropCn225.Light2On);
+                    General.SetLight3(State.CamPropCn225.Light3On);
+                    break;
+                case NAME2.CN226:
+                    General.SetLight1(State.CamPropCn226.Light1On);
+                    General.SetLight2(State.CamPropCn226.Light2On);
+                    General.SetLight3(State.CamPropCn226.Light3On);
+                    break;
+                case NAME2.JP1:
+                    General.SetLight1(State.CamPropJp1.Light1On);
+                    General.SetLight2(State.CamPropJp1.Light2On);
+                    General.SetLight3(State.CamPropJp1.Light3On);
+                    break;
+            }
+
+        }
+
     }
 }

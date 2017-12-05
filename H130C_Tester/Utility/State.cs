@@ -38,10 +38,16 @@ namespace H130C_Tester
         public static TestSpec TestSpec { get; set; }
         public static Command Command { get; set; }
 
-        public static CameraPropertyForCn CamPropCn { get; set; }
+        public static CameraPropertyForCn CamPropCn220 { get; set; }
+        public static CameraPropertyForCn CamPropCn223 { get; set; }
+        public static CameraPropertyForCn CamPropCn224 { get; set; }
+        public static CameraPropertyForCn CamPropCn225 { get; set; }
+        public static CameraPropertyForCn CamPropCn226 { get; set; }
+        public static CameraPropertyForCn CamPropJp1 { get; set; }
+
         public static CameraPropertyForLed CamPropLed { get; set; }
         public static LedProperty LedProp { get; set; }
-        public static CnProperty CnProp { get; set; }
+        //public static CnProperty CnProp { get; set; }
 
         public static string CurrDir { get; set; }
 
@@ -109,15 +115,17 @@ namespace H130C_Tester
             //Commandファイルのロード
             Command = Deserialize<Command>(Constants.filePath_Command);
 
-            //カメラプロパティファイルのロード
-            CamPropCn = Deserialize<CameraPropertyForCn>(Constants.filePath_CameraPropertyForCn);
-            CamPropLed = Deserialize<CameraPropertyForLed>(Constants.filePath_CameraPropertyForLed);
+            //コネクタ画像検査 カメラプロパティファイルのロード
+            CamPropCn220 = Deserialize<CameraPropertyForCn>(Constants.filePath_CamPropCn220);
+            CamPropCn223 = Deserialize<CameraPropertyForCn>(Constants.filePath_CamPropCn223);
+            CamPropCn224 = Deserialize<CameraPropertyForCn>(Constants.filePath_CamPropCn224);
+            CamPropCn225 = Deserialize<CameraPropertyForCn>(Constants.filePath_CamPropCn225);
+            CamPropCn226 = Deserialize<CameraPropertyForCn>(Constants.filePath_CamPropCn226);
+            CamPropJp1 = Deserialize<CameraPropertyForCn>(Constants.filePath_CamPropJp1);
 
             //LEDプロパティファイルのロード
+            CamPropLed = Deserialize<CameraPropertyForLed>(Constants.filePath_CameraPropertyForLed);
             LedProp = Deserialize<LedProperty>(Constants.filePath_LedProperty);
-
-            //コネクタプロパティファイルのロード
-            CnProp = Deserialize<CnProperty>(Constants.filePath_CnProperty);
 
         }
 
@@ -173,15 +181,17 @@ namespace H130C_Tester
 
                 Serialization<Configuration>(Setting, Constants.filePath_Configuration);
 
-                //Camプロパティの保存
-                Serialization<CameraPropertyForCn>(State.CamPropCn, Constants.filePath_CameraPropertyForCn);
-                Serialization<CameraPropertyForLed>(State.CamPropLed, Constants.filePath_CameraPropertyForLed);
+                //コネクタ画像検査 Camプロパティの保存
+                Serialization<CameraPropertyForCn>(State.CamPropCn220, Constants.filePath_CamPropCn220);
+                Serialization<CameraPropertyForCn>(State.CamPropCn223, Constants.filePath_CamPropCn223);
+                Serialization<CameraPropertyForCn>(State.CamPropCn224, Constants.filePath_CamPropCn224);
+                Serialization<CameraPropertyForCn>(State.CamPropCn225, Constants.filePath_CamPropCn225);
+                Serialization<CameraPropertyForCn>(State.CamPropCn226, Constants.filePath_CamPropCn226);
+                Serialization<CameraPropertyForCn>(State.CamPropJp1, Constants.filePath_CamPropJp1);
 
                 //Ledプロパティの保存
+                Serialization<CameraPropertyForLed>(State.CamPropLed, Constants.filePath_CameraPropertyForLed);
                 Serialization<LedProperty>(State.LedProp, Constants.filePath_LedProperty);
-
-                //Cnプロパティの保存
-                Serialization<CnProperty>(State.CnProp, Constants.filePath_CnProperty);
 
                 return true;
             }
@@ -193,23 +203,115 @@ namespace H130C_Tester
 
         }
 
-        public static void SetCamPropForCn()
+        public enum CN_NAME { CN220, CN223, CN224, CN225, CN226, JP1 }
+        public static void SetCamPropForCn(CN_NAME name)
         {
-            General.cam.Opening = CamPropCn.Opening;
-            General.cam.openCnt = CamPropCn.OpenCnt;
-            General.cam.closeCnt = CamPropCn.CloseCnt;
+            switch (name)
+            {
+                case CN_NAME.CN220:
+                    General.cam.BinLevel = CamPropCn220.BinLevel;
+                    General.cam.Opening = CamPropCn220.Opening;
+                    General.cam.openCnt = CamPropCn220.OpenCnt;
+                    General.cam.closeCnt = CamPropCn220.CloseCnt;
 
-            General.cam.Brightness = CamPropCn.Brightness;
-            General.cam.Contrast = CamPropCn.Contrast;
-            General.cam.Hue = CamPropCn.Hue;
-            General.cam.Saturation = CamPropCn.Saturation;
-            General.cam.Sharpness = CamPropCn.Sharpness;
-            General.cam.Gamma = CamPropCn.Gamma;
-            General.cam.Gain = CamPropCn.Gain;
-            General.cam.Exposure = CamPropCn.Exposure;
-            General.cam.Wb = CamPropCn.Whitebalance;
-            General.cam.Theta = CamPropCn.Theta;
-            General.cam.BinLevel = CamPropCn.BinLevel;
+                    General.cam.Brightness = CamPropCn220.Brightness;
+                    General.cam.Contrast = CamPropCn220.Contrast;
+                    General.cam.Hue = CamPropCn220.Hue;
+                    General.cam.Saturation = CamPropCn220.Saturation;
+                    General.cam.Sharpness = CamPropCn220.Sharpness;
+                    General.cam.Gamma = CamPropCn220.Gamma;
+                    General.cam.Gain = CamPropCn220.Gain;
+                    General.cam.Exposure = CamPropCn220.Exposure;
+                    General.cam.Wb = CamPropCn220.Whitebalance;
+                    General.cam.Theta = CamPropCn220.Theta;
+                    break;
+                case CN_NAME.CN223:
+                    General.cam.BinLevel = CamPropCn223.BinLevel;
+                    General.cam.Opening = CamPropCn223.Opening;
+                    General.cam.openCnt = CamPropCn223.OpenCnt;
+                    General.cam.closeCnt = CamPropCn223.CloseCnt;
+
+                    General.cam.Brightness = CamPropCn223.Brightness;
+                    General.cam.Contrast = CamPropCn223.Contrast;
+                    General.cam.Hue = CamPropCn223.Hue;
+                    General.cam.Saturation = CamPropCn223.Saturation;
+                    General.cam.Sharpness = CamPropCn223.Sharpness;
+                    General.cam.Gamma = CamPropCn223.Gamma;
+                    General.cam.Gain = CamPropCn223.Gain;
+                    General.cam.Exposure = CamPropCn223.Exposure;
+                    General.cam.Wb = CamPropCn223.Whitebalance;
+                    General.cam.Theta = CamPropCn223.Theta;
+                    break;
+                case CN_NAME.CN224:
+                    General.cam.BinLevel = CamPropCn224.BinLevel;
+                    General.cam.Opening = CamPropCn224.Opening;
+                    General.cam.openCnt = CamPropCn224.OpenCnt;
+                    General.cam.closeCnt = CamPropCn224.CloseCnt;
+
+                    General.cam.Brightness = CamPropCn224.Brightness;
+                    General.cam.Contrast = CamPropCn224.Contrast;
+                    General.cam.Hue = CamPropCn224.Hue;
+                    General.cam.Saturation = CamPropCn224.Saturation;
+                    General.cam.Sharpness = CamPropCn224.Sharpness;
+                    General.cam.Gamma = CamPropCn224.Gamma;
+                    General.cam.Gain = CamPropCn224.Gain;
+                    General.cam.Exposure = CamPropCn224.Exposure;
+                    General.cam.Wb = CamPropCn224.Whitebalance;
+                    General.cam.Theta = CamPropCn224.Theta;
+                    break;
+                case CN_NAME.CN225:
+                    General.cam.BinLevel = CamPropCn225.BinLevel;
+                    General.cam.Opening = CamPropCn225.Opening;
+                    General.cam.openCnt = CamPropCn225.OpenCnt;
+                    General.cam.closeCnt = CamPropCn225.CloseCnt;
+
+                    General.cam.Brightness = CamPropCn225.Brightness;
+                    General.cam.Contrast = CamPropCn225.Contrast;
+                    General.cam.Hue = CamPropCn225.Hue;
+                    General.cam.Saturation = CamPropCn225.Saturation;
+                    General.cam.Sharpness = CamPropCn225.Sharpness;
+                    General.cam.Gamma = CamPropCn225.Gamma;
+                    General.cam.Gain = CamPropCn225.Gain;
+                    General.cam.Exposure = CamPropCn225.Exposure;
+                    General.cam.Wb = CamPropCn225.Whitebalance;
+                    General.cam.Theta = CamPropCn225.Theta;
+                    break;
+                case CN_NAME.CN226:
+                    General.cam.BinLevel = CamPropCn226.BinLevel;
+                    General.cam.Opening = CamPropCn226.Opening;
+                    General.cam.openCnt = CamPropCn226.OpenCnt;
+                    General.cam.closeCnt = CamPropCn226.CloseCnt;
+
+                    General.cam.Brightness = CamPropCn226.Brightness;
+                    General.cam.Contrast = CamPropCn226.Contrast;
+                    General.cam.Hue = CamPropCn226.Hue;
+                    General.cam.Saturation = CamPropCn226.Saturation;
+                    General.cam.Sharpness = CamPropCn226.Sharpness;
+                    General.cam.Gamma = CamPropCn226.Gamma;
+                    General.cam.Gain = CamPropCn226.Gain;
+                    General.cam.Exposure = CamPropCn226.Exposure;
+                    General.cam.Wb = CamPropCn226.Whitebalance;
+                    General.cam.Theta = CamPropCn226.Theta;
+                    break;
+                case CN_NAME.JP1:
+                    General.cam.BinLevel = CamPropJp1.BinLevel;
+                    General.cam.Opening = CamPropJp1.Opening;
+                    General.cam.openCnt = CamPropJp1.OpenCnt;
+                    General.cam.closeCnt = CamPropJp1.CloseCnt;
+
+                    General.cam.Brightness = CamPropJp1.Brightness;
+                    General.cam.Contrast = CamPropJp1.Contrast;
+                    General.cam.Hue = CamPropJp1.Hue;
+                    General.cam.Saturation = CamPropJp1.Saturation;
+                    General.cam.Sharpness = CamPropJp1.Sharpness;
+                    General.cam.Gamma = CamPropJp1.Gamma;
+                    General.cam.Gain = CamPropJp1.Gain;
+                    General.cam.Exposure = CamPropJp1.Exposure;
+                    General.cam.Wb = CamPropJp1.Whitebalance;
+                    General.cam.Theta = CamPropJp1.Theta;
+                    break;
+            }
+
         }
 
         public static void SetCamPropForLed()
@@ -250,36 +352,35 @@ namespace H130C_Tester
             VmLedPoint.LED15 = LedProp.Led15;
             VmLedPoint.LED16 = LedProp.Led16;
 
-            VmCnPoint.X_Cn220 = CnProp.X_Cn220;
-            VmCnPoint.Y_Cn220 = CnProp.Y_Cn220;
-            VmCnPoint.W_Cn220 = CnProp.W_Cn220;
-            VmCnPoint.H_Cn220 = CnProp.H_Cn220;
+            VmCnPoint.X_Cn220 = CamPropCn220.X;
+            VmCnPoint.Y_Cn220 = CamPropCn220.Y;
+            VmCnPoint.W_Cn220 = CamPropCn220.W;
+            VmCnPoint.H_Cn220 = CamPropCn220.H;
 
-            VmCnPoint.X_Cn223 = CnProp.X_Cn223;
-            VmCnPoint.Y_Cn223 = CnProp.Y_Cn223;
-            VmCnPoint.W_Cn223 = CnProp.W_Cn223;
-            VmCnPoint.H_Cn223 = CnProp.H_Cn223;
+            VmCnPoint.X_Cn223 = CamPropCn223.X;
+            VmCnPoint.Y_Cn223 = CamPropCn223.Y;
+            VmCnPoint.W_Cn223 = CamPropCn223.W;
+            VmCnPoint.H_Cn223 = CamPropCn223.H;
 
-            VmCnPoint.X_Cn224 = CnProp.X_Cn224;
-            VmCnPoint.Y_Cn224 = CnProp.Y_Cn224;
-            VmCnPoint.W_Cn224 = CnProp.W_Cn224;
-            VmCnPoint.H_Cn224 = CnProp.H_Cn224;
+            VmCnPoint.X_Cn224 = CamPropCn224.X;
+            VmCnPoint.Y_Cn224 = CamPropCn224.Y;
+            VmCnPoint.W_Cn224 = CamPropCn224.W;
+            VmCnPoint.H_Cn224 = CamPropCn224.H;
 
-            VmCnPoint.X_Cn225 = CnProp.X_Cn225;
-            VmCnPoint.Y_Cn225 = CnProp.Y_Cn225;
-            VmCnPoint.W_Cn225 = CnProp.W_Cn225;
-            VmCnPoint.H_Cn225 = CnProp.H_Cn225;
+            VmCnPoint.X_Cn225 = CamPropCn225.X;
+            VmCnPoint.Y_Cn225 = CamPropCn225.Y;
+            VmCnPoint.W_Cn225 = CamPropCn225.W;
+            VmCnPoint.H_Cn225 = CamPropCn225.H;
 
-            VmCnPoint.X_Cn226 = CnProp.X_Cn226;
-            VmCnPoint.Y_Cn226 = CnProp.Y_Cn226;
-            VmCnPoint.W_Cn226 = CnProp.W_Cn226;
-            VmCnPoint.H_Cn226 = CnProp.H_Cn226;
+            VmCnPoint.X_Cn226 = CamPropCn226.X;
+            VmCnPoint.Y_Cn226 = CamPropCn226.Y;
+            VmCnPoint.W_Cn226 = CamPropCn226.W;
+            VmCnPoint.H_Cn226 = CamPropCn226.H;
 
-            VmCnPoint.X_Jp1 = CnProp.X_Jp1;
-            VmCnPoint.Y_Jp1 = CnProp.Y_Jp1;
-            VmCnPoint.W_Jp1 = CnProp.W_Jp1;
-            VmCnPoint.H_Jp1 = CnProp.H_Jp1;
-
+            VmCnPoint.X_Jp1 = CamPropJp1.X;
+            VmCnPoint.Y_Jp1 = CamPropJp1.Y;
+            VmCnPoint.W_Jp1 = CamPropJp1.W;
+            VmCnPoint.H_Jp1 = CamPropJp1.H;
         }
 
     }

@@ -92,7 +92,7 @@
                 <Controls:NumericUpDown Canvas.Left="2" Canvas.Top="99" Width="75" Background="{x:Null}" Height="28" Value="{Binding H_Jp1}" ValueChanged="Jp1_ValueChanged"/>
             </Canvas>
             <Button x:Name="buttonSaveCnPoint" Content="保存"  Height="36" Canvas.Top="222" Width="128" FontSize="20" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Canvas.Left="4" Click="buttonSaveCnPoint_Click"/>
-            <Button x:Name="buttonCnTest" Content="テスト"  Height="36" Canvas.Top="222" Width="128" FontSize="20" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Canvas.Left="179" Click="buttonCnTest_Click"/>
+            <Button x:Name="buttonCnTest" Content="テスト"  Height="36" Canvas.Top="222" Width="128" FontSize="20" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Canvas.Left="151" Click="buttonCnTest_Click"/>
             <TextBlock Height="16" TextWrapping="Wrap" Canvas.Top="190" Width="48" Foreground="White" Text="相関係数" Canvas.Left="2"/>
             <Canvas Height="35" Width="475" Canvas.Top="182" Canvas.Left="52">
                 <Canvas.Resources>
@@ -108,6 +108,9 @@
                 <Label  Canvas.Left="317" Canvas.Top="2" Width="73" BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding ResultCn226}" Height="26"/>
                 <Label  Canvas.Left="395" Canvas.Top="2" Width="73" BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding ResultJp1}" Height="26"/>
             </Canvas>
+            <Button x:Name="buttonLight1" Content="照明1"  Height="36" Canvas.Top="222" Width="70" FontSize="20" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Canvas.Left="298" Click="buttonLight1_Click"/>
+            <Button x:Name="buttonLight2" Content="照明2"  Height="36" Canvas.Top="222" Width="70" FontSize="20" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Canvas.Left="375" Click="buttonLight2_Click"/>
+            <Button x:Name="buttonLight3" Content="照明3"  Height="36" Canvas.Top="222" Width="70" FontSize="20" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Canvas.Left="452" Click="buttonLight3_Click"/>
         </Canvas>
 
 
@@ -253,11 +256,8 @@
                 <Button x:Name="buttonSave" Content="保存"  Height="51" Canvas.Top="163" Width="88" FontSize="26" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Click="buttonSave_Click" Canvas.Left="479"/>
                 <Button x:Name="buttonHue" Content="色相表示"  Height="30" Canvas.Left="479" Canvas.Top="91" Width="88" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="1" Padding="0" Click="buttonHue_Click"/>
             </Canvas>
-            <Button Content="Button" Height="42" Canvas.Left="1235" Canvas.Top="214" Width="107" Click="Button_Click"/>
-            <Button Content="Button" Height="36" Canvas.Left="1241" Canvas.Top="337" Width="101" Click="Button_Click_1"/>
-            <Button Content="Button" Height="39" Canvas.Left="1241" Canvas.Top="494" Width="73" Click="Button_Click_2"/>
             <Label Content="LED調整" Height="24" Width="57" Foreground="#FF0EC2D4" BorderBrush="{x:Null}" Canvas.Top="-2" Canvas.Left="1"/>
         </Canvas>
-        <Controls:ProgressRing x:Name="RingCnTesting" Foreground="{DynamicResource AccentColorBrush}" Canvas.Left="903" Canvas.Top="608" Height="22" Width="22" IsActive="{Binding IsActive}"/>
+        <Controls:ProgressRing x:Name="RingCnTesting" Foreground="{DynamicResource AccentColorBrush}" Canvas.Left="878" Canvas.Top="608" Height="22" Width="22" IsActive="{Binding IsActive}"/>
     </Canvas>
 </Page>

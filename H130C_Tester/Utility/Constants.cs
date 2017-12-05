@@ -20,7 +20,12 @@ namespace H130C_Tester
         public static readonly string filePath_TestSpec        = @"C:\H130C\ConfigData\TestSpec.config";
         public static readonly string filePath_Configuration   = @"C:\H130C\ConfigData\Configuration.config";
         public static readonly string filePath_Command         = @"C:\H130C\ConfigData\Command.config";
-        public static readonly string filePath_CameraPropertyForCn  = @"C:\H130C\ConfigData\CameraPropertyForCn.config";
+        public static readonly string filePath_CamPropCn220    = @"C:\H130C\ConfigData\CamPropCn220.config";
+        public static readonly string filePath_CamPropCn223    = @"C:\H130C\ConfigData\CamPropCn223.config";
+        public static readonly string filePath_CamPropCn224    = @"C:\H130C\ConfigData\CamPropCn224.config";
+        public static readonly string filePath_CamPropCn225    = @"C:\H130C\ConfigData\CamPropCn225.config";
+        public static readonly string filePath_CamPropCn226    = @"C:\H130C\ConfigData\CamPropCn226.config";
+        public static readonly string filePath_CamPropJp1      = @"C:\H130C\ConfigData\CamPropJp1.config";
         public static readonly string filePath_CameraPropertyForLed  = @"C:\H130C\ConfigData\CameraPropertyForLed.config";
         public static readonly string filePath_LedProperty     = @"C:\H130C\ConfigData\LedProperty.config";
         public static readonly string filePath_CnProperty      = @"C:\H130C\ConfigData\CnProperty.config";
