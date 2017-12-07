@@ -98,6 +98,20 @@ namespace H130C_Tester
         }
 
 
+        private void ResetLight()
+        {
+            OnLight1 = false;
+            OnLight2 = false;
+            OnLight3 = false;
+            General.SetLight1(false);
+            General.SetLight2(false);
+            General.SetLight3(false);
+            buttonLight1.Background = General.OffBrush;
+            buttonLight2.Background = General.OffBrush;
+            buttonLight3.Background = General.OffBrush;
+        }
+
+
         //データ保存いろいろ
         private void resetView()
         {
@@ -357,42 +371,42 @@ namespace H130C_Tester
 
         private void SaveLedPoint()
         {
-            State.LedProp.Led1 = State.VmLedPoint.LED1;
-            State.LedProp.Led2 = State.VmLedPoint.LED2;
-            State.LedProp.Led3 = State.VmLedPoint.LED3;
-            State.LedProp.Led4 = State.VmLedPoint.LED4;
-            State.LedProp.Led5 = State.VmLedPoint.LED5;
-            State.LedProp.Led6 = State.VmLedPoint.LED6;
-            State.LedProp.Led7 = State.VmLedPoint.LED7;
-            State.LedProp.Led8 = State.VmLedPoint.LED8;
-            State.LedProp.Led9 = State.VmLedPoint.LED9;
-            State.LedProp.Led10 = State.VmLedPoint.LED10;
-            State.LedProp.Led11 = State.VmLedPoint.LED11;
-            State.LedProp.Led12 = State.VmLedPoint.LED12;
-            State.LedProp.Led13 = State.VmLedPoint.LED13;
-            State.LedProp.Led14 = State.VmLedPoint.LED14;
-            State.LedProp.Led15 = State.VmLedPoint.LED15;
-            State.LedProp.Led16 = State.VmLedPoint.LED16;
+            State.CamPropLed.Led1 = State.VmLedPoint.LED1;
+            State.CamPropLed.Led2 = State.VmLedPoint.LED2;
+            State.CamPropLed.Led3 = State.VmLedPoint.LED3;
+            State.CamPropLed.Led4 = State.VmLedPoint.LED4;
+            State.CamPropLed.Led5 = State.VmLedPoint.LED5;
+            State.CamPropLed.Led6 = State.VmLedPoint.LED6;
+            State.CamPropLed.Led7 = State.VmLedPoint.LED7;
+            State.CamPropLed.Led8 = State.VmLedPoint.LED8;
+            State.CamPropLed.Led9 = State.VmLedPoint.LED9;
+            State.CamPropLed.Led10 = State.VmLedPoint.LED10;
+            State.CamPropLed.Led11 = State.VmLedPoint.LED11;
+            State.CamPropLed.Led12 = State.VmLedPoint.LED12;
+            State.CamPropLed.Led13 = State.VmLedPoint.LED13;
+            State.CamPropLed.Led14 = State.VmLedPoint.LED14;
+            State.CamPropLed.Led15 = State.VmLedPoint.LED15;
+            State.CamPropLed.Led16 = State.VmLedPoint.LED16;
         }
 
         private void SaveLedLum()
         {
-            State.LedProp.LumLed1 = Double.Parse(State.VmLedPoint.LED1Lum);
-            State.LedProp.LumLed2 = Double.Parse(State.VmLedPoint.LED2Lum);
-            State.LedProp.LumLed3 = Double.Parse(State.VmLedPoint.LED3Lum);
-            State.LedProp.LumLed4 = Double.Parse(State.VmLedPoint.LED4Lum);
-            State.LedProp.LumLed5 = Double.Parse(State.VmLedPoint.LED5Lum);
-            State.LedProp.LumLed6 = Double.Parse(State.VmLedPoint.LED6Lum);
-            State.LedProp.LumLed7 = Double.Parse(State.VmLedPoint.LED7Lum);
-            State.LedProp.LumLed8 = Double.Parse(State.VmLedPoint.LED8Lum);
-            State.LedProp.LumLed9 = Double.Parse(State.VmLedPoint.LED9Lum);
-            State.LedProp.LumLed10 = Double.Parse(State.VmLedPoint.LED10Lum);
-            State.LedProp.LumLed11 = Double.Parse(State.VmLedPoint.LED11Lum);
-            State.LedProp.LumLed12 = Double.Parse(State.VmLedPoint.LED12Lum);
-            State.LedProp.LumLed13 = Double.Parse(State.VmLedPoint.LED13Lum);
-            State.LedProp.LumLed14 = Double.Parse(State.VmLedPoint.LED14Lum);
-            State.LedProp.LumLed15 = Double.Parse(State.VmLedPoint.LED15Lum);
-            State.LedProp.LumLed16 = Double.Parse(State.VmLedPoint.LED16Lum);
+            State.CamPropLed.LumLed1 = Double.Parse(State.VmLedPoint.LED1Lum);
+            State.CamPropLed.LumLed2 = Double.Parse(State.VmLedPoint.LED2Lum);
+            State.CamPropLed.LumLed3 = Double.Parse(State.VmLedPoint.LED3Lum);
+            State.CamPropLed.LumLed4 = Double.Parse(State.VmLedPoint.LED4Lum);
+            State.CamPropLed.LumLed5 = Double.Parse(State.VmLedPoint.LED5Lum);
+            State.CamPropLed.LumLed6 = Double.Parse(State.VmLedPoint.LED6Lum);
+            State.CamPropLed.LumLed7 = Double.Parse(State.VmLedPoint.LED7Lum);
+            State.CamPropLed.LumLed8 = Double.Parse(State.VmLedPoint.LED8Lum);
+            State.CamPropLed.LumLed9 = Double.Parse(State.VmLedPoint.LED9Lum);
+            State.CamPropLed.LumLed10 = Double.Parse(State.VmLedPoint.LED10Lum);
+            State.CamPropLed.LumLed11 = Double.Parse(State.VmLedPoint.LED11Lum);
+            State.CamPropLed.LumLed12 = Double.Parse(State.VmLedPoint.LED12Lum);
+            State.CamPropLed.LumLed13 = Double.Parse(State.VmLedPoint.LED13Lum);
+            State.CamPropLed.LumLed14 = Double.Parse(State.VmLedPoint.LED14Lum);
+            State.CamPropLed.LumLed15 = Double.Parse(State.VmLedPoint.LED15Lum);
+            State.CamPropLed.LumLed16 = Double.Parse(State.VmLedPoint.LED16Lum);
         }
 
 
@@ -540,16 +554,7 @@ namespace H130C_Tester
         bool LedOn;
         private async void buttonLedOn_Click(object sender, RoutedEventArgs e)
         {
-            OnLight1 = false;
-            OnLight2 = false;
-            OnLight3 = false;
-            General.SetLight1(false);
-            General.SetLight2(false);
-            General.SetLight3(false);
-            buttonLight1.Background = General.OffBrush;
-            buttonLight2.Background = General.OffBrush;
-            buttonLight3.Background = General.OffBrush;
-
+            ResetLight();
             rbNon.IsChecked = true;
 
             //TODO: 全点灯させる処理
@@ -560,7 +565,7 @@ namespace H130C_Tester
             if (LedOn)
             {
                 buttonLedOn.Background = General.OnBrush;
-                General.PowSupply(true);
+                await Task.Run(() => General.PowSupply(true));
                 await General.LedAllOn();
             }
             else
@@ -915,6 +920,9 @@ namespace H130C_Tester
         private async void buttonCnTest_Click(object sender, RoutedEventArgs e)
         {
             if (cnTesting) return;
+
+            ResetLight();
+            rbNon.IsChecked = true;
 
             cnTesting = true;
             RingCnTesting.IsActive = true;

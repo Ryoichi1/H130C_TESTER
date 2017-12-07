@@ -405,8 +405,6 @@ namespace H130C_Tester
                                 return false;
                             }
 
-                            Sleep(150);
-
                         });
 
                     }
@@ -419,6 +417,7 @@ namespace H130C_Tester
             }
             finally
             {
+                State.VmTestStatus.TestLog += "\r\n";
                 ListSpecs.ForEach(l => SetInput(l.name, false));
 
                 if (!result)

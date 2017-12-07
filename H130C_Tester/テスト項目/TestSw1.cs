@@ -132,10 +132,17 @@ namespace H130C_Tester
                             Sleep(250);
                         }
 
-                        General.PowSupply(true);
                         Sleep(1000);
-                        if (!General.MainIo.SendDataTarget("RSW100"))
-                            return false;
+                        General.PowSupply(true);
+                        var tm = new GeneralTimer(5000);
+                        tm.start();
+                        while (true)
+                        {
+                            if (tm.FlagTimeout)
+                                return false;
+                            if (General.MainIo.SendDataTarget("RSW100"))
+                                break;
+                        }
                         var reOn = General.MainIo.RecieveData;
 
                         AnalysisDataS1(reOn, SW1EXP.ALL_ON);
@@ -175,11 +182,16 @@ namespace H130C_Tester
                             Sleep(250);
                         }
 
-
-                        General.PowSupply(true);
                         Sleep(1000);
-                        if (!General.MainIo.SendDataTarget("RSW100"))
-                            return false;
+                        General.PowSupply(true);
+                        tm.start();
+                        while (true)
+                        {
+                            if (tm.FlagTimeout)
+                                return false;
+                            if (General.MainIo.SendDataTarget("RSW100"))
+                                break;
+                        }
                         var reOff = General.MainIo.RecieveData;
 
                         AnalysisDataS1(reOff, SW1EXP.ALL_OFF);

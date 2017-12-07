@@ -61,6 +61,8 @@ namespace H130C_Tester
             State.MainComm.CAN_RX = "";
             State.SubComm.TX = "";
             State.SubComm.RX = "";
+
+            tbVol.Text = "";
         }
 
 
@@ -79,7 +81,8 @@ namespace H130C_Tester
 
         private void buttonSendCan_Click(object sender, RoutedEventArgs e)
         {
-
+            if (cbCommandCan.SelectedIndex == -1) return;
+            General.MainIo.SendDataTarget(cbCommandCan.SelectedItem.ToString());
         }
 
         private void SetCommand()
@@ -92,12 +95,27 @@ namespace H130C_Tester
             {
                 cbCommandSub.Items.Add(m);
             });
+            State.Command.Can.ForEach(m =>
+            {
+                cbCommandCan.Items.Add(m);
+            });
         }
 
         private void buttonSendMain_Click(object sender, RoutedEventArgs e)
         {
             if (cbCommandMain.SelectedIndex == -1) return;
             General.MainIo.SendData1768(cbCommandMain.SelectedItem.ToString());
+        }
+
+        private void buttonMeasVol_Click(object sender, RoutedEventArgs e)
+        {
+            var re = TestPowerSupplyVoltage.MeasVol();
+            tbVol.Text = $"{re.vol.ToString("F2")}V";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            General.DisCharge();
         }
     }
 }

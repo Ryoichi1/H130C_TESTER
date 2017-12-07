@@ -112,7 +112,7 @@ namespace H130C_Tester
                     SendKeys.SendWait("5");
                     Thread.Sleep(300);
                     SendKeys.SendWait("{ENTER}");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                     SendKeys.SendWait("{ENTER}");
 
                     int MaxSize = 4500;

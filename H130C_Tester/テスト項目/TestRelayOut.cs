@@ -262,15 +262,14 @@ namespace H130C_Tester
                     {
                         return false;
                     }
-                    finally
-                    {
-                        General.MainIo.SendDataTarget("C");
-                    }
                 });
 
             }
             finally
             {
+                State.VmTestStatus.TestLog += "\r\n";
+                General.MainIo.SendDataTarget("C");
+
                 if (!result)
                 {
                     State.VmTestStatus.Spec = "規格値 : ---";
@@ -328,7 +327,7 @@ namespace H130C_Tester
                             {
                                 case NAME.RY1:
                                     General.SetK6_7(false);
-                                    Sleep(100);
+                                    Sleep(250);
                                     General.MainIo.SendData1768("MeasRy1");
                                     break;
                                 case NAME.RY2:
@@ -342,7 +341,7 @@ namespace H130C_Tester
                                     break;
                                 case NAME.RY5:
                                     General.SetK6_7(true);
-                                    Sleep(100);
+                                    Sleep(250);
                                     General.MainIo.SendData1768("MeasRy5");
                                     break;
                                 case NAME.RY6:

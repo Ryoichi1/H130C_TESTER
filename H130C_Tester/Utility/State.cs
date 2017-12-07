@@ -46,8 +46,6 @@ namespace H130C_Tester
         public static CameraPropertyForCn CamPropJp1 { get; set; }
 
         public static CameraPropertyForLed CamPropLed { get; set; }
-        public static LedProperty LedProp { get; set; }
-        //public static CnProperty CnProp { get; set; }
 
         public static string CurrDir { get; set; }
 
@@ -125,7 +123,6 @@ namespace H130C_Tester
 
             //LEDプロパティファイルのロード
             CamPropLed = Deserialize<CameraPropertyForLed>(Constants.filePath_CameraPropertyForLed);
-            LedProp = Deserialize<LedProperty>(Constants.filePath_LedProperty);
 
         }
 
@@ -191,7 +188,6 @@ namespace H130C_Tester
 
                 //Ledプロパティの保存
                 Serialization<CameraPropertyForLed>(State.CamPropLed, Constants.filePath_CameraPropertyForLed);
-                Serialization<LedProperty>(State.LedProp, Constants.filePath_LedProperty);
 
                 return true;
             }
@@ -335,22 +331,22 @@ namespace H130C_Tester
 
         public static void SetCamPoint()
         {
-            VmLedPoint.LED1 = LedProp.Led1;
-            VmLedPoint.LED2 = LedProp.Led2;
-            VmLedPoint.LED3 = LedProp.Led3;
-            VmLedPoint.LED4 = LedProp.Led4;
-            VmLedPoint.LED5 = LedProp.Led5;
-            VmLedPoint.LED6 = LedProp.Led6;
-            VmLedPoint.LED7 = LedProp.Led7;
-            VmLedPoint.LED8 = LedProp.Led8;
-            VmLedPoint.LED9 = LedProp.Led9;
-            VmLedPoint.LED10 = LedProp.Led10;
-            VmLedPoint.LED11 = LedProp.Led11;
-            VmLedPoint.LED12 = LedProp.Led12;
-            VmLedPoint.LED13 = LedProp.Led13;
-            VmLedPoint.LED14 = LedProp.Led14;
-            VmLedPoint.LED15 = LedProp.Led15;
-            VmLedPoint.LED16 = LedProp.Led16;
+            VmLedPoint.LED1 = CamPropLed.Led1;
+            VmLedPoint.LED2 = CamPropLed.Led2;
+            VmLedPoint.LED3 = CamPropLed.Led3;
+            VmLedPoint.LED4 = CamPropLed.Led4;
+            VmLedPoint.LED5 = CamPropLed.Led5;
+            VmLedPoint.LED6 = CamPropLed.Led6;
+            VmLedPoint.LED7 = CamPropLed.Led7;
+            VmLedPoint.LED8 = CamPropLed.Led8;
+            VmLedPoint.LED9 = CamPropLed.Led9;
+            VmLedPoint.LED10 = CamPropLed.Led10;
+            VmLedPoint.LED11 = CamPropLed.Led11;
+            VmLedPoint.LED12 = CamPropLed.Led12;
+            VmLedPoint.LED13 = CamPropLed.Led13;
+            VmLedPoint.LED14 = CamPropLed.Led14;
+            VmLedPoint.LED15 = CamPropLed.Led15;
+            VmLedPoint.LED16 = CamPropLed.Led16;
 
             VmCnPoint.X_Cn220 = CamPropCn220.X;
             VmCnPoint.Y_Cn220 = CamPropCn220.Y;

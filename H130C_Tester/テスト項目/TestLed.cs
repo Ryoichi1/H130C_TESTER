@@ -52,68 +52,68 @@ namespace H130C_Tester
             switch (name)
             {
                 case NAME.LED1:
-                    X = Int32.Parse(State.LedProp.Led1.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led1.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led1.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led1.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED2:
-                    X = Int32.Parse(State.LedProp.Led2.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led2.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led2.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led2.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED3:
-                    X = Int32.Parse(State.LedProp.Led3.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led3.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led3.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led3.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED4:
-                    X = Int32.Parse(State.LedProp.Led4.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led4.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led4.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led4.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED5:
-                    X = Int32.Parse(State.LedProp.Led5.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led5.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led5.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led5.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED6:
-                    X = Int32.Parse(State.LedProp.Led6.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led6.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led6.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led6.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED7:
-                    X = Int32.Parse(State.LedProp.Led7.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led7.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led7.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led7.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED8:
-                    X = Int32.Parse(State.LedProp.Led8.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led8.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led8.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led8.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED9:
-                    X = Int32.Parse(State.LedProp.Led9.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led9.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led9.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led9.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED10:
-                    X = Int32.Parse(State.LedProp.Led10.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led10.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led10.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led10.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED11:
-                    X = Int32.Parse(State.LedProp.Led11.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led11.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led11.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led11.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED12:
-                    X = Int32.Parse(State.LedProp.Led12.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led12.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led12.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led12.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED13:
-                    X = Int32.Parse(State.LedProp.Led13.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led13.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led13.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led13.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED14:
-                    X = Int32.Parse(State.LedProp.Led14.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led14.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led14.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led14.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED15:
-                    X = Int32.Parse(State.LedProp.Led15.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led15.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led15.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led15.Split('/').ToArray()[1]);
                     break;
                 case NAME.LED16:
-                    X = Int32.Parse(State.LedProp.Led16.Split('/').ToArray()[0]);
-                    Y = Int32.Parse(State.LedProp.Led16.Split('/').ToArray()[1]);
+                    X = Int32.Parse(State.CamPropLed.Led16.Split('/').ToArray()[0]);
+                    Y = Int32.Parse(State.CamPropLed.Led16.Split('/').ToArray()[1]);
                     break;
             }
 
@@ -128,52 +128,52 @@ namespace H130C_Tester
             switch (name)
             {
                 case NAME.LED1:
-                    _ref = State.LedProp.LumLed1;
+                    _ref = State.CamPropLed.LumLed1;
                     break;
                 case NAME.LED2:
-                    _ref = State.LedProp.LumLed2;
+                    _ref = State.CamPropLed.LumLed2;
                     break;
                 case NAME.LED3:
-                    _ref = State.LedProp.LumLed3;
+                    _ref = State.CamPropLed.LumLed3;
                     break;
                 case NAME.LED4:
-                    _ref = State.LedProp.LumLed4;
+                    _ref = State.CamPropLed.LumLed4;
                     break;
                 case NAME.LED5:
-                    _ref = State.LedProp.LumLed5;
+                    _ref = State.CamPropLed.LumLed5;
                     break;
                 case NAME.LED6:
-                    _ref = State.LedProp.LumLed6;
+                    _ref = State.CamPropLed.LumLed6;
                     break;
                 case NAME.LED7:
-                    _ref = State.LedProp.LumLed7;
+                    _ref = State.CamPropLed.LumLed7;
                     break;
                 case NAME.LED8:
-                    _ref = State.LedProp.LumLed8;
+                    _ref = State.CamPropLed.LumLed8;
                     break;
                 case NAME.LED9:
-                    _ref = State.LedProp.LumLed9;
+                    _ref = State.CamPropLed.LumLed9;
                     break;
                 case NAME.LED10:
-                    _ref = State.LedProp.LumLed10;
+                    _ref = State.CamPropLed.LumLed10;
                     break;
                 case NAME.LED11:
-                    _ref = State.LedProp.LumLed11;
+                    _ref = State.CamPropLed.LumLed11;
                     break;
                 case NAME.LED12:
-                    _ref = State.LedProp.LumLed12;
+                    _ref = State.CamPropLed.LumLed12;
                     break;
                 case NAME.LED13:
-                    _ref = State.LedProp.LumLed13;
+                    _ref = State.CamPropLed.LumLed13;
                     break;
                 case NAME.LED14:
-                    _ref = State.LedProp.LumLed14;
+                    _ref = State.CamPropLed.LumLed14;
                     break;
                 case NAME.LED15:
-                    _ref = State.LedProp.LumLed15;
+                    _ref = State.CamPropLed.LumLed15;
                     break;
                 case NAME.LED16:
-                    _ref = State.LedProp.LumLed16;
+                    _ref = State.CamPropLed.LumLed16;
                     break;
             }
 

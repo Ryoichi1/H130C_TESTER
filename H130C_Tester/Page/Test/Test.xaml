@@ -84,7 +84,7 @@
                 </Style>
             </Canvas.Resources>
             <Canvas.Background>
-                <SolidColorBrush Color="Black" Opacity="0.3"/>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
             </Canvas.Background>
 
 
@@ -377,15 +377,15 @@
                 </Style>
             </Canvas.Resources>
             <Canvas.Background>
-                <SolidColorBrush Color="Black" Opacity="0.3"/>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
             </Canvas.Background>
 
             <TextBlock TextWrapping="Wrap" Text="Status" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="22" Width="60" Canvas.Left="7" Canvas.Top="4"/>
-            <StackPanel x:Name="stackPanel機器ステータス" Height="20" Canvas.Top="31" Width="178" Orientation="Horizontal" Canvas.Left="78">
-                <Label x:Name="labelLpc1768" Content="LPC1768" Background="{Binding Color1768}" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="56"/>
-                <Label x:Name="labelCamera1" Content="カメラ1"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="{Binding ColorCAMERA}" BorderThickness="1" Width="56" />
+            <StackPanel x:Name="stackPanel機器ステータス" Height="25" Canvas.Top="31" Width="178" Orientation="Horizontal" Canvas.Left="78">
+                <Label x:Name="labelLpc1768" Content="LPC1768" Background="{Binding Color1768}" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="74" FontSize="14"/>
+                <Label x:Name="labelCamera1" Content="カメラ1"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="{Binding ColorCAMERA}" BorderThickness="1" Width="74" FontSize="14" />
             </StackPanel>
-            <TextBlock x:Name="textBlock2_Copy5" TextWrapping="Wrap" Text="周辺機器" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="68" RenderTransformOrigin="0.5,0.5" Canvas.Top="30" Canvas.Left="7">
+            <TextBlock x:Name="textBlock2_Copy5" TextWrapping="Wrap" Text="周辺機器" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="68" RenderTransformOrigin="0.5,0.5" Canvas.Top="33" Canvas.Left="8">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -444,7 +444,7 @@
                 </Style>
             </Canvas.Resources>
             <Canvas.Background>
-                <SolidColorBrush Color="Black" Opacity="0.3"/>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
             </Canvas.Background>
 
             <TextBox x:Name="tbTestLog" Height="215" Canvas.Left="8" TextWrapping="Wrap" Canvas.Top="33" Width="352" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" VerticalScrollBarVisibility="Auto" SelectionBrush="{x:Null}" BorderThickness="0" CaretBrush="{x:Null}" IsReadOnly="True" FontSize="14" TextChanged="tbTestLog_TextChanged" Text="{Binding TestLog}">
@@ -486,13 +486,13 @@
             </Canvas>
         </Canvas>
 
-        <Canvas x:Name="canvasTestSetting" Height="86" Canvas.Left="943" Canvas.Top="240" Width="340" IsEnabled="{Binding TestSettingEnable}">
+        <Canvas x:Name="canvasTestSetting" Height="123" Canvas.Left="943" Canvas.Top="240" Width="250" IsEnabled="{Binding TestSettingEnable}">
             <Canvas.Background>
-                <SolidColorBrush Color="Black" Opacity="0.3"/>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
             </Canvas.Background>
-            <Canvas x:Name="canvasUnitTest" Height="34" Canvas.Top="49" Width="328" IsVisibleChanged="canvasUnitTest_IsVisibleChanged" IsEnabled="{Binding UnitTestEnable}" Canvas.Left="2">
+            <Canvas x:Name="canvasUnitTest" Height="67" Canvas.Top="49" Width="239" IsVisibleChanged="canvasUnitTest_IsVisibleChanged" IsEnabled="{Binding UnitTestEnable}" Canvas.Left="2">
                 <CheckBox x:Name="CheckBoxUnitTest" Content="単体試験" IsChecked="{Binding CheckUnitTest}" Height="27" Width="75" Background="White" Foreground="#FFFDFDFD" Canvas.Left="5" Canvas.Top="5"/>
-                <ComboBox x:Name="cbUnitTest" Height="27" Width="230" ItemsSource="{Binding UnitTestItems}" SelectedItem="{Binding UnitTestName}" BorderBrush="White" Canvas.Left="85" VerticalContentAlignment="Center" Canvas.Top="5" Background="{x:Null}"/>
+                <ComboBox x:Name="cbUnitTest" Height="27" Width="230" ItemsSource="{Binding UnitTestItems}" SelectedItem="{Binding UnitTestName}" BorderBrush="White" Canvas.Left="5" VerticalContentAlignment="Center" Canvas.Top="35" Background="{x:Null}"/>
             </Canvas>
             <CheckBox x:Name="CheckBoxWriteFw" Content="検査ソフト書き込みパス" Height="27" Width="138" Background="White" Foreground="#FFFDFDFD" Canvas.Left="7" IsChecked="{Binding CheckWriteTestFwPass}" Canvas.Top="23"/>
             <TextBlock TextWrapping="Wrap" Text="テストオプション" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="138" RenderTransformOrigin="0.5,0.5" Canvas.Top="2" Canvas.Left="7"/>
@@ -528,7 +528,7 @@
                 <DropShadowEffect Color="#FF09A0F7" Direction="0" ShadowDepth="0" BlurRadius="20"/>
             </Label.Effect>
         </Label>
-        <Canvas Height="90" Canvas.Left="388" Canvas.Top="144" Width="818">
+        <Canvas Height="90" Canvas.Left="388" Canvas.Top="144" Width="805">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="11"/>
@@ -544,7 +544,7 @@
 
             </Canvas.Resources>
             <Canvas.Background>
-                <SolidColorBrush Color="Black" Opacity="0.3"/>
+                <SolidColorBrush Color="White" Opacity="0.1"/>
             </Canvas.Background>
             <Canvas x:Name="CanvasMainIo" Height="91" Canvas.Top="3" Width="247" Canvas.Left="3">
                 <TextBlock Height="24" Canvas.Left="26" Canvas.Top="29" Width="210" Padding="5,0,0,0" TextWrapping="Wrap" Text="{Binding TX}" Foreground="White">
@@ -676,12 +676,12 @@
             <TextBlock x:Name="textBlock2_Copy7" TextWrapping="Wrap" Text="Camera1" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="71" RenderTransformOrigin="0.5,0.5" Canvas.Top="6" Canvas.Left="4"/>
             <!-- ImageのWidthとHeightを個別に設定しないとUniformToFillが無効になります！！！ -->
         </Canvas>
-        <Button x:Name="ButtonStop" Content="強制停止" Controls:ControlsHelper.ContentCharacterCasing="Normal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="43" Width="198" BorderBrush="#FFABD6EA" FontSize="22" Canvas.Left="943" Style="{DynamicResource AccentedSquareButtonStyle}" BorderThickness="1" ClipToBounds="True" Canvas.Top="338" RenderTransformOrigin="11.977,3.9" FontFamily="Segoe UI Light" Click="ButtonStop_Click" Opacity="{Binding StopButtonVis}" IsEnabled="{Binding StopButtonEnable}" >
+        <Button x:Name="ButtonStop" Content="強制停止" Controls:ControlsHelper.ContentCharacterCasing="Normal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="52" Width="250" BorderBrush="#FFABD6EA" FontSize="22" Canvas.Left="943" Style="{DynamicResource AccentedSquareButtonStyle}" BorderThickness="1" ClipToBounds="True" Canvas.Top="373" RenderTransformOrigin="11.977,3.9" FontFamily="Segoe UI Light" Click="ButtonStop_Click" Opacity="{Binding StopButtonVis}" IsEnabled="{Binding StopButtonEnable}" >
             <Button.Background>
                 <SolidColorBrush Color="#FF125191" Opacity="0.6"/>
             </Button.Background>
         </Button>
-        <Canvas x:Name="CanvasComm_Copy" Height="73" Canvas.Left="694" Canvas.Top="65" Width="512">
+        <Canvas x:Name="CanvasComm_Copy" Height="73" Canvas.Left="694" Canvas.Top="65" Width="499">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="18"/>
@@ -697,7 +697,7 @@
                 </Style>
             </Canvas.Resources>
             <Canvas.Background>
-                <SolidColorBrush Color="Black" Opacity="0.3"/>
+                <SolidColorBrush Color="#FFFDFDFD" Opacity="0.1"/>
             </Canvas.Background>
             <Label Content="{Binding FwVer}" Height="26" Canvas.Left="92" Canvas.Top="39" Width="93" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Light"/>
             <Label Content="{Binding FwSum}" Height="26" Canvas.Left="301" Canvas.Top="38" Width="108" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Light"/>

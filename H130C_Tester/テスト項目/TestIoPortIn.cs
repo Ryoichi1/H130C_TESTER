@@ -197,6 +197,7 @@ namespace H130C_Tester
             }
             finally
             {
+                State.VmTestStatus.TestLog += "\r\n";
                 General.SetK8_9(false);
 
                 if (!resultOn || !resultOff)

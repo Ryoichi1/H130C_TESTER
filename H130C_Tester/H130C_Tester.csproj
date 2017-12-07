@@ -157,6 +157,7 @@
     <Compile Include="Utility\Camera.cs" />
     <Compile Include="Utility\ColorHSV.cs" />
     <Compile Include="Utility\FlashDevelopmentToolkit.cs" />
+    <Compile Include="Utility\GeneralTimer.cs" />
     <Compile Include="Utility\IAMVideoProcAmp.cs" />
     <Compile Include="Utility\LPC1768.cs" />
     <Compile Include="Utility\VideoCaptureDevice.cs" />
@@ -175,7 +176,6 @@
     <Compile Include="テスト項目\書き込み.cs" />
     <Compile Include="検査規格\CameraPropertyForLed.cs" />
     <Compile Include="検査規格\CnProperty.cs" />
-    <Compile Include="検査規格\LepProperty.cs" />
     <Compile Include="検査規格\CameraPropertyForCn.cs" />
     <Compile Include="Page\Config\Conf.xaml.cs">
       <DependentUpon>Conf.xaml</DependentUpon>

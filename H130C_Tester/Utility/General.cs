@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Media;
 using System.Windows.Media;
 using OpenCvSharp;
+using static System.Threading.Thread;
 
 namespace H130C_Tester
 {
@@ -309,7 +310,12 @@ namespace H130C_Tester
             if (sw)
             {
                 SetK3(true);
-                Thread.Sleep(2000);
+                Sleep(2000);
+                //while (true)
+                //{
+                //    if (General.MainIo.SendDataTarget("C"))
+                //        break;
+                //}
             }
             else
             {
@@ -614,6 +620,12 @@ namespace H130C_Tester
         public static void SetLight1(bool sw) { SubIo.SendData1768("W,P13," + (sw ? "1" : "0")); }
         public static void SetLight2(bool sw) { SubIo.SendData1768("W,P28," + (sw ? "1" : "0")); }
         public static void SetLight3(bool sw) { SubIo.SendData1768("W,P29," + (sw ? "1" : "0")); }
+        public static void DisCharge()
+        {
+            SubIo.SendData1768("W,P30,1");
+            Sleep(3000);
+            SubIo.SendData1768("W,P30,0");
+        }
 
         public static void StampOn() { SubIo.SendData1768("STAMP"); }
 

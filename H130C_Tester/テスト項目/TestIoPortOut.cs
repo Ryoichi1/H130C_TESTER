@@ -136,7 +136,7 @@ namespace H130C_Tester
                 {
                     bool resultOn = false;
                     bool resultOff = false;
-                    
+
                     InitList();//テストスペック毎回初期化
                     Flags.AddDecision = false;
 
@@ -220,17 +220,17 @@ namespace H130C_Tester
                     {
                         return false;
                     }
-                    finally
-                    {
-                        General.SetK4_5(false);
-                        //P00～03を入力ポートに設定する
-                        General.MainIo.SendDataTarget("WP0*00");
-                    }
                 });
 
             }
             finally
             {
+                General.SetK4_5(false);
+                //P00～03を入力ポートに設定する
+                General.MainIo.SendDataTarget("WP0*00");
+
+                State.VmTestStatus.TestLog += "\r\n";
+
                 if (!result)
                 {
                     State.VmTestStatus.Spec = "規格値 : ---";

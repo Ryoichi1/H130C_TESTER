@@ -81,6 +81,9 @@ namespace H130C_Tester
                         {
                             while (true)
                             {
+                                if (Flags.OtherPage)//待機中に他のページに遷移したらメソッドを抜ける
+                                    return;
+
                                 if (!General.CheckPress())
                                 {
                                     Flags.PressOpenCheckBeforeTest = false;
@@ -97,20 +100,24 @@ namespace H130C_Tester
 
                         while (true)
                         {
-                            if (Flags.OtherPage || General.CheckPress()) return;
+                            if (Flags.OtherPage)//待機中に他のページに遷移したらメソッドを抜ける
+                                return;
 
-                            if (!Flags.SetOperator || !Flags.SetOpecode) goto RETRY;
+                            if (General.CheckPress())
+                                return;
+
+                            if (!Flags.SetOperator || !Flags.SetOpecode)
+                                goto RETRY;
                         }
                     }
 
                 });
 
-                if (Flags.OtherPage)
+                if (Flags.OtherPage)//待機中に他のページに遷移したらメソッドを抜ける
                 {
                     Flags.PressOpenCheckBeforeTest = true;
                     return;
                 }
-
 
                 State.VmMainWindow.EnableOtherButton = false;
                 State.VmTestStatus.StartButtonContent = Constants.停止;
@@ -240,7 +247,6 @@ namespace H130C_Tester
 
                         case 300://テストプログラム書き込み
                             if (State.VmTestStatus.CheckWriteTestFwPass == true) break;
-                            await Task.Delay(2000);//前段が電源電圧チェックのため、電源OFFして少しウェイトを入れないとFDT立ち上げ時にエラーとなる
                             if (await 書き込み.WriteFw(書き込み.WriteMode.TEST)) break;
                             goto case 5000;
 

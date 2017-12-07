@@ -12,6 +12,7 @@ namespace H130C_Tester
             bool result = false;
             try
             {
+                General.DisCharge();
                 string Path = "";
                 if (mode == WriteMode.TEST)
                 {
@@ -24,7 +25,7 @@ namespace H130C_Tester
 
                 General.SetK1_2(true);
 
-                await Task.Delay(400);
+                await Task.Delay(1000);
 
                 if (!await FDT.WriteFirmware(Constants.RwsPath_Test)) return false;
 
@@ -44,6 +45,7 @@ namespace H130C_Tester
             finally
             {
                 General.SetK1_2(false);
+                await Task.Run(() => General.DisCharge());
 
                 if (!result)
                 {
