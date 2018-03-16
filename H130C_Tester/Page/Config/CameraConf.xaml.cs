@@ -44,6 +44,7 @@ namespace H130C_Tester
             tbHsv.Visibility = System.Windows.Visibility.Hidden;
             rbNon.IsChecked = true;
             CanChangeCnPoint = true;
+            Flags.EnableStartCheck = false;
 
         }
 
@@ -70,6 +71,7 @@ namespace H130C_Tester
             General.ResetIo();
             State.SetCamPoint();
             await Task.Delay(500);
+            Flags.EnableStartCheck = true;
         }
 
         private void im_MouseLeave(object sender, MouseEventArgs e)
@@ -541,14 +543,14 @@ namespace H130C_Tester
         {
             if (!CanSaveLedPpint)
                 return;
-            buttonSaveCnPoint.Background = Brushes.DodgerBlue;
+            buttonSave.Background = Brushes.DodgerBlue;
 
             SaveLedPoint();
             SaveLedLum();
             SaveCameraCommonPropForLed();
             General.PlaySound(General.soundSuccess);
             await Task.Delay(150);
-            buttonSaveCnPoint.Background = Brushes.Transparent;
+            buttonSave.Background = Brushes.Transparent;
         }
 
         bool LedOn;

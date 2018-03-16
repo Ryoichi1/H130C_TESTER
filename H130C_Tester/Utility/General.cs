@@ -41,7 +41,7 @@ namespace H130C_Tester
         {
             //オーディオリソースを取り出す
             General.soundPass = new SoundPlayer(@"Resources\Wav\Pass.wav");
-            General.soundPassLong = new SoundPlayer(@"Resources\Wav\PassLong.wav");
+            General.soundPassLong = new SoundPlayer(@"Resources\Wav\VictoryLong.wav");
             General.soundFail = new SoundPlayer(@"Resources\Wav\Fail.wav");
             General.soundAlarm = new SoundPlayer(@"Resources\Wav\Alarm.wav");
             General.soundSuccess = new SoundPlayer(@"Resources\Wav\Success.wav");
@@ -620,7 +620,7 @@ namespace H130C_Tester
         public static void SetLight1(bool sw) { SubIo.SendData1768("W,P13," + (sw ? "1" : "0")); }
         public static void SetLight2(bool sw) { SubIo.SendData1768("W,P28," + (sw ? "1" : "0")); }
         public static void SetLight3(bool sw) { SubIo.SendData1768("W,P29," + (sw ? "1" : "0")); }
-        public static void DisCharge()
+        public static void DisCharge(int time_ms = 3000)
         {
             SubIo.SendData1768("W,P30,1");
             Sleep(3000);

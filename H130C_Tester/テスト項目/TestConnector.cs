@@ -204,19 +204,20 @@ namespace H130C_Tester
                     //ローカル関数
                     IEnumerable<double> MakeTheta()
                     {
-                        var Val = -10.0;
+                        var Val = -20.0;
                         while (true)
                         {
                             yield return Val;
                             Val += 0.1;
-                            if (Val > 10.0) yield break;
+                            if (Val > 20.0) yield break;
                         }
                     }
 
 
                     var AllData = new List<(double 角度, double 一致率, CvPoint 座標)>();
 
-                    Angles.ForEach(t =>
+                    //Angles.ForEach(t =>
+                    Angles.AsParallel().ForAll(t =>
                     {
                         var livePic = _livePic.Clone();
                         //傾き補正

@@ -21,6 +21,7 @@ namespace H130C_Tester
 
         public static bool PressOpenCheckBeforeTest { get; set; }
 
+        public static bool EnableStartCheck { get; set; }
 
         private static SolidColorBrush RetryPanelBrush = new SolidColorBrush();
         private static SolidColorBrush StatePanelOkBrush = new SolidColorBrush();

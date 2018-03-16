@@ -219,7 +219,6 @@
                 </TextBlock.Background>
             </TextBlock>
         </Canvas>
-        <Button Content="Button" Height="50" Canvas.Left="440" Canvas.Top="400" Width="160" Click="Button_Click"/>
 
     </Canvas>
 </Page>

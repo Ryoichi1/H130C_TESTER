@@ -45,7 +45,7 @@ namespace H130C_Tester
             finally
             {
                 General.SetK1_2(false);
-                await Task.Run(() => General.DisCharge());
+                await Task.Run(() => General.DisCharge(mode == WriteMode.TEST? 3000 : 500));
 
                 if (!result)
                 {

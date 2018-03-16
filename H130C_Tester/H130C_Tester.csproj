@@ -305,6 +305,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Pic\nagasaki.jpg" />
+    <Content Include="Resources\Wav\VictoryLong.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Pic\baby5.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

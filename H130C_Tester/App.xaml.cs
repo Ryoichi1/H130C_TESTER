@@ -14,7 +14,7 @@ namespace H130C_Tester
         public static NavigationService _naviInfo;
 
 
-        private System.Threading.Mutex mutex = new System.Threading.Mutex(false, "ApplicationName");
+        private System.Threading.Mutex mutex = new System.Threading.Mutex(false, "H130C_Tester");
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             // ミューテックスの所有権を要求

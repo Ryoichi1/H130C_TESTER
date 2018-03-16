@@ -48,6 +48,7 @@ namespace H130C_Tester
             {
                 await Task.Run(() =>
                 {
+                    while (!Flags.EnableStartCheck) ;
                     RETRY:
                     while (true)
                     {
