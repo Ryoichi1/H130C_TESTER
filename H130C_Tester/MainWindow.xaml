@@ -37,7 +37,7 @@
                     </Canvas>
 
                 </TabItem>
-                <TabItem x:Name="TabConf" Header="設定" Margin="813,13,-812,-13" Controls:ControlsHelper.HeaderFontSize="20" IsEnabled="{Binding EnableOtherButton}" Foreground="White">
+                <TabItem x:Name="TabConf" Header="設定" Margin="825,13,-824,-13" Controls:ControlsHelper.HeaderFontSize="20" IsEnabled="{Binding EnableOtherButton}" Foreground="White">
                     <Frame x:Name="FrameConf" />
                 </TabItem>
                 <TabItem x:Name="TabHelp" Header="ヘルプ" Margin="670,11,-674,-12" Controls:ControlsHelper.HeaderFontSize="20" IsEnabled="{Binding EnableOtherButton}">
