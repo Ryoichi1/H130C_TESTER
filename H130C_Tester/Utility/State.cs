@@ -331,22 +331,22 @@ namespace H130C_Tester
 
         public static void SetCamPoint()
         {
-            VmLedPoint.LED1 = CamPropLed.Led1;
-            VmLedPoint.LED2 = CamPropLed.Led2;
-            VmLedPoint.LED3 = CamPropLed.Led3;
-            VmLedPoint.LED4 = CamPropLed.Led4;
-            VmLedPoint.LED5 = CamPropLed.Led5;
-            VmLedPoint.LED6 = CamPropLed.Led6;
-            VmLedPoint.LED7 = CamPropLed.Led7;
-            VmLedPoint.LED8 = CamPropLed.Led8;
-            VmLedPoint.LED9 = CamPropLed.Led9;
-            VmLedPoint.LED10 = CamPropLed.Led10;
-            VmLedPoint.LED11 = CamPropLed.Led11;
-            VmLedPoint.LED12 = CamPropLed.Led12;
-            VmLedPoint.LED13 = CamPropLed.Led13;
-            VmLedPoint.LED14 = CamPropLed.Led14;
-            VmLedPoint.LED15 = CamPropLed.Led15;
-            VmLedPoint.LED16 = CamPropLed.Led16;
+            //VmLedPoint.LED1 = CamPropLed.Led1;
+            //VmLedPoint.LED2 = CamPropLed.Led2;
+            //VmLedPoint.LED3 = CamPropLed.Led3;
+            //VmLedPoint.LED4 = CamPropLed.Led4;
+            //VmLedPoint.LED5 = CamPropLed.Led5;
+            //VmLedPoint.LED6 = CamPropLed.Led6;
+            //VmLedPoint.LED7 = CamPropLed.Led7;
+            //VmLedPoint.LED8 = CamPropLed.Led8;
+            //VmLedPoint.LED9 = CamPropLed.Led9;
+            //VmLedPoint.LED10 = CamPropLed.Led10;
+            //VmLedPoint.LED11 = CamPropLed.Led11;
+            //VmLedPoint.LED12 = CamPropLed.Led12;
+            //VmLedPoint.LED13 = CamPropLed.Led13;
+            //VmLedPoint.LED14 = CamPropLed.Led14;
+            //VmLedPoint.LED15 = CamPropLed.Led15;
+            //VmLedPoint.LED16 = CamPropLed.Led16;
 
             VmCnPoint.X_Cn220 = CamPropCn220.X;
             VmCnPoint.Y_Cn220 = CamPropCn220.Y;

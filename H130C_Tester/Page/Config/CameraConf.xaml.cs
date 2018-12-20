@@ -29,6 +29,7 @@ namespace H130C_Tester
             canvasLdPoint.DataContext = State.VmLedPoint;
             toggleSw.IsChecked = General.cam.Opening;
             RingCnTesting.IsActive = false;
+
         }
 
         //フォームイベントいろいろ
@@ -46,6 +47,11 @@ namespace H130C_Tester
             CanChangeCnPoint = true;
             Flags.EnableStartCheck = false;
 
+            canvasCnPoint.IsEnabled = true;
+            buttonLabeling.IsEnabled = false;
+            buttonBin.IsEnabled = false;
+            buttonHue.IsEnabled = false;
+            buttonSave.IsEnabled = false;
         }
 
         private async void Page_Unloaded(object sender, RoutedEventArgs e)
@@ -422,6 +428,7 @@ namespace H130C_Tester
             buttonBin.Background = BinSw ? Brushes.DodgerBlue : Brushes.Transparent;
 
             buttonLabeling.IsEnabled = !BinSw;
+            buttonHue.IsEnabled = !BinSw;
 
         }
 
@@ -510,6 +517,7 @@ namespace H130C_Tester
                     State.VmLedPoint.LED16Lum = blobLed9_16[7].Value.Area.ToString();
 
                 }
+                resetView();
                 CanSaveLedPpint = false;
             });
         }
@@ -556,6 +564,9 @@ namespace H130C_Tester
         bool LedOn;
         private async void buttonLedOn_Click(object sender, RoutedEventArgs e)
         {
+            if (FlagLabeling || BinSw || ShowHue)
+                return;
+
             ResetLight();
             rbNon.IsChecked = true;
 
@@ -566,12 +577,23 @@ namespace H130C_Tester
 
             if (LedOn)
             {
+                canvasCnPoint.IsEnabled = false;
+                buttonLabeling.IsEnabled = true;
+                buttonBin.IsEnabled = true;
+                buttonHue.IsEnabled = true;
+                buttonSave.IsEnabled = true;
                 buttonLedOn.Background = General.OnBrush;
                 await Task.Run(() => General.PowSupply(true));
                 await General.LedAllOn();
             }
             else
             {
+                canvasCnPoint.IsEnabled = true;
+                buttonLabeling.IsEnabled = false;
+                buttonBin.IsEnabled = false;
+                buttonHue.IsEnabled = false;
+                buttonSave.IsEnabled = false;
+
                 buttonLedOn.Background = General.OffBrush;
                 General.ResetIo();
             }
