@@ -23,7 +23,7 @@ namespace H130C_Tester
         private void Pic1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
-            State.VmMainWindow.Theme = "Resources/Pic/snow.jpg";
+            State.VmMainWindow.Theme = "Resources/Pic/moon.jpg";
             General.Show();
         }
 
@@ -37,34 +37,10 @@ namespace H130C_Tester
         private void Pic3_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
-            State.VmMainWindow.Theme = "Resources/Pic/night.jpg";
+            State.VmMainWindow.Theme = "Resources/Pic/MM-100.jpg";
             General.Show();
         }
 
-        private void Pic4_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-            State.VmMainWindow.Theme = "Resources/Pic/baby7.jpg";
-            General.Show();
-        }
-
-        private void Pic5_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            State.VmMainWindow.Theme = "Resources/Pic/baby5.jpg";
-            General.Show();
-        }
-
-        private void Pic6_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            State.VmMainWindow.Theme = "Resources/Pic/baby3.jpg";
-            General.Show();
-        }
-
-        private void Pic7_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            State.VmMainWindow.Theme = "Resources/Pic/baby1.jpg";
-            General.Show();
-        }
 
         private void SliderOpacity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
