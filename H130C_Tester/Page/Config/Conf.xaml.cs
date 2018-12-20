@@ -11,11 +11,9 @@ namespace H130C_Tester
     {
         private NavigationService naviMente;
         private NavigationService naviCamera1;
-        private NavigationService naviOperator;
         private NavigationService naviTheme;
         Uri uriMentePage    = new Uri("Page/Config/Mente.xaml", UriKind.Relative);
         Uri uriCamera1Page  = new Uri("Page/Config/CameraConf.xaml", UriKind.Relative);
-        Uri uriOperatorPage = new Uri("Page/Config/EditOpeList.xaml", UriKind.Relative);
         Uri uriThemePage    = new Uri("Page/Config/Theme.xaml", UriKind.Relative);
 
         public Conf()
@@ -23,12 +21,10 @@ namespace H130C_Tester
             InitializeComponent();
             naviMente    = FrameMente.NavigationService;
             naviCamera1  = FrameCamera1.NavigationService;
-            naviOperator = FrameOperator.NavigationService;
             naviTheme    = FrameTheme.NavigationService;
 
             FrameMente.NavigationUIVisibility    = NavigationUIVisibility.Hidden;
             FrameCamera1.NavigationUIVisibility  = NavigationUIVisibility.Hidden;
-            FrameOperator.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             FrameTheme.NavigationUIVisibility    = NavigationUIVisibility.Hidden;
 
             TabMenu.SelectedIndex = 0;
@@ -46,10 +42,6 @@ namespace H130C_Tester
             naviCamera1.Navigate(uriCamera1Page);
         }
 
-        private void TabOperator_Loaded(object sender, RoutedEventArgs e)
-        {
-            naviOperator.Navigate(uriOperatorPage);
-        }
 
         private void TabTheme_Loaded(object sender, RoutedEventArgs e)
         {

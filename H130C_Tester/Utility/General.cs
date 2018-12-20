@@ -160,7 +160,6 @@ namespace H130C_Tester
                 "AssemblyVer " + State.AssemblyInfo,
                 "TestSpecVer " + State.TestSpec.TestSpecVer,
                 System.DateTime.Now.ToString("yyyy年MM月dd日(ddd) HH:mm:ss"),
-                State.VmMainWindow.Operator,
                 State.VmTestStatus.FwVer,
                 State.VmTestStatus.FwSum,
 
@@ -213,7 +212,8 @@ namespace H130C_Tester
                 var dataList = new List<string>();
                 dataList = MakePassTestData();
 
-                var OkDataFilePath = Constants.PassDataFolderPath + State.VmMainWindow.Opecode + ".csv";
+                var fileName = System.DateTime.Now.ToString("yyyy年MM月dd日");
+                var OkDataFilePath = Constants.PassDataFolderPath + fileName + ".csv";
 
                 if (!System.IO.File.Exists(OkDataFilePath))
                 {
@@ -252,7 +252,8 @@ namespace H130C_Tester
         {
             try
             {
-                var NgDataFilePath = Constants.FailDataFolderPath + State.VmMainWindow.Opecode + ".csv";
+                var fileName = System.DateTime.Now.ToString("yyyy年MM月dd日");
+                var NgDataFilePath = Constants.FailDataFolderPath + fileName + ".csv";
                 if (!File.Exists(NgDataFilePath))
                 {
                     //既存検査データがなければ新規作成
@@ -426,7 +427,6 @@ namespace H130C_Tester
 
             State.VmTestStatus.RetryLabelVis = System.Windows.Visibility.Hidden;
             State.VmTestStatus.TestSettingEnable = true;
-            State.VmMainWindow.OperatorEnable = true;
 
             //コネクタチェックでエラーになると表示されたままになるので隠す（誤動作防止！！！）
             State.VmTestStatus.EnableButtonErrInfo = System.Windows.Visibility.Hidden;

@@ -20,32 +20,12 @@ namespace H130C_Tester
         }
 
 
-        //試験中は作業者名を変更できないようにする
-        private bool _OperatorEnable = true;
-        public bool OperatorEnable
-        {
-
-            get { return _OperatorEnable; }
-            set { SetProperty(ref _OperatorEnable, value); }
-        }
-
 
         public ViewModelMainWindow()
         {
             SelectIndex = -1;
         }
 
-
-
-        //プロパティ
-        private List<string> _ListOperator;
-        public List<string> ListOperator
-        {
-
-            get { return _ListOperator; }
-            set { SetProperty(ref _ListOperator, value); }
-
-        }
 
 
         private string _Theme;
@@ -79,28 +59,7 @@ namespace H130C_Tester
 
         }
 
-        private string _Operator;
-        public string Operator
-        {
-            get { return _Operator; }
-            set { SetProperty(ref _Operator, value); }
-        }
 
-
-
-        private string _Opecode;
-        public string Opecode
-        {
-            get { return _Opecode; }
-            set { SetProperty(ref _Opecode, value); }
-        }
-
-        private bool _ReadOnlyOpecode;
-        public bool ReadOnlyOpecode
-        {
-            get { return _ReadOnlyOpecode; }
-            set { SetProperty(ref _ReadOnlyOpecode, value); }
-        }
 
         private bool _EnableOtherButton;
         public bool EnableOtherButton //MainWindowのタブコントロールの各TabItemのイネーブルにバインドする

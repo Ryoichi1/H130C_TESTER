@@ -55,21 +55,6 @@ namespace H130C_Tester
                         if (Flags.OtherPage) break;
                         //Thread.Sleep(200);
 
-                        //作業者名、工番が正しく入力されているかの判定
-                        if (!Flags.SetOperator)
-                        {
-                            State.VmTestStatus.Message = Constants.MessOperator;
-                            Flags.EnableTestStart = false;
-                            continue;
-                        }
-
-                        if (!Flags.SetOpecode)
-                        {
-                            State.VmTestStatus.Message = Constants.MessOpecode;
-                            Flags.EnableTestStart = false;
-                            continue;
-                        }
-
                         General.CheckAll周辺機器フラグ();
                         if (!Flags.AllOk周辺機器接続)
                         {
@@ -107,8 +92,6 @@ namespace H130C_Tester
                             if (General.CheckPress())
                                 return;
 
-                            if (!Flags.SetOperator || !Flags.SetOpecode)
-                                goto RETRY;
                         }
                     }
 
@@ -123,7 +106,6 @@ namespace H130C_Tester
                 State.VmMainWindow.EnableOtherButton = false;
                 State.VmTestStatus.StartButtonContent = Constants.停止;
                 State.VmTestStatus.TestSettingEnable = false;
-                State.VmMainWindow.OperatorEnable = false;
 
                 await Test();//メインルーチンへ
 
@@ -441,8 +423,6 @@ namespace H130C_Tester
 
                 var NgDataList = new List<string>()
                                     {
-                                        State.VmMainWindow.Opecode,
-                                        State.VmMainWindow.Operator,
                                         System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"),
                                         State.VmTestStatus.FailInfo,
                                         State.VmTestStatus.Spec,
