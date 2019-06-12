@@ -736,16 +736,6 @@
                     <DropShadowEffect Color="#FF09A0F7" Direction="0" ShadowDepth="0" BlurRadius="20"/>
                 </Label.Effect>
             </Label>
-            <TextBlock x:Name="textBlock2_Copy14" TextWrapping="Wrap" Text="※履歴表に記入してください！！" FontSize="20" Foreground="#FFFF1DFF" HorizontalAlignment="Left" VerticalAlignment="Center" Height="28" Width="314" RenderTransformOrigin="0.5,0.5" Canvas.Top="2" Canvas.Left="124">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-            </TextBlock>
         </Canvas>
 
 
