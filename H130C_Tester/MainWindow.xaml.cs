@@ -102,6 +102,8 @@ namespace H130C_Tester
             var B = asm.GetName().Version.Build.ToString();
             State.AssemblyInfo = M + "." + N + "." + B;
 
+            //コンピュータ名の取得
+            State.MachineName = Environment.MachineName;
         }
 
         //フォームのイニシャライズ

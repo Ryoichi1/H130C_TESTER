@@ -17,37 +17,38 @@ namespace H130C_Tester
         public const string MessWait = "検査中！　しばらくお待ちください・・・";
         public const string MessCheckConnectMachine = "周辺機器の接続を確認してください！";
 
-        public static readonly string filePath_TestSpec        = @"C:\H130C\ConfigData\TestSpec.config";
-        public static readonly string filePath_Configuration   = @"C:\H130C\ConfigData\Configuration.config";
-        public static readonly string filePath_Command         = @"C:\H130C\ConfigData\Command.config";
-        public static readonly string filePath_CamPropCn220    = @"C:\H130C\ConfigData\CamPropCn220.config";
-        public static readonly string filePath_CamPropCn223    = @"C:\H130C\ConfigData\CamPropCn223.config";
-        public static readonly string filePath_CamPropCn224    = @"C:\H130C\ConfigData\CamPropCn224.config";
-        public static readonly string filePath_CamPropCn225    = @"C:\H130C\ConfigData\CamPropCn225.config";
-        public static readonly string filePath_CamPropCn226    = @"C:\H130C\ConfigData\CamPropCn226.config";
-        public static readonly string filePath_CamPropJp1      = @"C:\H130C\ConfigData\CamPropJp1.config";
-        public static readonly string filePath_CameraPropertyForLed  = @"C:\H130C\ConfigData\CameraPropertyForLed.config";
-        public static readonly string filePath_LedProperty     = @"C:\H130C\ConfigData\LedProperty.config";
-        public static readonly string filePath_CnProperty      = @"C:\H130C\ConfigData\CnProperty.config";
-        public static readonly string filePath_Cam1CalFilePath = @"C:\H130C\ConfigData\AN170600260.xml";
+        public static readonly string RootPath = State.MachineName == "TSPCDP00059" ? @"D:\試験機用設定ファイル\H130C" : @"C:\H130C";
+        public static readonly string filePath_TestSpec = $@"{RootPath}\ConfigData\TestSpec.config";
+        public static readonly string filePath_Configuration = $@"{RootPath}\ConfigData\Configuration.config";
+        public static readonly string filePath_Command = $@"{RootPath}\ConfigData\Command.config";
+        public static readonly string filePath_CamPropCn220 = $@"{RootPath}\ConfigData\CamPropCn220.config";
+        public static readonly string filePath_CamPropCn223 = $@"{RootPath}\ConfigData\CamPropCn223.config";
+        public static readonly string filePath_CamPropCn224 = $@"{RootPath}\ConfigData\CamPropCn224.config";
+        public static readonly string filePath_CamPropCn225 = $@"{RootPath}\ConfigData\CamPropCn225.config";
+        public static readonly string filePath_CamPropCn226 = $@"{RootPath}\ConfigData\CamPropCn226.config";
+        public static readonly string filePath_CamPropJp1 = $@"{RootPath}\ConfigData\CamPropJp1.config";
+        public static readonly string filePath_CameraPropertyForLed = $@"{RootPath}\ConfigData\CameraPropertyForLed.config";
+        public static readonly string filePath_LedProperty = $@"{RootPath}\ConfigData\LedProperty.config";
+        public static readonly string filePath_CnProperty = $@"{RootPath}\ConfigData\CnProperty.config";
+        public static readonly string filePath_Cam1CalFilePath = $@"{RootPath}\ConfigData\AN170600260.xml";
 
-        public static readonly string filePath_TemplateCn220 = @"C:\H130C\Pic\tempCn220.bmp";
-        public static readonly string filePath_TemplateCn223 = @"C:\H130C\Pic\tempCn223.bmp";
-        public static readonly string filePath_TemplateCn224 = @"C:\H130C\Pic\tempCn224.bmp";
-        public static readonly string filePath_TemplateCn225 = @"C:\H130C\Pic\tempCn225.bmp";
-        public static readonly string filePath_TemplateCn226 = @"C:\H130C\Pic\tempCn226.bmp";
-        public static readonly string filePath_TemplateJp1   = @"C:\H130C\Pic\tempJp1.bmp";
+        public static readonly string filePath_TemplateCn220 = $@"{RootPath}\Pic\tempCn220.bmp";
+        public static readonly string filePath_TemplateCn223 = $@"{RootPath}\Pic\tempCn223.bmp";
+        public static readonly string filePath_TemplateCn224 = $@"{RootPath}\Pic\tempCn224.bmp";
+        public static readonly string filePath_TemplateCn225 = $@"{RootPath}\Pic\tempCn225.bmp";
+        public static readonly string filePath_TemplateCn226 = $@"{RootPath}\Pic\tempCn226.bmp";
+        public static readonly string filePath_TemplateJp1 = $@"{RootPath}\Pic\tempJp1.bmp";
 
 
-        public static readonly string RwsPath_Test    = @"C:\H130C\FW_WRITE\ForTest\R5F2123C_WRITE\R5F2123C_WRITE.AWS";
-        public static readonly string RwsPath_Product = @"C:\H130C\FW_WRITE\ForProduct\R5F2123C_WRITE\R5F2123C_WRITE.AWS";
+        public static readonly string RwsPath_Test = $@"{RootPath}\FW_WRITE\ForTest\R5F2123C_WRITE\R5F2123C_WRITE.AWS";
+        public static readonly string RwsPath_Product = $@"{RootPath}\FW_WRITE\ForProduct\R5F2123C_WRITE\R5F2123C_WRITE.AWS";
 
-        public static readonly string Path_Manual = @"C:\H130C\Manual.pdf";
+        public static readonly string Path_Manual = $@"{RootPath}\Manual.pdf";
 
         //検査データフォルダのパス
-        public static readonly string PassDataFolderPath = @"C:\H130C\検査データ\合格品データ\";
-        public static readonly string FailDataFolderPath = @"C:\H130C\検査データ\不良品データ\";
-        public static readonly string fileName_RetryLog  = @"C:\H130C\検査データ\不良品データ\" + "リトライ履歴.txt";
+        public static readonly string PassDataFolderPath = $@"{RootPath}\検査データ\合格品データ\";
+        public static readonly string FailDataFolderPath = $@"{RootPath}\検査データ\不良品データ\";
+        public static readonly string fileName_RetryLog = $@"{RootPath}\検査データ\不良品データ\" + "リトライ履歴.txt";
 
         //Imageの透明度
         public const double OpacityImgMin = 0.0;
