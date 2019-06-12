@@ -1,11 +1,10 @@
-﻿using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Input;
-using System.Linq;
+﻿using OpenCvSharp;
 using System;
-using OpenCvSharp;
-using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 using static System.Threading.Thread;
 
 namespace H130C_Tester
@@ -52,7 +51,6 @@ namespace H130C_Tester
 
             canvasCnPoint.IsEnabled = true;
             buttonLabeling.IsEnabled = false;
-            buttonBin.IsEnabled = false;
             buttonHue.IsEnabled = false;
             buttonSave.IsEnabled = false;
         }
@@ -64,14 +62,11 @@ namespace H130C_Tester
 
             buttonLedOn.Background = General.OffBrush;
             buttonLabeling.Background = General.OffBrush;
-            buttonBin.Background = General.OffBrush;
             resetView();
 
             FlagLabeling = false;
-            BinSw = false;
 
             buttonLabeling.IsEnabled = true;
-            buttonBin.IsEnabled = true;
             canvasLdPoint.IsEnabled = true;
 
             //TODO:
@@ -423,19 +418,6 @@ namespace H130C_Tester
         }
 
 
-        //LED調整用
-        bool BinSw = false;
-        private void buttonBin_Click(object sender, RoutedEventArgs e)
-        {
-            General.cam.ResetFlag();
-            BinSw = !BinSw;
-            General.cam.FlagBin = BinSw;
-            buttonBin.Background = BinSw ? Brushes.DodgerBlue : Brushes.Transparent;
-
-            buttonLabeling.IsEnabled = !BinSw;
-            buttonHue.IsEnabled = !BinSw;
-
-        }
 
         bool CanSaveLedPpint = false;
         private void labeling()
@@ -532,7 +514,6 @@ namespace H130C_Tester
         {
             FlagLabeling = !FlagLabeling;
 
-            buttonBin.IsEnabled = !FlagLabeling;
             buttonHue.IsEnabled = !FlagLabeling;
 
             buttonLabeling.Background = FlagLabeling ? General.OnBrush : General.OffBrush;
@@ -569,7 +550,7 @@ namespace H130C_Tester
         bool LedOn;
         private async void buttonLedOn_Click(object sender, RoutedEventArgs e)
         {
-            if (FlagLabeling || BinSw || ShowHue)
+            if (FlagLabeling || ShowHue)
                 return;
 
             ResetLight();
@@ -584,7 +565,6 @@ namespace H130C_Tester
             {
                 canvasCnPoint.IsEnabled = false;
                 buttonLabeling.IsEnabled = true;
-                buttonBin.IsEnabled = true;
                 buttonHue.IsEnabled = true;
                 buttonSave.IsEnabled = true;
                 buttonLedOn.Background = General.OnBrush;
@@ -595,7 +575,6 @@ namespace H130C_Tester
             {
                 canvasCnPoint.IsEnabled = true;
                 buttonLabeling.IsEnabled = false;
-                buttonBin.IsEnabled = false;
                 buttonHue.IsEnabled = false;
                 buttonSave.IsEnabled = false;
 
@@ -973,7 +952,6 @@ namespace H130C_Tester
         {
             ShowHue = !ShowHue;
 
-            buttonBin.IsEnabled = !ShowHue;
             buttonLabeling.IsEnabled = !ShowHue;
 
             buttonHue.Background = ShowHue ? General.OnBrush : General.OffBrush;
