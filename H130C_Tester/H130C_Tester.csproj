@@ -148,6 +148,9 @@
     <Compile Include="Page\Config\CameraConf.xaml.cs">
       <DependentUpon>CameraConf.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page\Config\CameraConfLed.xaml.cs">
+      <DependentUpon>CameraConfLed.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page\ErrInfo\ErrInfoコネクタチェック.xaml.cs">
       <DependentUpon>ErrInfoコネクタチェック.xaml</DependentUpon>
     </Compile>
@@ -225,6 +228,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Page\Config\CameraConfLed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Page\Config\Conf.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -10,21 +10,25 @@ namespace H130C_Tester
     public partial class Conf
     {
         private NavigationService naviMente;
-        private NavigationService naviCamera1;
+        private NavigationService naviCameraLed;
+        private NavigationService naviCameraCn;
         private NavigationService naviTheme;
         Uri uriMentePage    = new Uri("Page/Config/Mente.xaml", UriKind.Relative);
-        Uri uriCamera1Page  = new Uri("Page/Config/CameraConf.xaml", UriKind.Relative);
+        Uri uriCameraLedPage  = new Uri("Page/Config/CameraConfLed.xaml", UriKind.Relative);
+        Uri uriCameraCnPage  = new Uri("Page/Config/CameraConf.xaml", UriKind.Relative);//TODO:
         Uri uriThemePage    = new Uri("Page/Config/Theme.xaml", UriKind.Relative);
 
         public Conf()
         {
             InitializeComponent();
             naviMente    = FrameMente.NavigationService;
-            naviCamera1  = FrameCamera1.NavigationService;
+            naviCameraLed  = FrameCameraLed.NavigationService;
+            naviCameraCn  = FrameCameraCn.NavigationService;
             naviTheme    = FrameTheme.NavigationService;
 
             FrameMente.NavigationUIVisibility    = NavigationUIVisibility.Hidden;
-            FrameCamera1.NavigationUIVisibility  = NavigationUIVisibility.Hidden;
+            FrameCameraLed.NavigationUIVisibility  = NavigationUIVisibility.Hidden;
+            FrameCameraCn.NavigationUIVisibility  = NavigationUIVisibility.Hidden;
             FrameTheme.NavigationUIVisibility    = NavigationUIVisibility.Hidden;
 
             TabMenu.SelectedIndex = 0;
@@ -37,17 +41,20 @@ namespace H130C_Tester
             naviMente.Navigate(uriMentePage);
         }
 
-        private void TabCamera1_Loaded(object sender, RoutedEventArgs e)
-        {
-            naviCamera1.Navigate(uriCamera1Page);
-        }
-
 
         private void TabTheme_Loaded(object sender, RoutedEventArgs e)
         {
             naviTheme.Navigate(uriThemePage);
         }
 
+        private void TabCameraLed_Loaded(object sender, RoutedEventArgs e)
+        {
+            naviCameraLed.Navigate(uriCameraLedPage);
+        }
 
+        private void TabCameraCn_Loaded(object sender, RoutedEventArgs e)
+        {
+            naviCameraCn.Navigate(uriCameraLedPage);
+        }
     }
 }

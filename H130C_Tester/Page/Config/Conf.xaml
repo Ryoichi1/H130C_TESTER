@@ -45,13 +45,16 @@
 
 
         <TabControl x:Name="TabMenu" Height="668" Width="1337" Canvas.Left="6" FlowDirection="RightToLeft" Canvas.Top="4" >
-            <TabItem x:Name="TabMente" Header="メンテナンス" Margin="1198,26,-1198,-25" Width="127" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="TabMente_Loaded" Controls:ControlsHelper.HeaderFontSize="18" >
+            <TabItem x:Name="TabMente" Header="メンテナンス" Margin="1205,26,-1205,-25" Width="127" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="TabMente_Loaded" Controls:ControlsHelper.HeaderFontSize="18" >
                 <Frame x:Name="FrameMente" FlowDirection="LeftToRight" Margin="-1,-22,147,4" />
             </TabItem>
-            <TabItem x:Name="TabCamera1" Header="カメラ設定" Margin="1074,66,-1074,-65" Width="119" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Controls:ControlsHelper.HeaderFontSize="18" Loaded="TabCamera1_Loaded" >
-                <Frame x:Name="FrameCamera1" FlowDirection="LeftToRight" Margin="0,-32,146,-1" />
+            <TabItem x:Name="TabCameraLed" Header="カメラ設定LED" Margin="1077,66,-1081,-65" Width="123" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Controls:ControlsHelper.HeaderFontSize="18" Loaded="TabCameraLed_Loaded" >
+                <Frame x:Name="FrameCameraLed" FlowDirection="LeftToRight" Margin="0,-32,146,-1" />
             </TabItem>
-            <TabItem x:Name="TabTheme" Header="テーマ" Margin="964,115,-996,-115" Loaded="TabTheme_Loaded" Controls:ControlsHelper.HeaderFontSize="18">
+            <TabItem x:Name="TabCameraCn" Header="カメラ設定CN" Margin="958,108,-958,-107" Width="123" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Controls:ControlsHelper.HeaderFontSize="18" Loaded="TabCameraCn_Loaded" >
+                <Frame x:Name="FrameCameraCn" FlowDirection="LeftToRight" Margin="0,-32,146,-1" />
+            </TabItem>
+            <TabItem x:Name="TabTheme" Header="テーマ" Margin="852,150,-884,-150" Loaded="TabTheme_Loaded" Controls:ControlsHelper.HeaderFontSize="18">
                 <Frame x:Name="FrameTheme" FlowDirection="LeftToRight" Margin="-2,-32,145,2" />
             </TabItem>
         </TabControl>
