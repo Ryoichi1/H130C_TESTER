@@ -251,7 +251,7 @@ namespace H130C_Tester
             }
         }
 
-        private Brush _ColorCAMERA;
+        private Brush _ColorCAMERA = General.NgBrush;
         public Brush ColorCAMERA
         {
             get { return _ColorCAMERA; }

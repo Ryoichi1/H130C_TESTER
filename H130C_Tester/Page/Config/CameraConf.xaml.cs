@@ -35,6 +35,9 @@ namespace H130C_Tester
         //フォームイベントいろいろ
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!General.cam.CamState)
+                return;
+
             LedOn = false;
             State.VmMainWindow.MainWinEnable = false;
             await Task.Delay(1200);
@@ -59,7 +62,6 @@ namespace H130C_Tester
             CanChangeCnPoint = false;
             rbNon.IsChecked = true;
 
-            await General.cam.Stop();
             buttonLedOn.Background = General.OffBrush;
             buttonLabeling.Background = General.OffBrush;
             buttonBin.Background = General.OffBrush;
@@ -75,6 +77,9 @@ namespace H130C_Tester
             //TODO:
             //LEDを全消灯させる処理
             General.ResetIo();
+            if (!General.cam.CamState)
+                return;
+            await General.cam.Stop();
             State.SetCamPoint();
             await Task.Delay(500);
             Flags.EnableStartCheck = true;
