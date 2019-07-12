@@ -74,7 +74,7 @@
 
 
 
-        <Canvas x:Name="Canvas検査データ" Height="432" Canvas.Left="388" Canvas.Top="239" Width="547" IsEnabled="{Binding StartButtonEnable}">
+        <Canvas x:Name="Canvas検査データ" Height="425" Canvas.Left="388" Canvas.Top="246" Width="547" IsEnabled="{Binding StartButtonEnable}">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="Height"  Value="20"/>
@@ -211,7 +211,7 @@
                 <Label BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" Canvas.Left="39" Canvas.Top="25" Width="76" Background="{Binding ColVol5v}" Height="20" Content="{Binding Vol5v}" />
                 <TextBlock Text="+5V" Foreground="White" RenderTransformOrigin="0.494,0.611" Height="18" Canvas.Top="26" Width="35" Canvas.Left="4" />
             </Canvas>
-            <Canvas Height="210" Width="182" Canvas.Top="215" Canvas.Left="5">
+            <Canvas Height="210" Width="182" Canvas.Top="213" Canvas.Left="4">
                 <Canvas.Resources>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="FontSize" Value="14"/>
@@ -258,7 +258,7 @@
                 <Label BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" Canvas.Left="139" Canvas.Top="169" Width="32" Background="{Binding ColRy7Out}" Height="16" />
                 <Label BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" Canvas.Left="139" Canvas.Top="189" Width="32" Background="{Binding ColRy8Out}" Height="16" />
             </Canvas>
-            <Canvas Height="210" Canvas.Left="192" Width="191" Canvas.Top="215">
+            <Canvas Height="210" Canvas.Left="192" Width="191" Canvas.Top="213">
                 <Canvas.Resources>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="FontSize" Value="14"/>
@@ -362,7 +362,7 @@
 
 
 
-        <Canvas x:Name="CanvasStatus" Height="73" Canvas.Left="388" Canvas.Top="65" Width="290">
+        <Canvas x:Name="CanvasStatus" Height="73" Canvas.Left="388" Canvas.Top="73" Width="290">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="11"/>
@@ -424,12 +424,12 @@
             <Label x:Name="labelStateRetry_Copy1" Content="{Binding NgCount}" Height="24" Canvas.Left="215" Canvas.Top="1" Width="40" VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="{x:Null}" FontSize="16"/>
 
         </Canvas>
-        <Label x:Name="labelMessage" Content="{Binding Message, Mode=TwoWay, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="58" VerticalAlignment="Center" Width="1326" Canvas.Left="7" Canvas.Top="2" FontSize="38" Foreground="White" VerticalContentAlignment="Center">
+        <Label x:Name="labelMessage" Content="{Binding Message, Mode=TwoWay, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="71" VerticalAlignment="Center" Width="1326" Canvas.Left="7" Canvas.Top="2" FontSize="48" Foreground="White" VerticalContentAlignment="Center">
             <Label.Effect>
                 <DropShadowEffect Color="#FF00FFF3" BlurRadius="20" Direction="0" ShadowDepth="0"/>
             </Label.Effect>
         </Label>
-        <Canvas Height="268" Canvas.Top="65" Width="373" Canvas.Left="8">
+        <Canvas Height="268" Canvas.Top="73" Width="373" Canvas.Left="8">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="11"/>
@@ -486,7 +486,7 @@
             </Canvas>
         </Canvas>
 
-        <Canvas x:Name="canvasTestSetting" Height="129" Canvas.Left="943" Canvas.Top="240" Width="298" IsEnabled="{Binding TestSettingEnable}">
+        <Canvas x:Name="canvasTestSetting" Height="129" Canvas.Left="941" Canvas.Top="246" Width="298" IsEnabled="{Binding TestSettingEnable}">
             <Canvas.Background>
                 <SolidColorBrush Color="White" Opacity="0.1"/>
             </Canvas.Background>
@@ -523,12 +523,12 @@
             </Label>
 
         </Canvas>
-        <Label Content="" Height="1" Canvas.Left="9" Canvas.Top="58" Width="1324" Background="#FF0388F7">
+        <Label Content="" Height="1" Canvas.Left="9" Canvas.Top="69" Width="1324" Background="#FF0388F7">
             <Label.Effect>
                 <DropShadowEffect Color="#FF09A0F7" Direction="0" ShadowDepth="0" BlurRadius="20"/>
             </Label.Effect>
         </Label>
-        <Canvas Height="90" Canvas.Left="388" Canvas.Top="144" Width="853">
+        <Canvas Height="90" Canvas.Left="388" Canvas.Top="151" Width="853">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="11"/>
@@ -661,7 +661,7 @@
                 </Label>
             </Canvas>
         </Canvas>
-        <Controls:ProgressRing x:Name="RingWait" Canvas.Left="112" Canvas.Top="146" Height="120" Width="120" IsActive="{Binding IsActiveRing}">
+        <Controls:ProgressRing x:Name="RingWait" Canvas.Left="158" Canvas.Top="178" Height="60" Width="60" IsActive="{Binding IsActiveRing}">
             <!--<Controls:ProgressRing.Effect>
                 <DropShadowEffect Color="#FFF7F9F9" Direction="0" ShadowDepth="0" BlurRadius="10"/>
             </Controls:ProgressRing.Effect>-->
@@ -681,7 +681,7 @@
                 <SolidColorBrush Color="#FF125191" Opacity="0.6"/>
             </Button.Background>
         </Button>
-        <Canvas x:Name="CanvasComm_Copy" Height="73" Canvas.Left="694" Canvas.Top="65" Width="547">
+        <Canvas x:Name="CanvasComm_Copy" Height="73" Canvas.Left="687" Canvas.Top="73" Width="547">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="18"/>

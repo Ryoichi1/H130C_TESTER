@@ -1,5 +1,4 @@
-﻿using OpenCvSharp;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,20 +13,12 @@ namespace H130C_Tester
     /// </summary>
     public partial class CameraConfLed
     {
-        private enum RB_CN { NON, CN220, CN223, CN224, CN225, CN226, JP1 }
-
-        private RB_CN rbState = RB_CN.NON;
-
-        bool CanChangeCnPoint;
 
         public CameraConfLed()
         {
             InitializeComponent();
             this.DataContext = General.cam;
             canvasLdPoint.DataContext = State.VmLedPoint;
-            toggleSw.IsChecked = General.cam.Opening;
-            RingCnTesting.IsActive = false;
-
         }
 
         //フォームイベントいろいろ
@@ -40,28 +31,27 @@ namespace H130C_Tester
             State.VmMainWindow.MainWinEnable = false;
             await Task.Delay(1200);
             State.VmMainWindow.MainWinEnable = true;
-            State.SetCamPoint();
+            State.SetCamPropForLed();
             General.cam.Start();
+            toggleSw.IsChecked = General.cam.Opening;
+
             tbPoint.Visibility = System.Windows.Visibility.Hidden;
             tbHsv.Visibility = System.Windows.Visibility.Hidden;
-            CanChangeCnPoint = true;
             Flags.EnableStartCheck = false;
 
+            buttonLedOn.IsEnabled = true;
             buttonLabeling.IsEnabled = false;
             buttonHue.IsEnabled = false;
-            buttonSave.IsEnabled = false;
+            buttonSave.IsEnabled = true;
         }
 
         private async void Page_Unloaded(object sender, RoutedEventArgs e)
         {
-            CanChangeCnPoint = false;
-
             buttonLedOn.Background = General.OffBrush;
             buttonLabeling.Background = General.OffBrush;
             resetView();
 
             FlagLabeling = false;
-
             buttonLabeling.IsEnabled = true;
             canvasLdPoint.IsEnabled = true;
 
@@ -71,7 +61,6 @@ namespace H130C_Tester
             if (!General.cam.CamState)
                 return;
             await General.cam.Stop();
-            State.SetCamPoint();
             await Task.Delay(500);
             Flags.EnableStartCheck = true;
         }
@@ -237,13 +226,13 @@ namespace H130C_Tester
         }
 
 
-
         bool CanSaveLedPpint = false;
         private void labeling()
         {
             Task.Run(() =>
             {
-                resetView();
+                General.cam.ResetFlag();
+                General.cam.FlagLabeling = true;
                 while (FlagLabeling)
                 {
                     if (General.cam.blobs == null) continue;
@@ -323,7 +312,7 @@ namespace H130C_Tester
                     State.VmLedPoint.LED16Lum = blobLed9_16[7].Value.Area.ToString();
 
                 }
-                resetView();
+                General.cam.ResetFlag();
                 CanSaveLedPpint = false;
             });
         }
@@ -332,45 +321,74 @@ namespace H130C_Tester
         private void buttonLabeling_Click(object sender, RoutedEventArgs e)
         {
             FlagLabeling = !FlagLabeling;
-
             buttonHue.IsEnabled = !FlagLabeling;
-
             buttonLabeling.Background = FlagLabeling ? General.OnBrush : General.OffBrush;
 
             if (FlagLabeling)
-            {
-                General.cam.ResetFlag();
-                General.cam.FlagLabeling = true;
-
                 labeling();
-            }
-            else
-            {
-                resetView();
-                General.cam.ResetFlag();
-            }
-
         }
 
+        bool IsBusy = false;
         private async void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            if (!CanSaveLedPpint)
+            if (IsBusy)
                 return;
+
+            if (!General.CheckPress())
+            {
+                MessageBox.Show("ゴールデンサンプルをセットして\nレバーを下げてください");
+                return;
+            }
+
+            //LED全点灯の処理
             buttonSave.Background = Brushes.DodgerBlue;
+            buttonLedOn.IsEnabled = false;
+            IsBusy = true;
+
+            State.SetCamPropForLed();//LEDチェック用にカメラプロパティを切り替える
+
+            await Task.Run(() => General.PowSupply(true));
+            await General.LedAllOn();
+
+            FlagLabeling = true;
+            labeling();
+            await Task.Run(() =>
+            {
+                while (true)
+                {
+                    if (CanSaveLedPpint)
+                        break;
+                }
+            });
+
+            await Task.Delay(1000);
 
             SaveLedPoint();
             SaveLedLum();
             SaveCameraCommonPropForLed();
+            FlagLabeling = false;
             General.PlaySound(General.soundSuccess);
             await Task.Delay(150);
             buttonSave.Background = Brushes.Transparent;
+
+            buttonLedOn.IsEnabled = true;
+            IsBusy = false;
+
+            General.ResetIo();
         }
 
         bool LedOn;
         private async void buttonLedOn_Click(object sender, RoutedEventArgs e)
         {
+            if (!General.CheckPress())
+            {
+                MessageBox.Show("ゴールデンサンプルをセットして\nレバーを下げてください");
+                return;
+            }
+
             if (FlagLabeling || ShowHue)
                 return;
+
 
             //TODO: 全点灯させる処理
             State.SetCamPropForLed();//LEDチェック用にカメラプロパティを切り替える
@@ -381,7 +399,7 @@ namespace H130C_Tester
             {
                 buttonLabeling.IsEnabled = true;
                 buttonHue.IsEnabled = true;
-                buttonSave.IsEnabled = true;
+                buttonSave.IsEnabled = false;
                 buttonLedOn.Background = General.OnBrush;
                 await Task.Run(() => General.PowSupply(true));
                 await General.LedAllOn();
@@ -390,10 +408,11 @@ namespace H130C_Tester
             {
                 buttonLabeling.IsEnabled = false;
                 buttonHue.IsEnabled = false;
-                buttonSave.IsEnabled = false;
+                buttonSave.IsEnabled = true;
 
                 buttonLedOn.Background = General.OffBrush;
                 General.ResetIo();
+                resetView();
             }
 
         }
@@ -434,7 +453,6 @@ namespace H130C_Tester
                         TestLed.CheckColorForDebug();
                         Sleep(100);
                     }
-                    resetView();
                 });
             }
             else
@@ -442,9 +460,6 @@ namespace H130C_Tester
                 General.cam.ResetFlag();
             }
         }
-
-
-
 
     }
 }

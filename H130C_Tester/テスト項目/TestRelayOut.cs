@@ -354,7 +354,7 @@ namespace H130C_Tester
                                     General.MainIo.SendData1768("MeasRy8");
                                     break;
                             }
-                            Sleep(400);
+                            Sleep(700);
                             General.MainIo.SendData1768("meas?");
                             var re = General.MainIo.RecieveData;
                             l.time = GetMicroTime(re);

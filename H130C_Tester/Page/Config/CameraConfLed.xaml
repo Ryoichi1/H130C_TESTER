@@ -41,7 +41,7 @@
         </Canvas.Resources>
 
 
-        <Canvas Height="347" Width="372" Canvas.Left="671" Canvas.Top="5">
+        <Canvas Height="347" Width="435" Canvas.Left="671" Canvas.Top="5">
             <Canvas.Background>
                 <SolidColorBrush Color="#FF4997C3" Opacity="0.2"/>
             </Canvas.Background>
@@ -83,6 +83,9 @@
             <Slider x:Name="sliderBinLev" Height="8" Canvas.Left="77" Canvas.Top="264" Width="180" Value="{Binding BinLevel}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="0.05" Maximum="250" Style="{DynamicResource FlatSlider}"/>
             <Slider x:Name="sliderOpenCnt" Height="8" Canvas.Left="77" Canvas.Top="287" Width="180" Value="{Binding openCnt}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="1" Maximum="5" Style="{DynamicResource FlatSlider}"/>
             <Slider x:Name="sliderCloseCnt" Height="8" Canvas.Left="77" Canvas.Top="312" Width="180" Value="{Binding closeCnt}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="1" Maximum="5" Style="{DynamicResource FlatSlider}"/>
+            <Button x:Name="buttonLedOn" Content="LED全点灯"  Height="30" Canvas.Left="326" Canvas.Top="46" Width="88" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="1" Padding="0" Click="buttonLedOn_Click"/>
+            <Button x:Name="buttonLabeling" Content="ラベリング"  Height="30" Canvas.Left="326" Canvas.Top="81" Width="88" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="1" Padding="0" Click="buttonLabeling_Click"/>
+            <Button x:Name="buttonHue" Content="色相表示"  Height="30" Canvas.Left="326" Canvas.Top="117" Width="88" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="1" Padding="0" Click="buttonHue_Click"/>
         </Canvas>
         <Border BorderBrush="#FF00DCFF" BorderThickness="1" Height="370" Width="650" Canvas.Left="11" Canvas.Top="3"/>
         <Canvas x:Name="CanvasImg" Canvas.Left="16" Canvas.Top="8" Width="640" Height="360">
@@ -91,7 +94,7 @@
             <TextBlock x:Name="tbPoint" Height="20" Canvas.Left="517" TextWrapping="Wrap" Text="XY=100/100" Width="113" Foreground="White" RenderTransformOrigin="2.258,7.602" Canvas.Top="6"/>
             <TextBlock x:Name="tbHsv" Height="20" Canvas.Left="517" TextWrapping="Wrap" Text="HSV=100,100,100" Width="115" Foreground="White" RenderTransformOrigin="2.258,7.602" Canvas.Top="26"/>
         </Canvas>
-        <Canvas x:Name="canvasLdPoint" Height="264" Canvas.Left="12" Canvas.Top="379" Width="602">
+        <Canvas x:Name="canvasLdPoint" Height="264" Canvas.Left="12" Canvas.Top="379" Width="696">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <!--<Style.Setters>コンテンツプロパティのため省略可能-->
@@ -106,7 +109,7 @@
             <Canvas.Background>
                 <SolidColorBrush Color="#FF4997C3" Opacity="0.2"/>
             </Canvas.Background>
-            <Canvas Height="261" Width="573" Canvas.Left="28" Canvas.Top="2">
+            <Canvas Height="261" Width="814" Canvas.Left="28" Canvas.Top="2">
                 <Label Content="{Binding LED1}"  Canvas.Left="46" Canvas.Top="21" Width="75" BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                 <Label Content="{Binding LED2}"  Canvas.Left="46" Canvas.Top="51" Width="75" BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                 <Label Content="{Binding LED3}"  Canvas.Left="46" Canvas.Top="81" Width="75" BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
@@ -177,13 +180,9 @@
                 <TextBlock Height="16" Canvas.Left="242" TextWrapping="Wrap" Canvas.Top="175" Width="40" Foreground="White" Text="LED14"/>
                 <TextBlock Height="16" Canvas.Left="242" TextWrapping="Wrap" Canvas.Top="205" Width="40" Foreground="White" Text="LED15"/>
                 <TextBlock Height="16" Canvas.Left="242" TextWrapping="Wrap" Canvas.Top="235" Width="40" Foreground="White" Text="LED16"/>
-                <Button x:Name="buttonLedOn" Content="LED全点灯"  Height="30" Canvas.Left="479" Canvas.Top="20" Width="88" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="1" Padding="0" Click="buttonLedOn_Click"/>
-                <Button x:Name="buttonLabeling" Content="ラベリング"  Height="30" Canvas.Left="479" Canvas.Top="55" Width="88" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="1" Padding="0" Click="buttonLabeling_Click"/>
-                <Button x:Name="buttonSave" Content="保存"  Height="51" Canvas.Top="133" Width="88" FontSize="26" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Click="buttonSave_Click" Canvas.Left="479"/>
-                <Button x:Name="buttonHue" Content="色相表示"  Height="30" Canvas.Left="479" Canvas.Top="91" Width="88" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="1" Padding="0" Click="buttonHue_Click"/>
+                <Button x:Name="buttonSave" Content="自動補正"  Height="51" Canvas.Top="21" Width="139" FontSize="26" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Click="buttonSave_Click" Canvas.Left="507"/>
             </Canvas>
             <Label Content="LED調整" Height="24" Width="57" Foreground="#FF0EC2D4" BorderBrush="{x:Null}" Canvas.Top="-2" Canvas.Left="1"/>
         </Canvas>
-        <Controls:ProgressRing x:Name="RingCnTesting" Foreground="{DynamicResource AccentColorBrush}" Canvas.Left="1118" Canvas.Top="608" Height="22" Width="22" IsActive="{Binding IsActive}"/>
     </Canvas>
 </Page>

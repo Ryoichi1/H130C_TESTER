@@ -325,27 +325,44 @@ namespace H130C_Tester
             General.cam.Wb = CamPropLed.Whitebalance;
             General.cam.Theta = CamPropLed.Theta;
             General.cam.BinLevel = CamPropLed.BinLevel;
+
+            VmLedPoint.LED1 = CamPropLed.Led1;
+            VmLedPoint.LED2 = CamPropLed.Led2;
+            VmLedPoint.LED3 = CamPropLed.Led3;
+            VmLedPoint.LED4 = CamPropLed.Led4;
+            VmLedPoint.LED5 = CamPropLed.Led5;
+            VmLedPoint.LED6 = CamPropLed.Led6;
+            VmLedPoint.LED7 = CamPropLed.Led7;
+            VmLedPoint.LED8 = CamPropLed.Led8;
+            VmLedPoint.LED9 = CamPropLed.Led9;
+            VmLedPoint.LED10 = CamPropLed.Led10;
+            VmLedPoint.LED11 = CamPropLed.Led11;
+            VmLedPoint.LED12 = CamPropLed.Led12;
+            VmLedPoint.LED13 = CamPropLed.Led13;
+            VmLedPoint.LED14 = CamPropLed.Led14;
+            VmLedPoint.LED15 = CamPropLed.Led15;
+            VmLedPoint.LED16 = CamPropLed.Led16;
+
+            VmLedPoint.LED1Lum = CamPropLed.LumLed1.ToString("F0");
+            VmLedPoint.LED2Lum = CamPropLed.LumLed2.ToString("F0");
+            VmLedPoint.LED3Lum = CamPropLed.LumLed3.ToString("F0");
+            VmLedPoint.LED4Lum = CamPropLed.LumLed4.ToString("F0");
+            VmLedPoint.LED5Lum = CamPropLed.LumLed5.ToString("F0");
+            VmLedPoint.LED6Lum = CamPropLed.LumLed6.ToString("F0");
+            VmLedPoint.LED7Lum = CamPropLed.LumLed7.ToString("F0");
+            VmLedPoint.LED8Lum = CamPropLed.LumLed8.ToString("F0");
+            VmLedPoint.LED9Lum = CamPropLed.LumLed9.ToString("F0");
+            VmLedPoint.LED10Lum = CamPropLed.LumLed10.ToString("F0");
+            VmLedPoint.LED11Lum = CamPropLed.LumLed11.ToString("F0");
+            VmLedPoint.LED12Lum = CamPropLed.LumLed12.ToString("F0");
+            VmLedPoint.LED13Lum = CamPropLed.LumLed13.ToString("F0");
+            VmLedPoint.LED14Lum = CamPropLed.LumLed14.ToString("F0");
+            VmLedPoint.LED15Lum = CamPropLed.LumLed15.ToString("F0");
+            VmLedPoint.LED16Lum = CamPropLed.LumLed16.ToString("F0");
         }
 
         public static void SetCamPoint()
         {
-            //VmLedPoint.LED1 = CamPropLed.Led1;
-            //VmLedPoint.LED2 = CamPropLed.Led2;
-            //VmLedPoint.LED3 = CamPropLed.Led3;
-            //VmLedPoint.LED4 = CamPropLed.Led4;
-            //VmLedPoint.LED5 = CamPropLed.Led5;
-            //VmLedPoint.LED6 = CamPropLed.Led6;
-            //VmLedPoint.LED7 = CamPropLed.Led7;
-            //VmLedPoint.LED8 = CamPropLed.Led8;
-            //VmLedPoint.LED9 = CamPropLed.Led9;
-            //VmLedPoint.LED10 = CamPropLed.Led10;
-            //VmLedPoint.LED11 = CamPropLed.Led11;
-            //VmLedPoint.LED12 = CamPropLed.Led12;
-            //VmLedPoint.LED13 = CamPropLed.Led13;
-            //VmLedPoint.LED14 = CamPropLed.Led14;
-            //VmLedPoint.LED15 = CamPropLed.Led15;
-            //VmLedPoint.LED16 = CamPropLed.Led16;
-
             VmCnPoint.X_Cn220 = CamPropCn220.X;
             VmCnPoint.Y_Cn220 = CamPropCn220.Y;
             VmCnPoint.W_Cn220 = CamPropCn220.W;

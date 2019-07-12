@@ -29,6 +29,7 @@ namespace H130C_Tester
         public static SolidColorBrush DialogOnBrush = new SolidColorBrush();
         public static SolidColorBrush OnBrush = new SolidColorBrush();
         public static SolidColorBrush OffBrush = new SolidColorBrush();
+        public static SolidColorBrush OkBrush = new SolidColorBrush();
         public static SolidColorBrush NgBrush = new SolidColorBrush();
 
         public static LPC1768 MainIo = new LPC1768();
@@ -54,6 +55,9 @@ namespace H130C_Tester
 
             OnBrush.Color = Colors.DodgerBlue;
             OnBrush.Opacity = 0.4;
+
+            OkBrush.Color = Colors.GreenYellow;
+            OkBrush.Opacity = 0.4;
 
             NgBrush.Color = Colors.HotPink;
             NgBrush.Opacity = 0.4;

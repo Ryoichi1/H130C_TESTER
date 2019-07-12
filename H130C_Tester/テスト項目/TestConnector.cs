@@ -216,8 +216,8 @@ namespace H130C_Tester
 
                     var AllData = new List<(double 角度, double 一致率, CvPoint 座標)>();
 
-                    //Angles.ForEach(t =>
-                    Angles.AsParallel().ForAll(t =>
+                    Angles.ForEach(t =>
+                    //Angles.AsParallel().ForAll(t =>
                     {
                         var livePic = _livePic.Clone();
                         //傾き補正

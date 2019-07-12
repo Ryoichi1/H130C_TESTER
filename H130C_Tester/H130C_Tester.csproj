@@ -145,8 +145,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Page\Config\CameraConf.xaml.cs">
-      <DependentUpon>CameraConf.xaml</DependentUpon>
+    <Compile Include="Page\Config\CameraConfCn.xaml.cs">
+      <DependentUpon>CameraConfCn.xaml</DependentUpon>
     </Compile>
     <Compile Include="Page\Config\CameraConfLed.xaml.cs">
       <DependentUpon>CameraConfLed.xaml</DependentUpon>
@@ -236,7 +236,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Page\Config\CameraConf.xaml">
+    <Page Include="Page\Config\CameraConfCn.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -309,28 +309,11 @@
     <Content Include="Resources\Wav\VictoryLong.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\Pic\baby5.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Pic\baby1.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Pic\baby2.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Pic\baby3.jpg" />
-    <Resource Include="Resources\Pic\chri1.jpg" />
-    <Resource Include="Resources\Pic\chri2.jpg" />
-    <Resource Include="Resources\Pic\wa_winter.jpg" />
-    <Resource Include="Resources\Pic\take.jpg" />
-    <Resource Include="Resources\Pic\night.jpg" />
-    <Resource Include="Resources\Pic\snow.jpg" />
     <Resource Include="Resources\Pic\Tempコネクタチェック.jpg" />
     <Resource Include="Resources\Pic\Temp未ハンダチェック.jpg" />
     <Content Include="Resources\Wav\Alarm.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\Pic\baby7.jpg" />
     <Content Include="Resources\Wav\Success.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

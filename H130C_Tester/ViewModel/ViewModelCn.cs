@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.Prism.Mvvm;
+using System.Windows.Media;
 
 namespace H130C_Tester
 {
@@ -107,6 +108,24 @@ namespace H130C_Tester
 
         private string _ResultJp1;
         public string ResultJp1 { get { return _ResultJp1; } set { SetProperty(ref _ResultJp1, value); } }
+
+        private Brush _ColCn220;
+        public Brush ColCn220 { get { return _ColCn220; } set { SetProperty(ref _ColCn220, value); } }
+
+        private Brush _ColCn223;
+        public Brush ColCn223 { get { return _ColCn223; } set { SetProperty(ref _ColCn223, value); } }
+
+        private Brush _ColCn224;
+        public Brush ColCn224 { get { return _ColCn224; } set { SetProperty(ref _ColCn224, value); } }
+
+        private Brush _ColCn225;
+        public Brush ColCn225 { get { return _ColCn225; } set { SetProperty(ref _ColCn225, value); } }
+
+        private Brush _ColCn226;
+        public Brush ColCn226 { get { return _ColCn226; } set { SetProperty(ref _ColCn226, value); } }
+
+        private Brush _ColJp1;
+        public Brush ColJp1 { get { return _ColJp1; } set { SetProperty(ref _ColJp1, value); } }
 
     }
 }

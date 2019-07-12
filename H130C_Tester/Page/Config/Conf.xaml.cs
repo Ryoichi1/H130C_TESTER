@@ -15,7 +15,7 @@ namespace H130C_Tester
         private NavigationService naviTheme;
         Uri uriMentePage    = new Uri("Page/Config/Mente.xaml", UriKind.Relative);
         Uri uriCameraLedPage  = new Uri("Page/Config/CameraConfLed.xaml", UriKind.Relative);
-        Uri uriCameraCnPage  = new Uri("Page/Config/CameraConf.xaml", UriKind.Relative);//TODO:
+        Uri uriCameraCnPage  = new Uri("Page/Config/CameraConfCn.xaml", UriKind.Relative);//TODO:
         Uri uriThemePage    = new Uri("Page/Config/Theme.xaml", UriKind.Relative);
 
         public Conf()
@@ -54,7 +54,7 @@ namespace H130C_Tester
 
         private void TabCameraCn_Loaded(object sender, RoutedEventArgs e)
         {
-            naviCameraCn.Navigate(uriCameraLedPage);
+            naviCameraCn.Navigate(uriCameraCnPage);
         }
     }
 }
