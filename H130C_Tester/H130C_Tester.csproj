@@ -306,6 +306,7 @@
   <ItemGroup>
     <Resource Include="Resources\Pic\nagasaki.jpg" />
     <Resource Include="Resources\Pic\moon.jpg" />
+    <Resource Include="Resources\Pic\casey.jpg" />
     <Content Include="Resources\Wav\VictoryLong.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

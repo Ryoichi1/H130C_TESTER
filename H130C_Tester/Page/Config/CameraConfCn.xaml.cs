@@ -583,6 +583,12 @@ namespace H130C_Tester
 
         private void rbCn220_Checked(object sender, RoutedEventArgs e)
         {
+            if (!General.CheckPress())
+            {
+                MessageBox.Show("プレス治具のレバーを下げてください");
+                rbNon.IsChecked = true;
+                return;
+            }
             rbState = RB_CN.CN220;
             State.SetCamPropForCn(State.CN_NAME.CN220);
             SetCnPointCanvas();
@@ -590,6 +596,12 @@ namespace H130C_Tester
 
         private void rbCn223_Checked(object sender, RoutedEventArgs e)
         {
+            if (!General.CheckPress())
+            {
+                MessageBox.Show("プレス治具のレバーを下げてください");
+                rbNon.IsChecked = true;
+                return;
+            }
             rbState = RB_CN.CN223;
             State.SetCamPropForCn(State.CN_NAME.CN223);
             SetCnPointCanvas();
@@ -597,6 +609,12 @@ namespace H130C_Tester
 
         private void rbCn224_Checked(object sender, RoutedEventArgs e)
         {
+            if (!General.CheckPress())
+            {
+                MessageBox.Show("プレス治具のレバーを下げてください");
+                rbNon.IsChecked = true;
+                return;
+            }
             rbState = RB_CN.CN224;
             State.SetCamPropForCn(State.CN_NAME.CN224);
             SetCnPointCanvas();
@@ -604,6 +622,12 @@ namespace H130C_Tester
 
         private void rbCn225_Checked(object sender, RoutedEventArgs e)
         {
+            if (!General.CheckPress())
+            {
+                MessageBox.Show("プレス治具のレバーを下げてください");
+                rbNon.IsChecked = true;
+                return;
+            }
             rbState = RB_CN.CN225;
             State.SetCamPropForCn(State.CN_NAME.CN225);
             SetCnPointCanvas();
@@ -611,6 +635,12 @@ namespace H130C_Tester
 
         private void rbCn226_Checked(object sender, RoutedEventArgs e)
         {
+            if (!General.CheckPress())
+            {
+                MessageBox.Show("プレス治具のレバーを下げてください");
+                rbNon.IsChecked = true;
+                return;
+            }
             rbState = RB_CN.CN226;
             State.SetCamPropForCn(State.CN_NAME.CN226);
             SetCnPointCanvas();
@@ -618,6 +648,12 @@ namespace H130C_Tester
 
         private void rbJp1_Checked(object sender, RoutedEventArgs e)
         {
+            if (!General.CheckPress())
+            {
+                MessageBox.Show("プレス治具のレバーを下げてください");
+                rbNon.IsChecked = true;
+                return;
+            }
             rbState = RB_CN.JP1;
             State.SetCamPropForCn(State.CN_NAME.JP1);
             SetCnPointCanvas();
@@ -689,6 +725,12 @@ namespace H130C_Tester
         bool cnTesting;
         private async void buttonCnTest_Click(object sender, RoutedEventArgs e)
         {
+            if (!General.CheckPress())
+            {
+                MessageBox.Show("プレス治具のレバーを下げてください");
+                return;
+            }
+
             if (cnTesting) return;
 
             ResetLight();

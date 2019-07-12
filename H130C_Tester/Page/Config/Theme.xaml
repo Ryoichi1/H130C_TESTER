@@ -25,7 +25,7 @@
         <Image x:Name="Pic3" Canvas.Left="320" Canvas.Top="39" Width="129" Cursor="Hand" PreviewMouseLeftButtonDown="Pic3_PreviewMouseLeftButtonDown" Height="77">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="128"
-        			UriSource="/Resources/Pic/MM-100.jpg"/>
+        			UriSource="/Resources/Pic/casey.jpg"/>
             </Image.Source>
         </Image>
 

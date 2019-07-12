@@ -486,7 +486,7 @@
             </Canvas>
         </Canvas>
 
-        <Canvas x:Name="canvasTestSetting" Height="129" Canvas.Left="941" Canvas.Top="246" Width="298" IsEnabled="{Binding TestSettingEnable}">
+        <Canvas x:Name="canvasTestSetting" Height="129" Canvas.Left="941" Canvas.Top="246" Width="300" IsEnabled="{Binding TestSettingEnable}">
             <Canvas.Background>
                 <SolidColorBrush Color="White" Opacity="0.1"/>
             </Canvas.Background>
@@ -681,7 +681,7 @@
                 <SolidColorBrush Color="#FF125191" Opacity="0.6"/>
             </Button.Background>
         </Button>
-        <Canvas x:Name="CanvasComm_Copy" Height="73" Canvas.Left="687" Canvas.Top="73" Width="547">
+        <Canvas x:Name="CanvasComm_Copy" Height="73" Canvas.Left="687" Canvas.Top="73" Width="554">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="18"/>

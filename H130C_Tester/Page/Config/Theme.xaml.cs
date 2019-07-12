@@ -37,7 +37,7 @@ namespace H130C_Tester
         private void Pic3_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
-            State.VmMainWindow.Theme = "Resources/Pic/MM-100.jpg";
+            State.VmMainWindow.Theme = "Resources/Pic/casey.jpg";
             General.Show();
         }
 
