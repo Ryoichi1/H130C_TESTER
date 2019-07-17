@@ -134,7 +134,7 @@
                 <Label BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" Canvas.Left="85" Canvas.Top="123" Width="40" Content="{Binding LumLed6}" Background="{Binding ColLumLed6}"  Height="16"  HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="11"  />
                 <Label BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" Canvas.Left="85" Canvas.Top="141" Width="40" Content="{Binding LumLed7}" Background="{Binding ColLumLed7}"  Height="16"  HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="11"  />
                 <Label BorderBrush="White" BorderThickness="1" VerticalContentAlignment="Center" Canvas.Left="85" Canvas.Top="159" Width="40" Content="{Binding LumLed8}" Background="{Binding ColLumLed8}"  Height="16"  HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="11"  />
-                <TextBlock TextWrapping="Wrap" Text="LED 赤" Foreground="White" RenderTransformOrigin="0.494,0.611" Height="18" Canvas.Left="18" Width="54" Canvas.Top="188"/>
+                <TextBlock TextWrapping="Wrap" Text="LED 緑" Foreground="White" RenderTransformOrigin="0.494,0.611" Height="18" Canvas.Left="18" Width="54" Canvas.Top="188"/>
                 <Border BorderBrush="#FF0097FF" BorderThickness="1" Height="1" Canvas.Left="17" Canvas.Top="203" Width="115" Background="#FF0097FF" RenderTransformOrigin="0.5,0.5">
                     <Border.Effect>
                         <DropShadowEffect Color="#FF00F3FF" BlurRadius="50" Direction="0" ShadowDepth="0"/>
