@@ -106,7 +106,7 @@ namespace H130C_Tester
             }
             finally
             {
-                Thread.Sleep(150);
+                Thread.Sleep(50);
             }
         }
 

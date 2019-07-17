@@ -400,28 +400,6 @@
                     <DropShadowEffect Color="#FF09A0F7" Direction="0" ShadowDepth="0" BlurRadius="20"/>
                 </Label.Effect>
             </Label>
-            <TextBlock x:Name="textBlock2_Copy11" TextWrapping="Wrap" Text="合格" FontSize="16" Foreground="#FF0DB2FF" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="35" RenderTransformOrigin="0.5,0.5" Canvas.Top="3" Canvas.Left="80">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-            </TextBlock>
-            <Label x:Name="labelStateRetry_Copy" Content="{Binding OkCount}" Height="24" Canvas.Left="116" Canvas.Top="1" Width="40" VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="{x:Null}" FontSize="16"/>
-            <TextBlock x:Name="textBlock2_Copy12" TextWrapping="Wrap" Text="不合格" FontSize="16" Foreground="#FFBF08AF" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="51" RenderTransformOrigin="0.5,0.5" Canvas.Top="3" Canvas.Left="162">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-            </TextBlock>
-            <Label x:Name="labelStateRetry_Copy1" Content="{Binding NgCount}" Height="24" Canvas.Left="215" Canvas.Top="1" Width="40" VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="{x:Null}" FontSize="16"/>
 
         </Canvas>
         <Label x:Name="labelMessage" Content="{Binding Message, Mode=TwoWay, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="71" VerticalAlignment="Center" Width="1326" Canvas.Left="7" Canvas.Top="2" FontSize="48" Foreground="White" VerticalContentAlignment="Center">
@@ -447,7 +425,7 @@
                 <SolidColorBrush Color="White" Opacity="0.1"/>
             </Canvas.Background>
 
-            <TextBox x:Name="tbTestLog" Height="215" Canvas.Left="8" TextWrapping="Wrap" Canvas.Top="33" Width="352" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" VerticalScrollBarVisibility="Auto" SelectionBrush="{x:Null}" BorderThickness="0" CaretBrush="{x:Null}" IsReadOnly="True" FontSize="14" TextChanged="tbTestLog_TextChanged" Text="{Binding TestLog}">
+            <TextBox x:Name="tbTestLog" Height="215" Canvas.Left="8" TextWrapping="Wrap" Canvas.Top="33" Width="352" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" VerticalScrollBarVisibility="Auto" SelectionBrush="{x:Null}" BorderThickness="0" CaretBrush="{x:Null}" IsReadOnly="True" FontSize="20" TextChanged="tbTestLog_TextChanged" Text="{Binding TestLog}">
                 <TextBox.Effect>
                     <DropShadowEffect Color="#FF00E8FF" BlurRadius="15" Direction="0" ShadowDepth="0"/>
                 </TextBox.Effect>
@@ -458,8 +436,6 @@
                     <DropShadowEffect Color="#FF09A0F7" Direction="0" ShadowDepth="0" BlurRadius="20"/>
                 </Label.Effect>
             </Label>
-            <Label x:Name="tbTestTime" Content="{Binding TestTime}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="63" Canvas.Left="297" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" Padding="0" Canvas.Top="4"/>
-            <Label x:Name="labelStateRetry" Content="リトライ" Height="20" Canvas.Left="222" Width="59" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="1" Canvas.Top="5" Background="#FF0C92F0" Visibility="{Binding RetryLabelVis}"/>
         </Canvas>
 
 
@@ -508,7 +484,7 @@
                 </ed:Arc.Effect>
 
             </ed:Arc>
-            <Label x:Name="labelProgress" Content="{Binding 進捗度, Converter={StaticResource ProgConverter}}" Canvas.Left="44" Canvas.Top="58" FontSize="60" RenderTransformOrigin="0.432,0.208" Width="166" HorizontalContentAlignment="Center" Height="100" FontFamily="Segoe UI Light" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0">
+            <Label x:Name="labelProgress" Content="{Binding 進捗度, Converter={StaticResource ProgConverter}}" Canvas.Left="10" Canvas.Top="40" FontSize="52" RenderTransformOrigin="0.432,0.208" Width="236" HorizontalContentAlignment="Center" Height="71" FontFamily="Segoe UI Light" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="1.4"/>
@@ -521,6 +497,31 @@
                     <DropShadowEffect Color="#FF0BF0FB" BlurRadius="20" Direction="0" ShadowDepth="0"/>
                 </Label.Effect>
             </Label>
+            <Rectangle Fill="#FFF4F4F5" Height="1" Canvas.Left="19" Canvas.Top="126" Width="215"/>
+            <Label x:Name="labelStateRetry" Content="リトライ" Height="27" Canvas.Left="44" Width="58" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="1" Canvas.Top="170" Background="#FF0C92F0" Visibility="{Binding RetryLabelVis}"/>
+            <Label x:Name="tbTestTime" Content="{Binding TestTime}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="38" Width="100" Canvas.Left="19" FontSize="30" Foreground="White" FontFamily="Segoe UI Light" Padding="0" Canvas.Top="124" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <TextBlock x:Name="textBlock2_Copy11" TextWrapping="Wrap" Text="合格" FontSize="18" Foreground="#FF0DB2FF" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="38" RenderTransformOrigin="0.5,0.5" Canvas.Top="135" Canvas.Left="134">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <Label x:Name="labelStateRetry_Copy" Height="32" Canvas.Left="172" Canvas.Top="129" Width="49" VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="{x:Null}" FontSize="18" HorizontalContentAlignment="Center" Content="{Binding OkCount}"/>
+            <TextBlock x:Name="textBlock2_Copy12" TextWrapping="Wrap" Text="不合格" FontSize="18" Foreground="#FFBF08AF" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="54" RenderTransformOrigin="0.5,0.5" Canvas.Top="167" Canvas.Left="119">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <Label x:Name="labelStateRetry_Copy1" Height="34" Canvas.Left="172" Canvas.Top="161" Width="50" VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="{x:Null}" FontSize="18" HorizontalContentAlignment="Center" Content="{Binding NgCount}"/>
 
         </Canvas>
         <Label Content="" Height="1" Canvas.Left="9" Canvas.Top="69" Width="1324" Background="#FF0388F7">

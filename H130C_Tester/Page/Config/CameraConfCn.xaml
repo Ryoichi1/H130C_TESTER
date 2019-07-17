@@ -114,11 +114,10 @@
         </Canvas>
 
 
-        <Canvas Height="347" Width="372" Canvas.Left="671" Canvas.Top="5">
+        <Canvas Height="363" Width="372" Canvas.Left="671" Canvas.Top="5">
             <Canvas.Background>
                 <SolidColorBrush Color="#FF4997C3" Opacity="0.2"/>
             </Canvas.Background>
-            <Controls:ToggleSwitch x:Name="toggleSw" FontFamily="Meiryo UI" Foreground="White" ThumbIndicatorDisabledBrush="#FF1758C9" OffSwitchBrush="#FFD3DBE2" ThumbIndicatorBrush="#FF35A9D4" OnSwitchBrush="#CC0A99FD" FlowDirection="RightToLeft" Margin="147,0,0,298" OffLabel="Closing" OnLabel="Opening" Checked="toggleSw_Checked" Unchecked="toggleSw_Unchecked" HorizontalAlignment="Left" Width="152" HorizontalContentAlignment="Right" />
             <Label Content="カメラプロパティ" Height="36" Canvas.Left="3" Width="112" Foreground="#FF0EC2D4" BorderBrush="{x:Null}" Canvas.Top="2"/>
             <TextBlock Height="17" Canvas.Left="24" TextWrapping="Wrap" Canvas.Top="43" Width="47" Foreground="White" FontSize="14" Text="明るさ"/>
             <TextBlock Height="21" Canvas.Left="23" TextWrapping="Wrap" Canvas.Top="64" Width="48" Foreground="White" FontSize="14" Text="ｺﾝﾄﾗｽﾄ"/>
@@ -129,9 +128,6 @@
             <TextBlock Height="21" Canvas.Left="35" TextWrapping="Wrap" Canvas.Top="185" Width="32" Foreground="White" FontSize="14" Text="露出"/>
             <TextBlock Height="21" Canvas.Left="6" TextWrapping="Wrap" Canvas.Top="209" Width="66" Foreground="White" FontSize="14" Text="ﾎﾜｲﾄﾊﾞﾗﾝｽ"/>
             <TextBlock Height="21" Canvas.Left="13" TextWrapping="Wrap" Canvas.Top="236" Width="56" Foreground="White" FontSize="14" Text="傾き補正"/>
-            <TextBlock Height="21" Canvas.Left="6" TextWrapping="Wrap" Canvas.Top="260" Width="71" Foreground="White" FontSize="14" Text="二値化Lev"/>
-            <TextBlock Height="21" Canvas.Left="11" TextWrapping="Wrap" Canvas.Top="283" Width="61" Foreground="White" FontSize="14" Text="拡張回数"/>
-            <TextBlock Height="21" Canvas.Left="11" TextWrapping="Wrap" Canvas.Top="308" Width="60" Foreground="White" FontSize="14" Text="収縮回数"/>
             <TextBlock Height="21" Canvas.Left="263" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderCamPropB}" Canvas.Top="40" Width="40" Foreground="White" FontSize="14"/>
             <TextBlock Height="16" Canvas.Left="263" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderCamPropC}" Canvas.Top="67" Width="40" Foreground="White" FontSize="14"/>
             <TextBlock Height="21" Canvas.Left="263" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderCamPropH}" Canvas.Top="88" Width="40" Foreground="White" FontSize="14"/>
@@ -141,9 +137,6 @@
             <TextBlock Height="21" Canvas.Left="263" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderCamPropE}" Canvas.Top="185" Width="40" Foreground="White" FontSize="14"/>
             <TextBlock Height="21" Canvas.Left="263" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderCamPropW}" Canvas.Top="209" Width="40" Foreground="White" FontSize="14"/>
             <TextBlock Height="21" Canvas.Left="263" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderCamPropTheta}" Canvas.Top="236" Width="40" Foreground="White" FontSize="14"/>
-            <TextBlock Height="21" Canvas.Left="263" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderBinLev}" Canvas.Top="260" Width="40" Foreground="White" FontSize="14"/>
-            <TextBlock Height="21" Canvas.Left="263" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderOpenCnt}" Canvas.Top="283" Width="40" Foreground="White" FontSize="14"/>
-            <TextBlock Height="21" Canvas.Left="263" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderCloseCnt}" Canvas.Top="308" Width="40" Foreground="White" FontSize="14"/>
             <Slider x:Name="sliderCamPropB" Height="8" Canvas.Left="76" Canvas.Top="45" Width="180" Minimum="-64" Value="{Binding Brightness}" IsSnapToTickEnabled="True" Maximum="64" Style="{DynamicResource FlatSlider}"/>
             <Slider x:Name="sliderCamPropC" Height="8" Canvas.Left="77" Canvas.Top="69" Width="180" Maximum="95" Value="{Binding Contrast}" IsSnapToTickEnabled="True" Style="{DynamicResource FlatSlider}"/>
             <Slider x:Name="sliderCamPropH" Height="8" Canvas.Left="76" Canvas.Top="92" Width="180" Maximum="2000" Minimum="-2000" Value="{Binding Hue}" IsSnapToTickEnabled="True" Style="{DynamicResource FlatSlider}"/>
@@ -153,9 +146,6 @@
             <Slider x:Name="sliderCamPropE" Height="8" Canvas.Left="76" Canvas.Top="188" Width="180" Maximum="0" Minimum="-7" Value="{Binding Exposure}" IsSnapToTickEnabled="True" Style="{DynamicResource FlatSlider}"/>
             <Slider x:Name="sliderCamPropW" Height="8" Canvas.Left="76" Canvas.Top="213" Width="180" Maximum="6500" Minimum="2800" Value="{Binding Wb}" IsSnapToTickEnabled="True" Style="{DynamicResource FlatSlider}" SmallChange="1"/>
             <Slider x:Name="sliderCamPropTheta" Height="8" Canvas.Left="77" Canvas.Top="240" Width="180" Value="{Binding Theta}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="0.05" Maximum="180" Style="{DynamicResource FlatSlider}"/>
-            <Slider x:Name="sliderBinLev" Height="8" Canvas.Left="77" Canvas.Top="264" Width="180" Value="{Binding BinLevel}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="0.05" Maximum="250" Style="{DynamicResource FlatSlider}"/>
-            <Slider x:Name="sliderOpenCnt" Height="8" Canvas.Left="77" Canvas.Top="287" Width="180" Value="{Binding openCnt}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="1" Maximum="5" Style="{DynamicResource FlatSlider}"/>
-            <Slider x:Name="sliderCloseCnt" Height="8" Canvas.Left="77" Canvas.Top="312" Width="180" Value="{Binding closeCnt}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="1" Maximum="5" Style="{DynamicResource FlatSlider}"/>
         </Canvas>
         <Border BorderBrush="#FF00DCFF" BorderThickness="1" Height="370" Width="650" Canvas.Left="11" Canvas.Top="3"/>
         <Canvas x:Name="CanvasImg" Canvas.Left="16" Canvas.Top="8" Width="640" Height="360">

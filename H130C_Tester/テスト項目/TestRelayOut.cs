@@ -86,7 +86,7 @@ namespace H130C_Tester
             }
             finally
             {
-                Sleep(50);
+                Sleep(60);
             }
         }
 
@@ -354,7 +354,9 @@ namespace H130C_Tester
                                     General.MainIo.SendData1768("MeasRy8");
                                     break;
                             }
-                            Sleep(700);
+                            //上記 MeasRy*コマンド送信後、製品側でリレーをONするとmbedを介して[STX]OK[ETX]が帰ってくる
+                            //この時点でmbedはリレーON状態のカウント完了しているので、wait入れずにmeas?コマンドを送信しても良い
+
                             General.MainIo.SendData1768("meas?");
                             var re = General.MainIo.RecieveData;
                             l.time = GetMicroTime(re);
@@ -436,10 +438,11 @@ namespace H130C_Tester
                 var list = data.Split(',').ToList();//カンマ区切りなので、リスト化する
                 var indexFall = list.FindIndex(l => l == "L");//立ち下がりを検出
                 list = list.Skip(indexFall).ToList();//立ち下がり前のデータを削除
-                var indexRise = list.FindIndex(l => l == "H");//立ち上がりを検出
-                list = list.Take(indexRise).ToList();//立ち上がり後のデータを削除
-                var Ontime = list.Count() * 10.0;//mbedが10uSec毎に取り込んでいる
-                return Ontime;
+                list.Reverse();//反転 →　H,H,H,・・・・H,H,H,L,L,L,L
+                var indexRise = list.FindIndex(l => l == "L");//立ち下がりを検出
+                list = list.Skip(indexRise).ToList();//立ち下がり前のデータを削除
+                var OntimeMsec = list.Count() * 10.0 * 1E-6 * 1E3;//mbedが10uSec毎に取り込んでいる
+                return OntimeMsec;
             }
             catch
             {

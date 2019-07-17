@@ -255,7 +255,7 @@ namespace H130C_Tester
 
         public static void CheckColorForDebug()
         {
-            var side = 25;
+            var side = 30;
             var X = 0;
             var Y = 0;
 
@@ -289,7 +289,7 @@ namespace H130C_Tester
                             foreach (var j in Enumerable.Range(0, side))
                             {
                                 var re = mat.At<OpenCvSharp.CPlusPlus.Vec3b>(Y - (side / 2) + i, X - (side / 2) + j);
-                                if (re[0] != 0 && re[1] > 200 && re[2] > 200)
+                                if (re[0] != 0 && re[1] > 150 && re[2] > 150)
                                 {
                                     ListH.Add(re[0]);
                                     ListS.Add(re[1]);

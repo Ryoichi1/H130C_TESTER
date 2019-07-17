@@ -74,16 +74,16 @@ namespace H130C_Tester
             new TestSpecs(500, "IOポート検査（入力）", true),
             new TestSpecs(501, "IOポート検査（出力）", true),
 
-            new TestSpecs(600, "フォトカプラ 接点入力（10msec）", true),
+            new TestSpecs(600, "フォトカプラ 接点入力1"/*10msecの確認*/, true),
             new TestSpecs(601, "フォトカプラ 接点入力2", true),
 
-            new TestSpecs(700, "リレー 接点出力（10msec）", true),
+            new TestSpecs(700, "リレー 接点出力1", true),
             new TestSpecs(701, "リレー 接点出力2", true),
 
             new TestSpecs(800, "LEDカラーチェック", true),
             new TestSpecs(801, "LED輝度チェック", true),
 
-            new TestSpecs(900, "製品ソフト書き込み", false),
+            //new TestSpecs(900, "製品ソフト書き込み", false),
         };
 
         //個別設定のロード

@@ -11,7 +11,7 @@
 
         <Button x:Name="buttonReturn" Content="テスト画面に戻る" Height="57" Canvas.Left="10" Canvas.Top="10" Width="174" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" FontSize="18" Click="buttonReturn_Click"  />
         <TextBlock Height="30" Canvas.Left="23" TextWrapping="Wrap" Text="NGリスト" Canvas.Top="98" Width="119" Foreground="White" FontSize="20"/>
-        <TextBox Height="190" Canvas.Left="23" TextWrapping="Wrap" Text="{Binding NgList}" Canvas.Top="133" Width="141" FontSize="18" Background="{x:Null}" BorderBrush="#FF08BCFF"/>
+        <TextBox Height="260" Canvas.Left="23" TextWrapping="Wrap" Text="{Binding NgList}" Canvas.Top="133" Width="141" FontSize="18" Background="{x:Null}" BorderBrush="#FF08BCFF"/>
         <Image Height="450" Canvas.Left="221" Canvas.Top="107" Width="967" Source="/H130C_Tester;component/Resources/Pic/Tempコネクタチェック.jpg" IsEnabled="False"/>
         <Rectangle Height="45" Canvas.Left="648" Canvas.Top="312" Width="85" Visibility="{Binding VisCN220}">
             <Rectangle.Fill>

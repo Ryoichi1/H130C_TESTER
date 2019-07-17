@@ -25,9 +25,22 @@
 				</Setter.Value>
 			</Setter>-->
         </Style>
+        <Storyboard x:Key="SbMessage">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="labelMess">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.7" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
 
 
     </Page.Resources>
+    <!--<Page.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource SbMessage}"/>
+        </EventTrigger>
+    </Page.Triggers>-->
     <Canvas>
         <Canvas.Resources>
             <Style TargetType="Controls:NumericUpDown">
@@ -94,7 +107,7 @@
             <TextBlock x:Name="tbPoint" Height="20" Canvas.Left="517" TextWrapping="Wrap" Text="XY=100/100" Width="113" Foreground="White" RenderTransformOrigin="2.258,7.602" Canvas.Top="6"/>
             <TextBlock x:Name="tbHsv" Height="20" Canvas.Left="517" TextWrapping="Wrap" Text="HSV=100,100,100" Width="115" Foreground="White" RenderTransformOrigin="2.258,7.602" Canvas.Top="26"/>
         </Canvas>
-        <Canvas x:Name="canvasLdPoint" Height="264" Canvas.Left="12" Canvas.Top="379" Width="696">
+        <Canvas x:Name="canvasLdPoint" Height="264" Canvas.Left="12" Canvas.Top="379" Width="828">
             <Canvas.Resources>
                 <Style TargetType="{x:Type Label}">
                     <!--<Style.Setters>コンテンツプロパティのため省略可能-->
@@ -184,5 +197,6 @@
             </Canvas>
             <Label Content="LED調整" Height="24" Width="57" Foreground="#FF0EC2D4" BorderBrush="{x:Null}" Canvas.Top="-2" Canvas.Left="1"/>
         </Canvas>
+        <Label x:Name="labelMess" Height="114" Canvas.Left="531" Canvas.Top="459" Width="299" Background="{x:Null}" Foreground="#FFDA6FF1" BorderBrush="{x:Null}" FontSize="20" Opacity="1"/>
     </Canvas>
 </Page>

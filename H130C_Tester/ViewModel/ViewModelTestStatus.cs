@@ -292,14 +292,6 @@ namespace H130C_Tester
             set { SetProperty(ref _Color1768, value); }
         }
 
-        private Brush _ColorException;
-        public Brush ColorException
-        {
-            get { return _ColorException; }
-            set { SetProperty(ref _ColorException, value); }
-        }
-
-
 
     }
 }

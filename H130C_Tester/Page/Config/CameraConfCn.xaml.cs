@@ -26,7 +26,6 @@ namespace H130C_Tester
             InitializeComponent();
             this.DataContext = General.cam;
             canvasCnPoint.DataContext = State.VmCnPoint;
-            toggleSw.IsChecked = General.cam.Opening;
             RingCnTesting.IsActive = false;
 
         }
@@ -34,6 +33,16 @@ namespace H130C_Tester
         //フォームイベントいろいろ
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            resetView();
+            //フォームロード時真っ暗だと困るので、照明1点灯にしておく
+            OnLight1 = true;
+            //LED側のカメラ調整後だとカメラプロパティが全く異なり撮影画像の見栄えが良くないため、CN220のカメラプロパティに設定しておく
+            State.SetCamPropForCn(State.CN_NAME.CN220);
+
+            buttonLight1.Background = General.OnBrush;
+            General.SetLight1(true);
+
+
             if (!General.cam.CamState)
                 return;
 
@@ -56,7 +65,6 @@ namespace H130C_Tester
             CanChangeCnPoint = false;
             rbNon.IsChecked = true;
 
-            resetView();
 
             //TODO:
             //LEDを全消灯させる処理
@@ -112,73 +120,18 @@ namespace H130C_Tester
         //データ保存いろいろ
         private void resetView()
         {
-            State.VmLedPoint.LED1 = "";
-            State.VmLedPoint.LED2 = "";
-            State.VmLedPoint.LED3 = "";
-            State.VmLedPoint.LED4 = "";
-            State.VmLedPoint.LED5 = "";
-            State.VmLedPoint.LED6 = "";
-            State.VmLedPoint.LED7 = "";
-            State.VmLedPoint.LED8 = "";
-            State.VmLedPoint.LED9 = "";
-            State.VmLedPoint.LED10 = "";
-            State.VmLedPoint.LED11 = "";
-            State.VmLedPoint.LED12 = "";
-            State.VmLedPoint.LED13 = "";
-            State.VmLedPoint.LED14 = "";
-            State.VmLedPoint.LED15 = "";
-            State.VmLedPoint.LED16 = "";
-
-            State.VmLedPoint.LED1Lum = "";
-            State.VmLedPoint.LED2Lum = "";
-            State.VmLedPoint.LED3Lum = "";
-            State.VmLedPoint.LED4Lum = "";
-            State.VmLedPoint.LED5Lum = "";
-            State.VmLedPoint.LED6Lum = "";
-            State.VmLedPoint.LED7Lum = "";
-            State.VmLedPoint.LED8Lum = "";
-            State.VmLedPoint.LED9Lum = "";
-            State.VmLedPoint.LED10Lum = "";
-            State.VmLedPoint.LED11Lum = "";
-            State.VmLedPoint.LED12Lum = "";
-            State.VmLedPoint.LED13Lum = "";
-            State.VmLedPoint.LED14Lum = "";
-            State.VmLedPoint.LED15Lum = "";
-            State.VmLedPoint.LED16Lum = "";
-
-            State.VmLedPoint.LED1Hue = "";
-            State.VmLedPoint.LED2Hue = "";
-            State.VmLedPoint.LED3Hue = "";
-            State.VmLedPoint.LED4Hue = "";
-            State.VmLedPoint.LED5Hue = "";
-            State.VmLedPoint.LED6Hue = "";
-            State.VmLedPoint.LED7Hue = "";
-            State.VmLedPoint.LED8Hue = "";
-            State.VmLedPoint.LED9Hue = "";
-            State.VmLedPoint.LED10Hue = "";
-            State.VmLedPoint.LED11Hue = "";
-            State.VmLedPoint.LED12Hue = "";
-            State.VmLedPoint.LED13Hue = "";
-            State.VmLedPoint.LED14Hue = "";
-            State.VmLedPoint.LED15Hue = "";
-            State.VmLedPoint.LED16Hue = "";
-
-            State.VmLedPoint.ColLED1Hue = General.OffBrush;
-            State.VmLedPoint.ColLED2Hue = General.OffBrush;
-            State.VmLedPoint.ColLED3Hue = General.OffBrush;
-            State.VmLedPoint.ColLED4Hue = General.OffBrush;
-            State.VmLedPoint.ColLED5Hue = General.OffBrush;
-            State.VmLedPoint.ColLED6Hue = General.OffBrush;
-            State.VmLedPoint.ColLED7Hue = General.OffBrush;
-            State.VmLedPoint.ColLED8Hue = General.OffBrush;
-            State.VmLedPoint.ColLED9Hue = General.OffBrush;
-            State.VmLedPoint.ColLED10Hue = General.OffBrush;
-            State.VmLedPoint.ColLED11Hue = General.OffBrush;
-            State.VmLedPoint.ColLED12Hue = General.OffBrush;
-            State.VmLedPoint.ColLED13Hue = General.OffBrush;
-            State.VmLedPoint.ColLED14Hue = General.OffBrush;
-            State.VmLedPoint.ColLED15Hue = General.OffBrush;
-            State.VmLedPoint.ColLED16Hue = General.OffBrush;
+            State.VmCnPoint.ResultCn220 = "";
+            State.VmCnPoint.ResultCn223 = "";
+            State.VmCnPoint.ResultCn224 = "";
+            State.VmCnPoint.ResultCn225 = "";
+            State.VmCnPoint.ResultCn226 = "";
+            State.VmCnPoint.ResultJp1 = "";
+            State.VmCnPoint.ColCn220 = OffBrush;
+            State.VmCnPoint.ColCn223 = OffBrush;
+            State.VmCnPoint.ColCn224 = OffBrush;
+            State.VmCnPoint.ColCn225 = OffBrush;
+            State.VmCnPoint.ColCn226 = OffBrush;
+            State.VmCnPoint.ColJp1 = OffBrush;
         }
 
         private void SaveCnPoint()
@@ -424,6 +377,7 @@ namespace H130C_Tester
             }
             SetLight();
             SetRect();
+            resetView();
         }
 
         private void SetRect()
@@ -733,6 +687,7 @@ namespace H130C_Tester
 
             if (cnTesting) return;
 
+            resetView();
             ResetLight();
             rbNon.IsChecked = true;
 

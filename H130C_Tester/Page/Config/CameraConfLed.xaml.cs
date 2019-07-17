@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using static System.Threading.Thread;
 
 namespace H130C_Tester
@@ -24,6 +25,22 @@ namespace H130C_Tester
         //フォームイベントいろいろ
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            tbPoint.Visibility = System.Windows.Visibility.Hidden;
+            tbHsv.Visibility = System.Windows.Visibility.Hidden;
+            Flags.EnableStartCheck = false;
+
+            buttonSave.IsEnabled = true;
+            buttonLedOn.IsEnabled = true;
+            buttonLabeling.IsEnabled = false;
+            buttonHue.IsEnabled = false;
+
+            buttonSave.Background = General.OffBrush;
+            buttonLedOn.Background = General.OffBrush;
+            buttonLabeling.Background = General.OffBrush;
+            buttonHue.Background = General.OffBrush;
+            resetView();
+            labelMess.Opacity = 0;
+
             if (!General.cam.CamState)
                 return;
 
@@ -35,25 +52,14 @@ namespace H130C_Tester
             General.cam.Start();
             toggleSw.IsChecked = General.cam.Opening;
 
-            tbPoint.Visibility = System.Windows.Visibility.Hidden;
-            tbHsv.Visibility = System.Windows.Visibility.Hidden;
-            Flags.EnableStartCheck = false;
-
-            buttonLedOn.IsEnabled = true;
-            buttonLabeling.IsEnabled = false;
-            buttonHue.IsEnabled = false;
-            buttonSave.IsEnabled = true;
         }
 
         private async void Page_Unloaded(object sender, RoutedEventArgs e)
         {
-            buttonLedOn.Background = General.OffBrush;
-            buttonLabeling.Background = General.OffBrush;
-            resetView();
 
             FlagLabeling = false;
-            buttonLabeling.IsEnabled = true;
-            canvasLdPoint.IsEnabled = true;
+            ShowHue = false;
+            //canvasLdPoint.IsEnabled = true;
 
             //TODO:
             //LEDを全消灯させる処理
@@ -164,8 +170,6 @@ namespace H130C_Tester
             State.VmLedPoint.ColLED16Hue = General.OffBrush;
         }
 
-
-
         private void SaveCameraCommonPropForLed()
         {
             State.CamPropLed.Brightness = General.cam.Brightness;
@@ -185,44 +189,60 @@ namespace H130C_Tester
             State.CamPropLed.CloseCnt = General.cam.closeCnt;
         }
 
-        private void SaveLedPoint()
+        private bool SaveLedPoint()
         {
-            State.CamPropLed.Led1 = State.VmLedPoint.LED1;
-            State.CamPropLed.Led2 = State.VmLedPoint.LED2;
-            State.CamPropLed.Led3 = State.VmLedPoint.LED3;
-            State.CamPropLed.Led4 = State.VmLedPoint.LED4;
-            State.CamPropLed.Led5 = State.VmLedPoint.LED5;
-            State.CamPropLed.Led6 = State.VmLedPoint.LED6;
-            State.CamPropLed.Led7 = State.VmLedPoint.LED7;
-            State.CamPropLed.Led8 = State.VmLedPoint.LED8;
-            State.CamPropLed.Led9 = State.VmLedPoint.LED9;
-            State.CamPropLed.Led10 = State.VmLedPoint.LED10;
-            State.CamPropLed.Led11 = State.VmLedPoint.LED11;
-            State.CamPropLed.Led12 = State.VmLedPoint.LED12;
-            State.CamPropLed.Led13 = State.VmLedPoint.LED13;
-            State.CamPropLed.Led14 = State.VmLedPoint.LED14;
-            State.CamPropLed.Led15 = State.VmLedPoint.LED15;
-            State.CamPropLed.Led16 = State.VmLedPoint.LED16;
+            try
+            {
+                State.CamPropLed.Led1 = State.VmLedPoint.LED1;
+                State.CamPropLed.Led2 = State.VmLedPoint.LED2;
+                State.CamPropLed.Led3 = State.VmLedPoint.LED3;
+                State.CamPropLed.Led4 = State.VmLedPoint.LED4;
+                State.CamPropLed.Led5 = State.VmLedPoint.LED5;
+                State.CamPropLed.Led6 = State.VmLedPoint.LED6;
+                State.CamPropLed.Led7 = State.VmLedPoint.LED7;
+                State.CamPropLed.Led8 = State.VmLedPoint.LED8;
+                State.CamPropLed.Led9 = State.VmLedPoint.LED9;
+                State.CamPropLed.Led10 = State.VmLedPoint.LED10;
+                State.CamPropLed.Led11 = State.VmLedPoint.LED11;
+                State.CamPropLed.Led12 = State.VmLedPoint.LED12;
+                State.CamPropLed.Led13 = State.VmLedPoint.LED13;
+                State.CamPropLed.Led14 = State.VmLedPoint.LED14;
+                State.CamPropLed.Led15 = State.VmLedPoint.LED15;
+                State.CamPropLed.Led16 = State.VmLedPoint.LED16;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        private void SaveLedLum()
+        private bool SaveLedLum()
         {
-            State.CamPropLed.LumLed1 = Double.Parse(State.VmLedPoint.LED1Lum);
-            State.CamPropLed.LumLed2 = Double.Parse(State.VmLedPoint.LED2Lum);
-            State.CamPropLed.LumLed3 = Double.Parse(State.VmLedPoint.LED3Lum);
-            State.CamPropLed.LumLed4 = Double.Parse(State.VmLedPoint.LED4Lum);
-            State.CamPropLed.LumLed5 = Double.Parse(State.VmLedPoint.LED5Lum);
-            State.CamPropLed.LumLed6 = Double.Parse(State.VmLedPoint.LED6Lum);
-            State.CamPropLed.LumLed7 = Double.Parse(State.VmLedPoint.LED7Lum);
-            State.CamPropLed.LumLed8 = Double.Parse(State.VmLedPoint.LED8Lum);
-            State.CamPropLed.LumLed9 = Double.Parse(State.VmLedPoint.LED9Lum);
-            State.CamPropLed.LumLed10 = Double.Parse(State.VmLedPoint.LED10Lum);
-            State.CamPropLed.LumLed11 = Double.Parse(State.VmLedPoint.LED11Lum);
-            State.CamPropLed.LumLed12 = Double.Parse(State.VmLedPoint.LED12Lum);
-            State.CamPropLed.LumLed13 = Double.Parse(State.VmLedPoint.LED13Lum);
-            State.CamPropLed.LumLed14 = Double.Parse(State.VmLedPoint.LED14Lum);
-            State.CamPropLed.LumLed15 = Double.Parse(State.VmLedPoint.LED15Lum);
-            State.CamPropLed.LumLed16 = Double.Parse(State.VmLedPoint.LED16Lum);
+            try
+            {
+                State.CamPropLed.LumLed1 = Double.Parse(State.VmLedPoint.LED1Lum);
+                State.CamPropLed.LumLed2 = Double.Parse(State.VmLedPoint.LED2Lum);
+                State.CamPropLed.LumLed3 = Double.Parse(State.VmLedPoint.LED3Lum);
+                State.CamPropLed.LumLed4 = Double.Parse(State.VmLedPoint.LED4Lum);
+                State.CamPropLed.LumLed5 = Double.Parse(State.VmLedPoint.LED5Lum);
+                State.CamPropLed.LumLed6 = Double.Parse(State.VmLedPoint.LED6Lum);
+                State.CamPropLed.LumLed7 = Double.Parse(State.VmLedPoint.LED7Lum);
+                State.CamPropLed.LumLed8 = Double.Parse(State.VmLedPoint.LED8Lum);
+                State.CamPropLed.LumLed9 = Double.Parse(State.VmLedPoint.LED9Lum);
+                State.CamPropLed.LumLed10 = Double.Parse(State.VmLedPoint.LED10Lum);
+                State.CamPropLed.LumLed11 = Double.Parse(State.VmLedPoint.LED11Lum);
+                State.CamPropLed.LumLed12 = Double.Parse(State.VmLedPoint.LED12Lum);
+                State.CamPropLed.LumLed13 = Double.Parse(State.VmLedPoint.LED13Lum);
+                State.CamPropLed.LumLed14 = Double.Parse(State.VmLedPoint.LED14Lum);
+                State.CamPropLed.LumLed15 = Double.Parse(State.VmLedPoint.LED15Lum);
+                State.CamPropLed.LumLed16 = Double.Parse(State.VmLedPoint.LED16Lum);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
 
@@ -340,42 +360,186 @@ namespace H130C_Tester
                 return;
             }
 
-            //LED全点灯の処理
-            buttonSave.Background = Brushes.DodgerBlue;
-            buttonLedOn.IsEnabled = false;
-            IsBusy = true;
-
-            State.SetCamPropForLed();//LEDチェック用にカメラプロパティを切り替える
-
-            await Task.Run(() => General.PowSupply(true));
-            await General.LedAllOn();
-
-            FlagLabeling = true;
-            labeling();
-            await Task.Run(() =>
+            try
             {
-                while (true)
+                //LED全点灯の処理
+                buttonSave.Background = Brushes.DodgerBlue;
+                buttonLedOn.IsEnabled = false;
+                IsBusy = true;
+
+                await Task.Run(() => General.PowSupply(true));
+                await General.LedAllOn();
+
+                var tm = new GeneralTimer(3000);
+                tm.start();
+
+                FlagLabeling = true;
+                labeling();
+
+                await Task.Run(() =>
                 {
-                    if (CanSaveLedPpint)
-                        break;
+                    while (true)
+                    {
+                        if (tm.FlagTimeout)
+                            break;
+                        if (CanSaveLedPpint)
+                            break;
+                    }
+                });
+
+                if (!CanSaveLedPpint)
+                {
+                    goto FAIL;
                 }
-            });
+                else
+                {
+                    await Task.Delay(1000);
+                    if (!SaveLedPoint()/*座標保存*/ || !SaveLedLum()/*輝度保存*/)
+                        goto FAIL;
 
-            await Task.Delay(1000);
+                    SaveCameraCommonPropForLed();//カメラプロパティ保存
 
-            SaveLedPoint();
-            SaveLedLum();
-            SaveCameraCommonPropForLed();
-            FlagLabeling = false;
-            General.PlaySound(General.soundSuccess);
-            await Task.Delay(150);
-            buttonSave.Background = Brushes.Transparent;
+                    //カラーチェック
+                    FlagLabeling = false;
+                    General.cam.ResetFlag();
 
-            buttonLedOn.IsEnabled = true;
-            IsBusy = false;
+                    await Task.Delay(1000);
 
-            General.ResetIo();
+                    TestLed.CheckColorForDebug();
+                    if (!CheckCol())
+                        goto FAIL;
+
+                    General.PlaySound(General.soundSuccess);
+                    labelMess.Content = "自動補正完了しました！";
+                    (FindResource("SbMessage") as Storyboard).Begin();
+                    await Task.Delay(1000);
+                    return;
+                }
+
+            FAIL:
+                General.PlaySound(General.soundFail);
+                labelMess.Content = "LED全点灯が認識できません\nカメラプロパティの調整をしてください";
+                (FindResource("SbMessage") as Storyboard).Begin();
+                await Task.Delay(1000);
+
+            }
+            finally
+            {
+                FlagLabeling = false;
+                await Task.Delay(150);
+                buttonSave.Background = Brushes.Transparent;
+
+                buttonLedOn.IsEnabled = true;
+                IsBusy = false;
+                General.ResetIo();
+            }
+
         }
+
+
+        private bool CheckCol()
+        {
+
+            var ColCheck = true;
+
+            try
+            {
+                //RED
+                if (!(State.TestSpec.RedHueMin < Int32.Parse(State.VmLedPoint.LED1Hue) && Int32.Parse(State.VmLedPoint.LED1Hue) < State.TestSpec.RedHueMax))
+                {
+                    State.VmLedPoint.ColLED1Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.RedHueMin < Int32.Parse(State.VmLedPoint.LED2Hue) && Int32.Parse(State.VmLedPoint.LED2Hue) < State.TestSpec.RedHueMax))
+                {
+                    State.VmLedPoint.ColLED2Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.RedHueMin < Int32.Parse(State.VmLedPoint.LED3Hue) && Int32.Parse(State.VmLedPoint.LED3Hue) < State.TestSpec.RedHueMax))
+                {
+                    State.VmLedPoint.ColLED3Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.RedHueMin < Int32.Parse(State.VmLedPoint.LED4Hue) && Int32.Parse(State.VmLedPoint.LED4Hue) < State.TestSpec.RedHueMax))
+                {
+                    State.VmLedPoint.ColLED4Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.RedHueMin < Int32.Parse(State.VmLedPoint.LED5Hue) && Int32.Parse(State.VmLedPoint.LED5Hue) < State.TestSpec.RedHueMax))
+                {
+                    State.VmLedPoint.ColLED5Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.RedHueMin < Int32.Parse(State.VmLedPoint.LED6Hue) && Int32.Parse(State.VmLedPoint.LED6Hue) < State.TestSpec.RedHueMax))
+                {
+                    State.VmLedPoint.ColLED6Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.RedHueMin < Int32.Parse(State.VmLedPoint.LED7Hue) && Int32.Parse(State.VmLedPoint.LED7Hue) < State.TestSpec.RedHueMax))
+                {
+                    State.VmLedPoint.ColLED7Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.RedHueMin < Int32.Parse(State.VmLedPoint.LED8Hue) && Int32.Parse(State.VmLedPoint.LED8Hue) < State.TestSpec.RedHueMax))
+                {
+                    State.VmLedPoint.ColLED8Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+
+                //GREEN
+                if (!(State.TestSpec.GreenHueMin < Int32.Parse(State.VmLedPoint.LED9Hue) && Int32.Parse(State.VmLedPoint.LED9Hue) < State.TestSpec.GreenHueMax))
+                {
+                    State.VmLedPoint.ColLED9Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.GreenHueMin < Int32.Parse(State.VmLedPoint.LED10Hue) && Int32.Parse(State.VmLedPoint.LED10Hue) < State.TestSpec.GreenHueMax))
+                {
+                    State.VmLedPoint.ColLED10Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.GreenHueMin < Int32.Parse(State.VmLedPoint.LED11Hue) && Int32.Parse(State.VmLedPoint.LED11Hue) < State.TestSpec.GreenHueMax))
+                {
+                    State.VmLedPoint.ColLED11Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.GreenHueMin < Int32.Parse(State.VmLedPoint.LED12Hue) && Int32.Parse(State.VmLedPoint.LED12Hue) < State.TestSpec.GreenHueMax))
+                {
+                    State.VmLedPoint.ColLED12Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.GreenHueMin < Int32.Parse(State.VmLedPoint.LED13Hue) && Int32.Parse(State.VmLedPoint.LED13Hue) < State.TestSpec.GreenHueMax))
+                {
+                    State.VmLedPoint.ColLED13Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.GreenHueMin < Int32.Parse(State.VmLedPoint.LED14Hue) && Int32.Parse(State.VmLedPoint.LED14Hue) < State.TestSpec.GreenHueMax))
+                {
+                    State.VmLedPoint.ColLED14Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.GreenHueMin < Int32.Parse(State.VmLedPoint.LED15Hue) && Int32.Parse(State.VmLedPoint.LED15Hue) < State.TestSpec.GreenHueMax))
+                {
+                    State.VmLedPoint.ColLED15Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+                if (!(State.TestSpec.GreenHueMin < Int32.Parse(State.VmLedPoint.LED16Hue) && Int32.Parse(State.VmLedPoint.LED16Hue) < State.TestSpec.GreenHueMax))
+                {
+                    State.VmLedPoint.ColLED16Hue = Brushes.Gray;
+                    ColCheck = false;
+                }
+
+                return ColCheck;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+
+
 
         bool LedOn;
         private async void buttonLedOn_Click(object sender, RoutedEventArgs e)
@@ -389,9 +553,6 @@ namespace H130C_Tester
             if (FlagLabeling || ShowHue)
                 return;
 
-
-            //TODO: 全点灯させる処理
-            State.SetCamPropForLed();//LEDチェック用にカメラプロパティを切り替える
 
             LedOn = !LedOn;
 
@@ -416,22 +577,6 @@ namespace H130C_Tester
             }
 
         }
-
-
-        //カメラプロパティ調整いろいろ
-        private void toggleSw_Checked(object sender, RoutedEventArgs e)
-        {
-            General.cam.Opening = true;
-        }
-
-        private void toggleSw_Unchecked(object sender, RoutedEventArgs e)
-        {
-            General.cam.Opening = false;
-        }
-
-        //コネクタ画像取得いろいろ
-
-
 
         bool ShowHue;
         private void buttonHue_Click(object sender, RoutedEventArgs e)
@@ -460,6 +605,19 @@ namespace H130C_Tester
                 General.cam.ResetFlag();
             }
         }
+
+        //カメラプロパティ調整いろいろ
+        private void toggleSw_Checked(object sender, RoutedEventArgs e)
+        {
+            General.cam.Opening = true;
+        }
+
+        private void toggleSw_Unchecked(object sender, RoutedEventArgs e)
+        {
+            General.cam.Opening = false;
+        }
+
+
 
     }
 }
