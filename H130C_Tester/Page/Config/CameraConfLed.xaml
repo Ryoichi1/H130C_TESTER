@@ -29,8 +29,8 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="labelMess">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2.7" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.7" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4.0" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
 
@@ -94,8 +94,8 @@
             <Slider x:Name="sliderCamPropW" Height="8" Canvas.Left="76" Canvas.Top="213" Width="180" Maximum="6500" Minimum="2800" Value="{Binding Wb}" IsSnapToTickEnabled="True" Style="{DynamicResource FlatSlider}" SmallChange="1"/>
             <Slider x:Name="sliderCamPropTheta" Height="8" Canvas.Left="77" Canvas.Top="240" Width="180" Value="{Binding Theta}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="0.05" Maximum="180" Style="{DynamicResource FlatSlider}"/>
             <Slider x:Name="sliderBinLev" Height="8" Canvas.Left="77" Canvas.Top="264" Width="180" Value="{Binding BinLevel}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="0.05" Maximum="250" Style="{DynamicResource FlatSlider}"/>
-            <Slider x:Name="sliderOpenCnt" Height="8" Canvas.Left="77" Canvas.Top="287" Width="180" Value="{Binding openCnt}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="1" Maximum="5" Style="{DynamicResource FlatSlider}"/>
-            <Slider x:Name="sliderCloseCnt" Height="8" Canvas.Left="77" Canvas.Top="312" Width="180" Value="{Binding closeCnt}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="1" Maximum="5" Style="{DynamicResource FlatSlider}"/>
+            <Slider x:Name="sliderOpenCnt" Height="8" Canvas.Left="77" Canvas.Top="287" Width="180" Value="{Binding OpenCnt}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="1" Maximum="5" Style="{DynamicResource FlatSlider}"/>
+            <Slider x:Name="sliderCloseCnt" Height="8" Canvas.Left="77" Canvas.Top="312" Width="180" Value="{Binding CloseCnt}" TickFrequency="0.05" IsSnapToTickEnabled="True" SmallChange="1" Maximum="5" Style="{DynamicResource FlatSlider}"/>
             <Button x:Name="buttonLedOn" Content="LED全点灯"  Height="30" Canvas.Left="326" Canvas.Top="46" Width="88" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="1" Padding="0" Click="buttonLedOn_Click"/>
             <Button x:Name="buttonLabeling" Content="ラベリング"  Height="30" Canvas.Left="326" Canvas.Top="81" Width="88" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="1" Padding="0" Click="buttonLabeling_Click"/>
             <Button x:Name="buttonHue" Content="色相表示"  Height="30" Canvas.Left="326" Canvas.Top="117" Width="88" FontSize="16" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="1" Padding="0" Click="buttonHue_Click"/>
@@ -193,7 +193,8 @@
                 <TextBlock Height="16" Canvas.Left="242" TextWrapping="Wrap" Canvas.Top="175" Width="40" Foreground="White" Text="LED14"/>
                 <TextBlock Height="16" Canvas.Left="242" TextWrapping="Wrap" Canvas.Top="205" Width="40" Foreground="White" Text="LED15"/>
                 <TextBlock Height="16" Canvas.Left="242" TextWrapping="Wrap" Canvas.Top="235" Width="40" Foreground="White" Text="LED16"/>
-                <Button x:Name="buttonSave" Content="自動補正"  Height="51" Canvas.Top="21" Width="139" FontSize="26" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Click="buttonSave_Click" Canvas.Left="507"/>
+                <Button x:Name="buttonSave" Content="自動補正"  Height="51" Canvas.Top="21" Width="203" FontSize="26" Style="{DynamicResource SquareButtonStyle}" Controls:ControlsHelper.ContentCharacterCasing="Normal" FontFamily="Meiryo UI" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Background="{x:Null}" Click="buttonSave_Click" Canvas.Left="507"/>
+                <Controls:ProgressRing x:Name="RingCal" Foreground="#CCFFFFFF" Canvas.Left="672" Canvas.Top="35" Height="24" Width="24" IsActive="{Binding IsActive}"/>
             </Canvas>
             <Label Content="LED調整" Height="24" Width="57" Foreground="#FF0EC2D4" BorderBrush="{x:Null}" Canvas.Top="-2" Canvas.Left="1"/>
         </Canvas>

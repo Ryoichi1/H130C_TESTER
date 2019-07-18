@@ -183,8 +183,8 @@
     <Compile Include="Page\Config\Conf.xaml.cs">
       <DependentUpon>Conf.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page\Config\Mente.xaml.cs">
-      <DependentUpon>Mente.xaml</DependentUpon>
+    <Compile Include="Page\Config\Mainte.xaml.cs">
+      <DependentUpon>Mainte.xaml</DependentUpon>
     </Compile>
     <Compile Include="Page\Config\Theme.xaml.cs">
       <DependentUpon>Theme.xaml</DependentUpon>
@@ -240,7 +240,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Page\Config\Mente.xaml">
+    <Page Include="Page\Config\Mainte.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

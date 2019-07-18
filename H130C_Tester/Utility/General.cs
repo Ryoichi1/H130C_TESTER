@@ -203,7 +203,7 @@ namespace H130C_Tester
                 State.VmTestResults.LumLed14,
                 State.VmTestResults.LumLed15,
                 State.VmTestResults.LumLed16,
-                
+
             };
 
             return ListData;
@@ -330,6 +330,9 @@ namespace H130C_Tester
             Flags.PowOn = sw;
 
         }
+
+         public static async Task PowSupplyAsync(bool sw) => await Task.Run(() => { PowSupply(sw); });
+
 
 
         //**************************************************************************
@@ -464,7 +467,7 @@ namespace H130C_Tester
             bool StopCAMERA1 = false;
             Task.Run(() =>
             {
-                cam = new Camera(0, Constants.filePath_Cam1CalFilePath);
+                cam = new Camera(0, Constants.filePath_Cam1CalFilePath, 640, 360);
                 while (true)
                 {
                     if (Flags.StopInit周辺機器)
@@ -475,7 +478,8 @@ namespace H130C_Tester
                     if (!Flags.State1768) continue;//他のアイテムの試験機が接続されていたらカメラのイニシャライズは行わない
 
                     cam.InitCamera();
-                    if (cam.CamState) break;
+                    if (Flags.StateCam = cam.CamState)
+                        break;
 
                     Thread.Sleep(500);
                 }

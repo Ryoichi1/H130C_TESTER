@@ -205,8 +205,8 @@ namespace H130C_Tester
                 case CN_NAME.CN220:
                     General.cam.BinLevel = CamPropCn220.BinLevel;
                     General.cam.Opening = CamPropCn220.Opening;
-                    General.cam.openCnt = CamPropCn220.OpenCnt;
-                    General.cam.closeCnt = CamPropCn220.CloseCnt;
+                    General.cam.OpenCnt = CamPropCn220.OpenCnt;
+                    General.cam.CloseCnt = CamPropCn220.CloseCnt;
 
                     General.cam.Brightness = CamPropCn220.Brightness;
                     General.cam.Contrast = CamPropCn220.Contrast;
@@ -222,8 +222,8 @@ namespace H130C_Tester
                 case CN_NAME.CN223:
                     General.cam.BinLevel = CamPropCn223.BinLevel;
                     General.cam.Opening = CamPropCn223.Opening;
-                    General.cam.openCnt = CamPropCn223.OpenCnt;
-                    General.cam.closeCnt = CamPropCn223.CloseCnt;
+                    General.cam.OpenCnt = CamPropCn223.OpenCnt;
+                    General.cam.CloseCnt = CamPropCn223.CloseCnt;
 
                     General.cam.Brightness = CamPropCn223.Brightness;
                     General.cam.Contrast = CamPropCn223.Contrast;
@@ -239,8 +239,8 @@ namespace H130C_Tester
                 case CN_NAME.CN224:
                     General.cam.BinLevel = CamPropCn224.BinLevel;
                     General.cam.Opening = CamPropCn224.Opening;
-                    General.cam.openCnt = CamPropCn224.OpenCnt;
-                    General.cam.closeCnt = CamPropCn224.CloseCnt;
+                    General.cam.OpenCnt = CamPropCn224.OpenCnt;
+                    General.cam.CloseCnt = CamPropCn224.CloseCnt;
 
                     General.cam.Brightness = CamPropCn224.Brightness;
                     General.cam.Contrast = CamPropCn224.Contrast;
@@ -256,8 +256,8 @@ namespace H130C_Tester
                 case CN_NAME.CN225:
                     General.cam.BinLevel = CamPropCn225.BinLevel;
                     General.cam.Opening = CamPropCn225.Opening;
-                    General.cam.openCnt = CamPropCn225.OpenCnt;
-                    General.cam.closeCnt = CamPropCn225.CloseCnt;
+                    General.cam.OpenCnt = CamPropCn225.OpenCnt;
+                    General.cam.CloseCnt = CamPropCn225.CloseCnt;
 
                     General.cam.Brightness = CamPropCn225.Brightness;
                     General.cam.Contrast = CamPropCn225.Contrast;
@@ -273,8 +273,8 @@ namespace H130C_Tester
                 case CN_NAME.CN226:
                     General.cam.BinLevel = CamPropCn226.BinLevel;
                     General.cam.Opening = CamPropCn226.Opening;
-                    General.cam.openCnt = CamPropCn226.OpenCnt;
-                    General.cam.closeCnt = CamPropCn226.CloseCnt;
+                    General.cam.OpenCnt = CamPropCn226.OpenCnt;
+                    General.cam.CloseCnt = CamPropCn226.CloseCnt;
 
                     General.cam.Brightness = CamPropCn226.Brightness;
                     General.cam.Contrast = CamPropCn226.Contrast;
@@ -290,8 +290,8 @@ namespace H130C_Tester
                 case CN_NAME.JP1:
                     General.cam.BinLevel = CamPropJp1.BinLevel;
                     General.cam.Opening = CamPropJp1.Opening;
-                    General.cam.openCnt = CamPropJp1.OpenCnt;
-                    General.cam.closeCnt = CamPropJp1.CloseCnt;
+                    General.cam.OpenCnt = CamPropJp1.OpenCnt;
+                    General.cam.CloseCnt = CamPropJp1.CloseCnt;
 
                     General.cam.Brightness = CamPropJp1.Brightness;
                     General.cam.Contrast = CamPropJp1.Contrast;
@@ -311,8 +311,8 @@ namespace H130C_Tester
         public static void SetCamPropForLed()
         {
             General.cam.Opening = CamPropLed.Opening;
-            General.cam.openCnt = CamPropLed.OpenCnt;
-            General.cam.closeCnt = CamPropLed.CloseCnt;
+            General.cam.OpenCnt = CamPropLed.OpenCnt;
+            General.cam.CloseCnt = CamPropLed.CloseCnt;
 
             General.cam.Brightness = CamPropLed.Brightness;
             General.cam.Contrast = CamPropLed.Contrast;

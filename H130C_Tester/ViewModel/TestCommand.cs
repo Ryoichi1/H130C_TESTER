@@ -188,12 +188,12 @@ namespace H130C_Tester
             {
                 //IO初期化
                 General.ResetIo();
-                Thread.Sleep(400);
+                await Task.Delay(400);
 
 
                 foreach (var d in テスト項目最新.Select((s, i) => new { i, s }))
                 {
-                Retry:
+                    Retry:
                     State.VmTestStatus.Spec = "規格値 : ---";
                     State.VmTestStatus.MeasValue = "計測値 : ---";
                     Flags.AddDecision = true;
@@ -204,13 +204,13 @@ namespace H130C_Tester
                     {
                         if (!Flags.PowOn)
                         {
-                            Thread.Sleep(100);
-                            General.PowSupply(true);
+                            await Task.Delay(100);
+                            await General.PowSupplyAsync(true);
                         }
                     }
                     else
                     {
-                        General.PowSupply(false);
+                        await General.PowSupplyAsync(false);
                         await Task.Delay(100);
                     }
 
@@ -370,7 +370,7 @@ namespace H130C_Tester
 
                 FlagTestTime = false;
 
-                State.VmTestStatus.Colorlabel判定 =  Brushes.AliceBlue;
+                State.VmTestStatus.Colorlabel判定 = Brushes.AliceBlue;
                 State.VmTestStatus.Decision = "PASS";
                 State.VmTestStatus.ColorDecision = effect判定表示PASS;
 
@@ -396,8 +396,8 @@ namespace H130C_Tester
 
                 return;
 
-            //不合格時の処理
-            FAIL:
+                //不合格時の処理
+                FAIL:
 
                 //強制停止ボタンの設定
                 await General.ShowStopButton(false);
@@ -405,7 +405,7 @@ namespace H130C_Tester
 
                 General.ResetIo();
                 await Task.Delay(500);
-            FAIL_DATA_SAVE:
+                FAIL_DATA_SAVE:
 
 
                 FlagTestTime = false;

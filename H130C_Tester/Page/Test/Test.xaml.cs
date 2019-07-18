@@ -29,7 +29,6 @@ namespace H130C_Tester
             this.DataContext = State.VmTestStatus;
             Canvas検査データ.DataContext = State.VmTestResults;
             CanvasImg1.DataContext = General.cam;
-            labelCamera1.DataContext = General.cam;
 
             CanvasMainIo.DataContext = State.MainComm;
             CanvasMainCan.DataContext = State.MainComm;
@@ -85,7 +84,7 @@ namespace H130C_Tester
                 //強制停止ボタンの設定
                 State.VmTestStatus.StopButtonEnable = false;
                 State.VmTestStatus.StopButtonVis = 0.0;
-
+                await Task.Delay(1000);
                 await State.testCommand.StartCheck();
             }
         }

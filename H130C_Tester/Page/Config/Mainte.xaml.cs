@@ -7,13 +7,13 @@ namespace H130C_Tester
     /// <summary>
     /// Interaction logic for BasicPage1.xaml
     /// </summary>
-    public partial class Mente
+    public partial class Mainte
     {
         private SolidColorBrush ButtonOnBrush = new SolidColorBrush();
         private SolidColorBrush ButtonOffBrush = new SolidColorBrush();
         private const double ButtonOpacity = 0.4;
 
-        public Mente()
+        public Mainte()
         {
             InitializeComponent();
             CanvasMainIo.DataContext = State.MainComm;
@@ -29,10 +29,24 @@ namespace H130C_Tester
 
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Flags.EnableMaintePage = false;
+            State.MainComm.TX = "";
+            State.MainComm.RX = "";
+            State.MainComm.CAN_TX = "";
+            State.MainComm.CAN_RX = "";
+            State.SubComm.TX = "";
+            State.SubComm.RX = "";
+
+            tbVol.Text = "";
+        }
+
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             buttonPow.Background = Brushes.Transparent;
             General.PowSupply(false);
+            Flags.EnableMaintePage = true;
         }
 
 
@@ -53,17 +67,6 @@ namespace H130C_Tester
             FlagPow = !FlagPow;
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            State.MainComm.TX = "";
-            State.MainComm.RX = "";
-            State.MainComm.CAN_TX = "";
-            State.MainComm.CAN_RX = "";
-            State.SubComm.TX = "";
-            State.SubComm.RX = "";
-
-            tbVol.Text = "";
-        }
 
 
         private void buttonStamp_Click(object sender, RoutedEventArgs e)

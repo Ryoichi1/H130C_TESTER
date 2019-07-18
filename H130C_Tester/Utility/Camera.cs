@@ -15,16 +15,17 @@ namespace H130C_Tester
 {
     public class Camera : BindableBase
     {
-        static readonly int WIDTH = 640;
-        static readonly int HEIGHT = 360;
+        private System.Timers.Timer TmTimeOut;
+        public bool FlagTimeout { get; private set; }
+
+        readonly int WIDTH;
+        readonly int HEIGHT;
 
         //ホワイトバランス調整用（Aforge.NET 拡張版）
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice2 videoDevice;
 
-
         public CvMat _fileIntrinsic, _fileDistortion;
-
         public CvBlobs blobs;
         public IplImage imageForLabeling;
         public IplImage imageForHsv;
@@ -33,6 +34,7 @@ namespace H130C_Tester
         public Action<IplImage> MakeNgFrame;
         private bool FlagPropChange;
         private int CameraNumber;
+        private string CalFilePath;
 
 
         public bool FlagLabeling { get; set; }
@@ -51,26 +53,23 @@ namespace H130C_Tester
         public int Sdata { get; set; }
         public int Vdata { get; set; }
 
-        public bool Opening { get; set; }//ノイズ除去プロセス オープニング処理
-        public int openCnt { get; set; }
-        public int closeCnt { get; set; }
 
-        public Camera(int num, string calFilePath)
+        public Camera(int num, string calFilePath, int width, int height)
         {
             this.CameraNumber = num;
+            this.WIDTH = width;
+            this.HEIGHT = height;
             imageForHsv = new IplImage(WIDTH, HEIGHT, BitDepth.U8, 3);
             imageForTest = new IplImage(WIDTH, HEIGHT, BitDepth.U8, 3);
             BinLevel = 0;
+            this.CalFilePath = calFilePath;
 
-            using (var fs = new CvFileStorage(calFilePath, null, FileStorageMode.Read))
+            TmTimeOut = new System.Timers.Timer();
+            TmTimeOut.Elapsed += (sender, e) =>
             {
-                var param = fs.GetFileNodeByName(null, "intrinsic");
-                _fileIntrinsic = fs.Read<CvMat>(param);
-                param = fs.GetFileNodeByName(null, "distortion");
-                _fileDistortion = fs.Read<CvMat>(param);
-            }
-
-
+                TmTimeOut.Stop();
+                FlagTimeout = true;
+            };
         }
 
 
@@ -84,26 +83,32 @@ namespace H130C_Tester
             FlagHsv = false;
             FlagTestPic = false;
             FlagNgFrame = false;
-
+            blobs = null;
         }
 
         public void InitCamera()
         {
             try
             {
+                using (var fs = new CvFileStorage(CalFilePath, null, FileStorageMode.Read))
+                {
+                    var param = fs.GetFileNodeByName(null, "intrinsic");
+                    _fileIntrinsic = fs.Read<CvMat>(param);
+                    param = fs.GetFileNodeByName(null, "distortion");
+                    _fileDistortion = fs.Read<CvMat>(param);
+                }
+
+                videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+                videoDevice = new VideoCaptureDevice2(videoDevices[CameraNumber].MonikerString);
+
                 using (var cap = Cv.CreateCameraCapture(CameraNumber)) // カメラのキャプチャ
                 { }
                 CamState = true;
-                videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-                videoDevice = new VideoCaptureDevice2(videoDevices[CameraNumber].MonikerString);
             }
             catch
             {
                 CamState = false;
-
             }
-
-
         }
 
 
@@ -122,6 +127,10 @@ namespace H130C_Tester
             set { this.SetProperty(ref this._IsActive, value); }
         }
 
+
+        private string _LcdCoefficient;
+        public string LcdCoefficient { get { return _LcdCoefficient; } set { this.SetProperty(ref this._LcdCoefficient, value); } }
+
         private bool _FlagGrid;
         public bool FlagGrid
         {
@@ -137,9 +146,29 @@ namespace H130C_Tester
         }
 
 
-
-
         //■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+        //収縮・拡張処理
+        private bool _Opening;
+        public bool Opening
+        {
+            get { return _Opening; }
+            set { this.SetProperty(ref this._Opening, value); }
+        }
+
+        private int _OpenCnt;
+        public int OpenCnt
+        {
+            get { return _OpenCnt; }
+            set { this.SetProperty(ref this._OpenCnt, value); }
+        }
+
+        private int _CloseCnt;
+        public int CloseCnt
+        {
+            get { return _CloseCnt; }
+            set { this.SetProperty(ref this._CloseCnt, value); }
+        }
+
 
         //明るさ
         private double _Brightness;
@@ -230,7 +259,7 @@ namespace H130C_Tester
         }
 
         //Imageの透明度
-        private double _ImageOpacity;
+        private double _ImageOpacity = 0;
         public double ImageOpacity
         {
             get { return _ImageOpacity; }
@@ -247,11 +276,10 @@ namespace H130C_Tester
             set
             {
                 _CamState = value;
-                ColorCAMERA = value ? General.OnBrush : General.NgBrush;
             }
         }
 
-        private Brush _ColorCAMERA = General.NgBrush;
+        private Brush _ColorCAMERA;
         public Brush ColorCAMERA
         {
             get { return _ColorCAMERA; }
@@ -264,8 +292,10 @@ namespace H130C_Tester
 
         public async Task Stop()
         {
-            if (!canExecute) return;//カメラが起動していなければ何もしない
+            ImageOpacity = 0;
             ResetFlag();
+            if (!canExecute) return;//カメラが起動していなければ何もしない
+
             Stopped = false;
             canExecute = false;
             await Task.Run(() =>
@@ -282,7 +312,9 @@ namespace H130C_Tester
         public CvCapture cap = null;
         public void Start()
         {
+            if (!CamState) return;
             if (canExecute) return;//既にカメラが起動していたら何もしない ※stop忘れ防止 Stopするのを忘れてStartすると二重起動して異常動作します
+            ImageOpacity = 1;
             IsActive = true;
             canExecute = true;
             var im = new IplImage();     // カメラ画像格納用の変数
@@ -303,11 +335,7 @@ namespace H130C_Tester
                     cap.SetCaptureProperty(CaptureProperty.FrameWidth, WIDTH);
                     cap.SetCaptureProperty(CaptureProperty.FrameHeight, HEIGHT);
 
-                    var buffWb = Wb;//現在のホワイトバランスを保存
-                    Wb = 3000;
-                    Thread.Sleep(100);
-                    Wb = buffWb;
-                    Thread.Sleep(100);
+                    SetWb();
 
                     var dis = App.Current.Dispatcher;
 
@@ -435,6 +463,10 @@ namespace H130C_Tester
                                 continue;
                             }
 
+                            if (FlagHsv)
+                            {
+                                GetHsv(dst);
+                            }
 
 
                             if (FlagFrame)
@@ -459,10 +491,6 @@ namespace H130C_Tester
                                 while (FlagNgFrame) ;
                             }
 
-                            if (FlagHsv)
-                            {
-                                GetHsv(dst);
-                            }
 
                             //すべてのフラグがfalseならノーマル表示する
                             dis.BeginInvoke(new Action(() =>
@@ -474,17 +502,17 @@ namespace H130C_Tester
                                 }
                                 catch
                                 {
-                                    CamState = false;
-                                    canExecute = false;
+                                    //CamState = false;
+                                    //canExecute = false;
                                 }
                             }));
 
                         }
                         catch
                         {
-                            CamState = false;
-                            canExecute = false;
-                            //カメラがたまにコケるので例外無視する処理を追加
+                            //例外無視する処理を追加
+                            //CamState = false;
+                            //canExecute = false;
                         }
                     }
 
@@ -502,10 +530,64 @@ namespace H130C_Tester
                     }
                     IsActive = false;
                     Stopped = true;
+                    source = null;
                 }
             });
         }
 
+        public void SetWb()
+        {
+            var buffWb = Wb;//現在のホワイトバランスを保存
+            var val = buffWb - 10;
+            while (true)
+            {
+                Wb = val;
+                val++;
+                if (val > buffWb)
+                    break;
+            }
+        }
+
+        public bool GetPic()
+        {
+            try
+            {
+                TmTimeOut.Interval = 1500;
+                TmTimeOut.Stop();
+                FlagTimeout = false;
+                TmTimeOut.Start();
+
+                FlagTestPic = true;
+
+                while (true)
+                {
+                    if (FlagTimeout) return false;
+                    if (!FlagTestPic) return true;
+                }
+            }
+            finally
+            {
+                FlagTestPic = false;
+            }
+
+        }
+
+        public void GetBlob(bool sw)
+        {
+            if (FlagLabeling == sw) return;
+
+            if (sw)
+            {
+                blobs = null;
+                FlagLabeling = true;
+                return;
+            }
+            else
+            {
+                FlagLabeling = false;
+                return;
+            }
+        }
 
         public IplImage Gray(IplImage src)
         {
@@ -528,14 +610,14 @@ namespace H130C_Tester
                 if (Opening)
                 {
                     //オープニング処理でノイズ除去(拡張 → 収縮)
-                    Cv.Erode(gray, gray, null, closeCnt);//収縮処理2回　ノイズ除去 
-                    Cv.Dilate(gray, gray, null, openCnt);//拡張処理2回　ノイズ除去 
+                    Cv.Erode(gray, gray, null, CloseCnt);//収縮処理2回　ノイズ除去 
+                    Cv.Dilate(gray, gray, null, OpenCnt);//拡張処理2回　ノイズ除去 
                 }
                 else
                 {
                     //クロージング処理でノイズ除去(拡張 → 収縮)
-                    Cv.Dilate(gray, gray, null, openCnt);//拡張処理2回　ノイズ除去 
-                    Cv.Erode(gray, gray, null, closeCnt);//収縮処理2回　ノイズ除去 
+                    Cv.Dilate(gray, gray, null, OpenCnt);//拡張処理2回　ノイズ除去 
+                    Cv.Erode(gray, gray, null, CloseCnt);//収縮処理2回　ノイズ除去 
                 }
 
                 var img = new IplImage(WIDTH, HEIGHT, BitDepth.U8, 1);

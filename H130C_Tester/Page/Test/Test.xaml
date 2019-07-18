@@ -383,7 +383,7 @@
             <TextBlock TextWrapping="Wrap" Text="Status" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="22" Width="60" Canvas.Left="7" Canvas.Top="4"/>
             <StackPanel x:Name="stackPanel機器ステータス" Height="25" Canvas.Top="31" Width="178" Orientation="Horizontal" Canvas.Left="78">
                 <Label x:Name="labelLpc1768" Content="LPC1768" Background="{Binding Color1768}" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="74" FontSize="14"/>
-                <Label x:Name="labelCamera1" Content="カメラ1"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="{Binding ColorCAMERA}" BorderThickness="1" Width="74" FontSize="14" />
+                <Label x:Name="labelCamera" Content="カメラ"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="{Binding  ColorCam}" BorderThickness="1" Width="74" FontSize="14" />
             </StackPanel>
             <TextBlock x:Name="textBlock2_Copy5" TextWrapping="Wrap" Text="周辺機器" FontSize="16" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="68" RenderTransformOrigin="0.5,0.5" Canvas.Top="33" Canvas.Left="8">
                 <TextBlock.RenderTransform>
@@ -493,13 +493,10 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </Label.RenderTransform>
-                <Label.Effect>
-                    <DropShadowEffect Color="#FF0BF0FB" BlurRadius="20" Direction="0" ShadowDepth="0"/>
-                </Label.Effect>
             </Label>
             <Rectangle Fill="#FFF4F4F5" Height="1" Canvas.Left="19" Canvas.Top="126" Width="215"/>
             <Label x:Name="labelStateRetry" Content="リトライ" Height="27" Canvas.Left="44" Width="58" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="1" Canvas.Top="170" Background="#FF0C92F0" Visibility="{Binding RetryLabelVis}"/>
-            <Label x:Name="tbTestTime" Content="{Binding TestTime}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="38" Width="100" Canvas.Left="19" FontSize="30" Foreground="White" FontFamily="Segoe UI Light" Padding="0" Canvas.Top="124" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Label x:Name="tbTestTime" Content="{Binding TestTime}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="38" Width="100" Canvas.Left="36" FontSize="30" Foreground="White" FontFamily="Segoe UI Light" Padding="0" Canvas.Top="124" VerticalContentAlignment="Center"/>
             <TextBlock x:Name="textBlock2_Copy11" TextWrapping="Wrap" Text="合格" FontSize="18" Foreground="#FF0DB2FF" HorizontalAlignment="Left" VerticalAlignment="Center" Height="21" Width="38" RenderTransformOrigin="0.5,0.5" Canvas.Top="135" Canvas.Left="134">
                 <TextBlock.RenderTransform>
                     <TransformGroup>

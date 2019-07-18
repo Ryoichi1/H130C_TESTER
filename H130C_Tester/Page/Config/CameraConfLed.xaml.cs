@@ -25,9 +25,11 @@ namespace H130C_Tester
         //フォームイベントいろいろ
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            Flags.EnableConfLedPage = false;
+
+            RingCal.IsActive = false;
             tbPoint.Visibility = System.Windows.Visibility.Hidden;
             tbHsv.Visibility = System.Windows.Visibility.Hidden;
-            Flags.EnableStartCheck = false;
 
             buttonSave.IsEnabled = true;
             buttonLedOn.IsEnabled = true;
@@ -59,7 +61,6 @@ namespace H130C_Tester
 
             FlagLabeling = false;
             ShowHue = false;
-            //canvasLdPoint.IsEnabled = true;
 
             //TODO:
             //LEDを全消灯させる処理
@@ -68,7 +69,7 @@ namespace H130C_Tester
                 return;
             await General.cam.Stop();
             await Task.Delay(500);
-            Flags.EnableStartCheck = true;
+            Flags.EnableConfLedPage = true;
         }
 
         private void im_MouseLeave(object sender, MouseEventArgs e)
@@ -185,8 +186,8 @@ namespace H130C_Tester
             State.CamPropLed.BinLevel = General.cam.BinLevel;
 
             State.CamPropLed.Opening = General.cam.Opening;
-            State.CamPropLed.OpenCnt = General.cam.openCnt;
-            State.CamPropLed.CloseCnt = General.cam.closeCnt;
+            State.CamPropLed.OpenCnt = General.cam.OpenCnt;
+            State.CamPropLed.CloseCnt = General.cam.CloseCnt;
         }
 
         private bool SaveLedPoint()
@@ -258,12 +259,6 @@ namespace H130C_Tester
                     if (General.cam.blobs == null) continue;
                     var blobs = General.cam.blobs.Clone();
 
-                    ////正方形のブロブだけ抽出（dpだけ抽出）
-                    //var rectBlobs = blobInfo.Where(pair =>
-                    //{
-                    //    CvRect rect = pair.Value.Rect;
-                    //    return Math.Abs(rect.Height - rect.Width) < 10;
-                    //});
 
                     //画面下にmbedのLED光が写り込んでしまうため、マスク処理（Y座標280以下のものを抽出）
                     var blobInfo = blobs.Where(b => b.Value.Centroid.Y < 280);
@@ -364,8 +359,13 @@ namespace H130C_Tester
             {
                 //LED全点灯の処理
                 buttonSave.Background = Brushes.DodgerBlue;
+
                 buttonLedOn.IsEnabled = false;
+                buttonLabeling.IsEnabled = false;
+                buttonHue.IsEnabled = false;
+
                 IsBusy = true;
+                RingCal.IsActive = true;
 
                 await Task.Run(() => General.PowSupply(true));
                 await General.LedAllOn();
@@ -411,14 +411,16 @@ namespace H130C_Tester
 
                     General.PlaySound(General.soundSuccess);
                     labelMess.Content = "自動補正完了しました！";
+                    labelMess.Foreground = Brushes.DodgerBlue;
                     (FindResource("SbMessage") as Storyboard).Begin();
                     await Task.Delay(1000);
                     return;
                 }
 
-            FAIL:
+                FAIL:
                 General.PlaySound(General.soundFail);
                 labelMess.Content = "LED全点灯が認識できません\nカメラプロパティの調整をしてください";
+                labelMess.Foreground = Brushes.HotPink;
                 (FindResource("SbMessage") as Storyboard).Begin();
                 await Task.Delay(1000);
 
@@ -426,10 +428,14 @@ namespace H130C_Tester
             finally
             {
                 FlagLabeling = false;
+                RingCal.IsActive = false;
                 await Task.Delay(150);
                 buttonSave.Background = Brushes.Transparent;
 
                 buttonLedOn.IsEnabled = true;
+                buttonLabeling.IsEnabled = true;
+                buttonHue.IsEnabled = true;
+
                 IsBusy = false;
                 General.ResetIo();
             }

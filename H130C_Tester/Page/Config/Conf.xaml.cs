@@ -13,7 +13,7 @@ namespace H130C_Tester
         private NavigationService naviCameraLed;
         private NavigationService naviCameraCn;
         private NavigationService naviTheme;
-        Uri uriMentePage    = new Uri("Page/Config/Mente.xaml", UriKind.Relative);
+        Uri uriMentePage    = new Uri("Page/Config/Mainte.xaml", UriKind.Relative);
         Uri uriCameraLedPage  = new Uri("Page/Config/CameraConfLed.xaml", UriKind.Relative);
         Uri uriCameraCnPage  = new Uri("Page/Config/CameraConfCn.xaml", UriKind.Relative);//TODO:
         Uri uriThemePage    = new Uri("Page/Config/Theme.xaml", UriKind.Relative);

@@ -1,11 +1,8 @@
 ﻿using OpenCvSharp;
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using static System.Threading.Thread;
 using static H130C_Tester.General;
 
 namespace H130C_Tester
@@ -33,6 +30,7 @@ namespace H130C_Tester
         //フォームイベントいろいろ
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            Flags.EnableConfCnPage = false;
             resetView();
             //フォームロード時真っ暗だと困るので、照明1点灯にしておく
             OnLight1 = true;
@@ -55,7 +53,6 @@ namespace H130C_Tester
             tbHsv.Visibility = System.Windows.Visibility.Hidden;
             rbNon.IsChecked = true;
             CanChangeCnPoint = true;
-            Flags.EnableStartCheck = false;
 
             canvasCnPoint.IsEnabled = true;
         }
@@ -74,7 +71,7 @@ namespace H130C_Tester
             await General.cam.Stop();
             State.SetCamPoint();
             await Task.Delay(500);
-            Flags.EnableStartCheck = true;
+            Flags.EnableConfCnPage = true;
         }
 
         private void im_MouseLeave(object sender, MouseEventArgs e)
@@ -185,8 +182,8 @@ namespace H130C_Tester
                 case RB_CN.CN220:
                     State.CamPropCn220.BinLevel = General.cam.BinLevel;
                     State.CamPropCn220.Opening = General.cam.Opening;
-                    State.CamPropCn220.OpenCnt = General.cam.openCnt;
-                    State.CamPropCn220.CloseCnt = General.cam.closeCnt;
+                    State.CamPropCn220.OpenCnt = General.cam.OpenCnt;
+                    State.CamPropCn220.CloseCnt = General.cam.CloseCnt;
                     State.CamPropCn220.Brightness = General.cam.Brightness;
                     State.CamPropCn220.Contrast = General.cam.Contrast;
                     State.CamPropCn220.Hue = General.cam.Hue;
@@ -204,8 +201,8 @@ namespace H130C_Tester
                 case RB_CN.CN223:
                     State.CamPropCn223.BinLevel = General.cam.BinLevel;
                     State.CamPropCn223.Opening = General.cam.Opening;
-                    State.CamPropCn223.OpenCnt = General.cam.openCnt;
-                    State.CamPropCn223.CloseCnt = General.cam.closeCnt;
+                    State.CamPropCn223.OpenCnt = General.cam.OpenCnt;
+                    State.CamPropCn223.CloseCnt = General.cam.CloseCnt;
                     State.CamPropCn223.Brightness = General.cam.Brightness;
                     State.CamPropCn223.Contrast = General.cam.Contrast;
                     State.CamPropCn223.Hue = General.cam.Hue;
@@ -223,8 +220,8 @@ namespace H130C_Tester
                 case RB_CN.CN224:
                     State.CamPropCn224.BinLevel = General.cam.BinLevel;
                     State.CamPropCn224.Opening = General.cam.Opening;
-                    State.CamPropCn224.OpenCnt = General.cam.openCnt;
-                    State.CamPropCn224.CloseCnt = General.cam.closeCnt;
+                    State.CamPropCn224.OpenCnt = General.cam.OpenCnt;
+                    State.CamPropCn224.CloseCnt = General.cam.CloseCnt;
                     State.CamPropCn224.Brightness = General.cam.Brightness;
                     State.CamPropCn224.Contrast = General.cam.Contrast;
                     State.CamPropCn224.Hue = General.cam.Hue;
@@ -242,8 +239,8 @@ namespace H130C_Tester
                 case RB_CN.CN225:
                     State.CamPropCn225.BinLevel = General.cam.BinLevel;
                     State.CamPropCn225.Opening = General.cam.Opening;
-                    State.CamPropCn225.OpenCnt = General.cam.openCnt;
-                    State.CamPropCn225.CloseCnt = General.cam.closeCnt;
+                    State.CamPropCn225.OpenCnt = General.cam.OpenCnt;
+                    State.CamPropCn225.CloseCnt = General.cam.CloseCnt;
                     State.CamPropCn225.Brightness = General.cam.Brightness;
                     State.CamPropCn225.Contrast = General.cam.Contrast;
                     State.CamPropCn225.Hue = General.cam.Hue;
@@ -261,8 +258,8 @@ namespace H130C_Tester
                 case RB_CN.CN226:
                     State.CamPropCn226.BinLevel = General.cam.BinLevel;
                     State.CamPropCn226.Opening = General.cam.Opening;
-                    State.CamPropCn226.OpenCnt = General.cam.openCnt;
-                    State.CamPropCn226.CloseCnt = General.cam.closeCnt;
+                    State.CamPropCn226.OpenCnt = General.cam.OpenCnt;
+                    State.CamPropCn226.CloseCnt = General.cam.CloseCnt;
                     State.CamPropCn226.Brightness = General.cam.Brightness;
                     State.CamPropCn226.Contrast = General.cam.Contrast;
                     State.CamPropCn226.Hue = General.cam.Hue;
@@ -280,8 +277,8 @@ namespace H130C_Tester
                 case RB_CN.JP1:
                     State.CamPropJp1.BinLevel = General.cam.BinLevel;
                     State.CamPropJp1.Opening = General.cam.Opening;
-                    State.CamPropJp1.OpenCnt = General.cam.openCnt;
-                    State.CamPropJp1.CloseCnt = General.cam.closeCnt;
+                    State.CamPropJp1.OpenCnt = General.cam.OpenCnt;
+                    State.CamPropJp1.CloseCnt = General.cam.CloseCnt;
                     State.CamPropJp1.Brightness = General.cam.Brightness;
                     State.CamPropJp1.Contrast = General.cam.Contrast;
                     State.CamPropJp1.Hue = General.cam.Hue;

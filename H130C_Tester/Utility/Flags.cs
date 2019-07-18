@@ -1,4 +1,5 @@
 ﻿using System.Windows.Media;
+using static H130C_Tester.General;
 
 namespace H130C_Tester
 {
@@ -21,7 +22,16 @@ namespace H130C_Tester
 
         public static bool PressOpenCheckBeforeTest { get; set; }
 
-        public static bool EnableStartCheck { get; set; }
+        public static bool EnableStartCheck
+        {
+            get
+            {
+                return EnableConfCnPage && EnableConfLedPage && EnableMaintePage;
+            }
+        }
+        public static bool EnableConfCnPage { get; set; }
+        public static bool EnableConfLedPage { get; set; }
+        public static bool EnableMaintePage { get; set; }
 
         private static SolidColorBrush RetryPanelBrush = new SolidColorBrush();
         private static SolidColorBrush StatePanelOkBrush = new SolidColorBrush();
@@ -64,6 +74,18 @@ namespace H130C_Tester
             }
         }
 
+        private static bool _StateCam;
+        public static bool StateCam
+        {
+            get { return _StateCam; }
+            set
+            {
+                _StateCam = value;
+                State.VmTestStatus.ColorCam = value ? OnBrush : NgBrush;
+            }
+        }
+
+
 
         private static bool _Retry;
         public static bool Retry
@@ -79,5 +101,5 @@ namespace H130C_Tester
 
         public static bool AllOk周辺機器接続 { get; set; }
 
-      }
+    }
 }
