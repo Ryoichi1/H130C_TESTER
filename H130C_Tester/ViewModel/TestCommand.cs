@@ -298,17 +298,17 @@ namespace H130C_Tester
 
                             }
 
-                            General.PlaySoundLoop(General.soundAlarm);
-                            var YesNoResult = MessageBox.Show("この項目はＮＧですがリトライしますか？", "", MessageBoxButtons.YesNo);
-                            General.StopSound();
+                            //General.PlaySoundLoop(General.soundAlarm);
+                            //var YesNoResult = MessageBox.Show("この項目はＮＧですがリトライしますか？", "", MessageBoxButtons.YesNo);
+                            //General.StopSound();
 
-                            //何が選択されたか調べる
-                            if (YesNoResult == DialogResult.Yes)
-                            {
-                                RetryCnt = 0;
-                                await Task.Delay(1000);
-                                goto Retry;
-                            }
+                            ////何が選択されたか調べる
+                            //if (YesNoResult == DialogResult.Yes)
+                            //{
+                            //    RetryCnt = 0;
+                            //    await Task.Delay(1000);
+                            //    goto Retry;
+                            //}
 
                             goto FAIL;//自動リトライ後の作業者への確認はしない
 
