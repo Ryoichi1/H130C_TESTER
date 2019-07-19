@@ -27,7 +27,7 @@ namespace H130C_Tester
 
                 await Task.Delay(1000);
 
-                if (!await FDT.WriteFirmware(Constants.RwsPath_Test)) return false;
+                if (!await FDT.WriteFirmware(Path)) return false;
 
                 if (mode == WriteMode.TEST)
                 {

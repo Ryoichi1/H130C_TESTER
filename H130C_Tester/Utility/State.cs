@@ -83,7 +83,7 @@ namespace H130C_Tester
             new TestSpecs(800, "LEDカラーチェック", true),
             new TestSpecs(801, "LED輝度チェック", true),
 
-            //new TestSpecs(900, "製品ソフト書き込み", false),
+            new TestSpecs(900, "製品ソフト書き込み", false),
         };
 
         //個別設定のロード
